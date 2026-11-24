@@ -25,3 +25,6 @@ export { recordSale, saleTotal } from "./sales";
 
 export type { RecordDebtInput, SettleDebtInput } from "./debts";
 export { recordDebt, settleDebt, totalOwed } from "./debts";
+
+export type { AddItemInput, UpdateItemInput, DeleteItemInput } from "./items";
+export { addItem, updateItem, deleteItem, isLowStock, isOutOfStock } from "./items";

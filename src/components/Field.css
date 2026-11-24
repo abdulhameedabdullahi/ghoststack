@@ -1,0 +1,50 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.field__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.field__input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 0;
+}
+
+.field__input[aria-invalid="true"] {
+  border-style: dashed;
+}
+
+.field__hint {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-muted-fg);
+  overflow-wrap: anywhere;
+}
+
+.field__error {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-danger-fg);
+  background: var(--color-danger-bg);
+  padding: var(--space-1) var(--space-2);
+  overflow-wrap: anywhere;
+}

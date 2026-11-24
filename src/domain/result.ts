@@ -15,6 +15,9 @@ export const ERROR_MESSAGES = {
   DEBT_NOT_FOUND:
     'We could not find this debt. Go back and pick it from the list.',
   DEBT_ALREADY_PAID: 'This debt is already marked as paid.',
+  BAD_ITEM_NAME: 'Please type a name for this item.',
+  BAD_PRICE:
+    'Please type a price using numbers only, like 1250 or 1250.50.',
 } as const;
 
 export type ErrorCode = keyof typeof ERROR_MESSAGES;
