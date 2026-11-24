@@ -1,0 +1,184 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Check the project tooling": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513504466
+      },
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513523756
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517144126
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517151885
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517489633
+      }
+    ],
+    "2.1 Create `src/domain/types.ts` with Kobo, Stack, Card (four kinds), Item, Sale and Debt": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513505033
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517494734
+      }
+    ],
+    "2.2 Create `src/domain/result.ts` with Result, DomainError and the error table from design.md": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513506051
+      }
+    ],
+    "2.3 Create `src/domain/validate.ts` with whole-number and safe-money checks": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513506955
+      }
+    ],
+    "2.4 Add unit tests for the validation helpers and a test that checks every error code has a message": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513507238
+      }
+    ],
+    "3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513507459
+      }
+    ],
+    "3.2 Write unit tests for success, price copying, each error code and no mutation": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513507755
+      }
+    ],
+    "3.3 Write fast-check property test for invariant 1 (stock never below zero, oversize sales rejected)": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513507947
+      }
+    ],
+    "3.4 Write fast-check property test for invariant 2 (stock drops by exactly the quantity sold)": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513508138
+      }
+    ],
+    "4.1 Implement `recordDebt`, `settleDebt` and `totalOwed` in `src/domain/debts.ts`": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513508390
+      }
+    ],
+    "4.2 Write unit tests for success, trimmed names, each error code, already-paid debts and no mutation": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513508583
+      }
+    ],
+    "4.3 Write fast-check property test for invariant 5 (total owed equals unpaid sum; settling lowers it by exactly the amount)": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513508779
+      }
+    ],
+    "5.1 Create `src/domain/index.ts` exporting the public domain API": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513508953
+      }
+    ],
+    "5.2 Write fast-check property test for invariant 7 using random sequences of sale, debt and settle operations": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513509113
+      }
+    ],
+    "6.1 Create `src/storage/db.ts` that opens the `ghoststack` database with a `stacks` store": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513509301
+      }
+    ],
+    "6.2 Create `src/storage/isStack.ts` shape check": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513509479
+      }
+    ],
+    "6.3 Create `src/storage/stackStore.ts` with `saveStack`, `loadStack` and `listStacks`": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513509827
+      }
+    ],
+    "6.4 Write unit tests with `fake-indexeddb`: round trip, replace on save, unknown id, malformed record, list": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513510049
+      }
+    ],
+    "7.1 Create `src/main.tsx` and `src/App.tsx` showing the \"GhostStack\" heading and one short line": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513510226
+      }
+    ],
+    "8.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513510499
+      }
+    ],
+    "8.2 Run the production build and open the app to confirm the heading shows.": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513510677
+      }
+    ],
+    "8.3 Update `KIRO_NOTES.md` counts (specs, property tests, any bugs they found) and add a log row.": [
+      {
+        "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
+        "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
+        "timestamp": 1795513510879
+      }
+    ]
+  }
+}
