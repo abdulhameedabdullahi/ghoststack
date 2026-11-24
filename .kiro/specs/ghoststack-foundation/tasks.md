@@ -29,24 +29,24 @@
   - [x] 3.4 Write fast-check property test for invariant 2 (stock drops by exactly the quantity sold)
     - _Requirements: 7.3, 7.6, 7.7_
 
-- [ ] 4. recordDebt, settleDebt and totalOwed
-  - [-] 4.1 Implement `recordDebt`, `settleDebt` and `totalOwed` in `src/domain/debts.ts`
+- [x] 4. recordDebt, settleDebt and totalOwed
+  - [x] 4.1 Implement `recordDebt`, `settleDebt` and `totalOwed` in `src/domain/debts.ts`
     - _Requirements: 3.1 to 3.5, 4.1 to 4.6_
-  - [~] 4.2 Write unit tests for success, trimmed names, each error code, already-paid debts and no mutation
+  - [x] 4.2 Write unit tests for success, trimmed names, each error code, already-paid debts and no mutation
     - _Requirements: 3.1 to 3.5, 4.1 to 4.6, 7.1_
-  - [~] 4.3 Write fast-check property test for invariant 5 (total owed equals unpaid sum; settling lowers it by exactly the amount)
+  - [x] 4.3 Write fast-check property test for invariant 5 (total owed equals unpaid sum; settling lowers it by exactly the amount)
     - File: `src/domain/debts.property.test.ts`. At least 100 runs.
     - _Requirements: 7.4, 7.6, 7.7_
 
-- [ ] 5. Invariant 7 across all operations
-  - [~] 5.1 Create `src/domain/index.ts` exporting the public domain API
+- [x] 5. Invariant 7 across all operations
+  - [x] 5.1 Create `src/domain/index.ts` exporting the public domain API
     - _Requirements: 1.1_
-  - [~] 5.2 Write fast-check property test for invariant 7 using random sequences of sale, debt and settle operations
+  - [x] 5.2 Write fast-check property test for invariant 7 using random sequences of sale, debt and settle operations
     - File: `src/domain/invariants.property.test.ts`. No NaN, no negative stock, no fractional or unsafe money. At least 100 runs.
     - _Requirements: 7.5, 7.6, 7.7_
 
 - [ ] 6. Storage layer
-  - [~] 6.1 Create `src/storage/db.ts` that opens the `ghoststack` database with a `stacks` store
+  - [-] 6.1 Create `src/storage/db.ts` that opens the `ghoststack` database with a `stacks` store
     - _Requirements: 6.1_
   - [~] 6.2 Create `src/storage/isStack.ts` shape check
     - _Requirements: 6.6_
