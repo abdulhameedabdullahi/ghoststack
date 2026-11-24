@@ -259,6 +259,11 @@
         "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
         "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
         "timestamp": 1795520812217
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521050377
       }
     ],
     "6.2 Create `src/storage/isStack.ts` shape check": [
@@ -266,6 +271,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513509479
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521062343
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521319387
       }
     ],
     "6.3 Create `src/storage/stackStore.ts` with `saveStack`, `loadStack` and `listStacks`": [
@@ -273,6 +288,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513509827
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521332492
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521816794
       }
     ],
     "6.4 Write unit tests with `fake-indexeddb`: round trip, replace on save, unknown id, malformed record, list": [
@@ -280,6 +305,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510049
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521822702
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521865439
       }
     ],
     "7.1 Create `src/main.tsx` and `src/App.tsx` showing the \"GhostStack\" heading and one short line": [
@@ -287,6 +322,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510226
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521876469
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521921624
       }
     ],
     "8.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.": [
@@ -294,6 +339,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510499
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521926873
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521968123
       }
     ],
     "8.2 Run the production build and open the app to confirm the heading shows.": [
@@ -301,6 +356,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510677
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521973182
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795522018761
       }
     ],
     "8.3 Update `KIRO_NOTES.md` counts (specs, property tests, any bugs they found) and add a log row.": [
@@ -308,6 +373,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510879
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795522025543
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795522092459
       }
     ],
     "2. Domain types, results and validation": [
@@ -336,6 +411,27 @@
         "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
         "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
         "timestamp": 1795520806580
+      }
+    ],
+    "6. Storage layer": [
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521867530
+      }
+    ],
+    "7. Bare app screen": [
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795521923015
+      }
+    ],
+    "8. Final check": [
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795522093627
       }
     ]
   }

@@ -45,24 +45,24 @@
     - File: `src/domain/invariants.property.test.ts`. No NaN, no negative stock, no fractional or unsafe money. At least 100 runs.
     - _Requirements: 7.5, 7.6, 7.7_
 
-- [ ] 6. Storage layer
-  - [-] 6.1 Create `src/storage/db.ts` that opens the `ghoststack` database with a `stacks` store
+- [x] 6. Storage layer
+  - [x] 6.1 Create `src/storage/db.ts` that opens the `ghoststack` database with a `stacks` store
     - _Requirements: 6.1_
-  - [~] 6.2 Create `src/storage/isStack.ts` shape check
+  - [x] 6.2 Create `src/storage/isStack.ts` shape check
     - _Requirements: 6.6_
-  - [~] 6.3 Create `src/storage/stackStore.ts` with `saveStack`, `loadStack` and `listStacks`
+  - [x] 6.3 Create `src/storage/stackStore.ts` with `saveStack`, `loadStack` and `listStacks`
     - No domain function calls, no React imports, no network calls.
     - _Requirements: 6.2 to 6.5, 6.7, 6.8_
-  - [~] 6.4 Write unit tests with `fake-indexeddb`: round trip, replace on save, unknown id, malformed record, list
+  - [x] 6.4 Write unit tests with `fake-indexeddb`: round trip, replace on save, unknown id, malformed record, list
     - _Requirements: 6.2 to 6.6, 7.1_
 
-- [ ] 7. Bare app screen
-  - [~] 7.1 Create `src/main.tsx` and `src/App.tsx` showing the "GhostStack" heading and one short line
+- [x] 7. Bare app screen
+  - [x] 7.1 Create `src/main.tsx` and `src/App.tsx` showing the "GhostStack" heading and one short line
     - No cards, no builder, no styling work.
     - _Requirements: 8.1, 8.2_
 
-- [ ] 8. Final check
-  - [~] 8.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.
-  - [~] 8.2 Run the production build and open the app to confirm the heading shows.
-  - [~] 8.3 Update `KIRO_NOTES.md` counts (specs, property tests, any bugs they found) and add a log row.
+- [x] 8. Final check
+  - [x] 8.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.
+  - [x] 8.2 Run the production build and open the app to confirm the heading shows.
+  - [x] 8.3 Update `KIRO_NOTES.md` counts (specs, property tests, any bugs they found) and add a log row.
     - _Requirements: 7.1 to 7.7, 8.1_
