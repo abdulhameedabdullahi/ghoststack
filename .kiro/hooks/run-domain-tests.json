@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run domain tests",
+      "trigger": "PostFileSave",
+      "description": "Runs the domain unit and property tests when a file in src/domain is saved.",
+      "matcher": "src[\\\\/]domain[\\\\/].*\\.ts$",
+      "action": {
+        "type": "command",
+        "command": "npx vitest run src/domain"
+      }
+    }
+  ]
+}

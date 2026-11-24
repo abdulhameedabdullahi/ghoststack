@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Register new card type",
+      "trigger": "PostFileCreate",
+      "description": "Registers and documents a newly created card component.",
+      "matcher": "src[\\\\/]components[\\\\/]cards[\\\\/].*\\.tsx$",
+      "action": {
+        "type": "agent",
+        "prompt": "A new card type component was created. Add it to the card registry, add a short entry to docs/ARCHITECTURE.md, and add a row to KIRO_NOTES.md."
+      }
+    }
+  ]
+}
