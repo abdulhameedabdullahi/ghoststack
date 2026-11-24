@@ -10,6 +10,8 @@ export const ERROR_MESSAGES = {
   BAD_CUSTOMER: "Please type the customer's name.",
   ITEM_NOT_FOUND: 'We could not find this item. Pick it from your stock list.',
   CARD_NOT_FOUND: 'We could not find this card. Go back and pick it again.',
+  DUPLICATE_ID:
+    'This record already exists, so it was not added again. Please try again.',
   DEBT_NOT_FOUND:
     'We could not find this debt. Go back and pick it from the list.',
   DEBT_ALREADY_PAID: 'This debt is already marked as paid.',

@@ -17,20 +17,20 @@
   - [x] 2.4 Add unit tests for the validation helpers and a test that checks every error code has a message
     - _Requirements: 5.1, 7.1_
 
-- [ ] 3. recordSale
-  - [-] 3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`
+- [x] 3. recordSale
+  - [x] 3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`
     - Pure, no mutation, id and time passed in.
     - _Requirements: 2.1 to 2.9_
-  - [~] 3.2 Write unit tests for success, price copying, each error code and no mutation
+  - [x] 3.2 Write unit tests for success, price copying, each error code and no mutation
     - _Requirements: 2.1 to 2.9, 7.1_
-  - [~] 3.3 Write fast-check property test for invariant 1 (stock never below zero, oversize sales rejected)
+  - [x] 3.3 Write fast-check property test for invariant 1 (stock never below zero, oversize sales rejected)
     - File: `src/domain/sales.property.test.ts`. At least 100 runs.
     - _Requirements: 7.2, 7.6, 7.7_
-  - [~] 3.4 Write fast-check property test for invariant 2 (stock drops by exactly the quantity sold)
+  - [x] 3.4 Write fast-check property test for invariant 2 (stock drops by exactly the quantity sold)
     - _Requirements: 7.3, 7.6, 7.7_
 
 - [ ] 4. recordDebt, settleDebt and totalOwed
-  - [~] 4.1 Implement `recordDebt`, `settleDebt` and `totalOwed` in `src/domain/debts.ts`
+  - [-] 4.1 Implement `recordDebt`, `settleDebt` and `totalOwed` in `src/domain/debts.ts`
     - _Requirements: 3.1 to 3.5, 4.1 to 4.6_
   - [~] 4.2 Write unit tests for success, trimmed names, each error code, already-paid debts and no mutation
     - _Requirements: 3.1 to 3.5, 4.1 to 4.6, 7.1_
