@@ -6,19 +6,19 @@
   - Confirm `idb`, `vitest`, `fast-check` and `fake-indexeddb` are installed once approved.
   - _Requirements: 6.1, 7.1, 8.1_
 
-- [ ] 2. Domain types, results and validation
-  - [-] 2.1 Create `src/domain/types.ts` with Kobo, Stack, Card (four kinds), Item, Sale and Debt
+- [x] 2. Domain types, results and validation
+  - [x] 2.1 Create `src/domain/types.ts` with Kobo, Stack, Card (four kinds), Item, Sale and Debt
     - _Requirements: 1.1 to 1.8_
-  - [~] 2.2 Create `src/domain/result.ts` with Result, DomainError and the error table from design.md
+  - [x] 2.2 Create `src/domain/result.ts` with Result, DomainError and the error table from design.md
     - Every message says what went wrong and what to do next.
     - _Requirements: 5.1, 5.2_
-  - [~] 2.3 Create `src/domain/validate.ts` with whole-number and safe-money checks
+  - [x] 2.3 Create `src/domain/validate.ts` with whole-number and safe-money checks
     - _Requirements: 2.5, 2.7, 3.2_
-  - [~] 2.4 Add unit tests for the validation helpers and a test that checks every error code has a message
+  - [x] 2.4 Add unit tests for the validation helpers and a test that checks every error code has a message
     - _Requirements: 5.1, 7.1_
 
 - [ ] 3. recordSale
-  - [~] 3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`
+  - [-] 3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`
     - Pure, no mutation, id and time passed in.
     - _Requirements: 2.1 to 2.9_
   - [~] 3.2 Write unit tests for success, price copying, each error code and no mutation

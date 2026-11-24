@@ -38,6 +38,11 @@
         "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
         "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
         "timestamp": 1795517494734
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517587230
       }
     ],
     "2.2 Create `src/domain/result.ts` with Result, DomainError and the error table from design.md": [
@@ -45,6 +50,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513506051
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517593243
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517642878
       }
     ],
     "2.3 Create `src/domain/validate.ts` with whole-number and safe-money checks": [
@@ -52,6 +67,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513506955
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517655157
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517730285
       }
     ],
     "2.4 Add unit tests for the validation helpers and a test that checks every error code has a message": [
@@ -59,6 +84,16 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513507238
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517755949
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517854066
       }
     ],
     "3.1 Implement `recordSale` and `saleTotal` in `src/domain/sales.ts`": [
@@ -66,6 +101,11 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513507459
+      },
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517863352
       }
     ],
     "3.2 Write unit tests for success, price copying, each error code and no mutation": [
@@ -178,6 +218,13 @@
         "executionId": "ac9b9e73-2a99-43ec-8a87-c4fa7c21f55b",
         "chatSessionId": "sess_8aebaf40-8b16-4ec6-ae4a-064817867115",
         "timestamp": 1795513510879
+      }
+    ],
+    "2. Domain types, results and validation": [
+      {
+        "executionId": "a71bfff3-98f6-414c-b029-4bb2d0be1f5d",
+        "chatSessionId": "sess_c2d51491-f81f-4046-8996-67d13f820ecc",
+        "timestamp": 1795517854697
       }
     ]
   }
