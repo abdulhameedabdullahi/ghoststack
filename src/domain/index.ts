@@ -26,5 +26,15 @@ export { recordSale, saleTotal, dailyTotal, estimatedProfit, salesNewestFirst } 
 export type { RecordDebtInput, SettleDebtInput, CustomerTotal } from "./debts";
 export { recordDebt, settleDebt, totalOwed, debtsUnpaidFirst, debtsByCustomer } from "./debts";
 
+export {
+  renameStack,
+  renameCard,
+  moveCard,
+  setCardHidden,
+  isVisible,
+  visibleCards,
+  NAME_MAX_LENGTH,
+} from "./cards";
+
 export type { AddItemInput, UpdateItemInput, DeleteItemInput } from "./items";
 export { addItem, updateItem, deleteItem, isLowStock, isOutOfStock, lowStockItems } from "./items";

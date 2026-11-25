@@ -48,6 +48,8 @@ export interface Debt {
 interface CardBase {
   id: string;
   title: string;
+  /** Absent or false means the card is visible. */
+  hidden?: boolean;
 }
 
 export interface StockCard extends CardBase {

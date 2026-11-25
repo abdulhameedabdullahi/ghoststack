@@ -1,0 +1,37 @@
+.stack-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 100%;
+}
+
+.stack-picker__label {
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+.stack-picker__name {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+.stack-picker__select {
+  min-height: var(--tap-min);
+  min-width: 0;
+  max-width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.stack-picker__select:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

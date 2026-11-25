@@ -1,0 +1,1324 @@
+{
+  "pbtResults": {
+    "2.3 Write property test for name validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1795614907884
+    },
+    "2.4 Write property test for `renameCard` targeting and idempotence": {
+      "status": "passed",
+      "lastRunTimestamp": 1795615158339
+    },
+    "3.3 Write property test for swapping with the neighbour": {
+      "status": "passed",
+      "lastRunTimestamp": 1795615799608
+    },
+    "3.4 Write property test for the move round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1795615975245
+    },
+    "3.5 Write property test for bad directions": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616037770
+    },
+    "4.4 Write property test for hiding rules": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616293321
+    },
+    "4.5 Write property test for bad `hidden` values": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616388641
+    },
+    "4.6 Write property test for unknown card ids": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616456088
+    },
+    "4.7 Write property test for `visibleCards`": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616508824
+    },
+    "5.1 Write property test for data safety": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616883983
+    },
+    "5.2 Write property test for frozen input": {
+      "status": "passed",
+      "lastRunTimestamp": 1795616969893
+    },
+    "5.3 Write property test for call sequences": {
+      "status": "passed",
+      "lastRunTimestamp": 1795617032680
+    },
+    "8.2 Write tests in a new file `src/stacks/starterStack.farm.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1795617286579
+    },
+    "7.3 Write property test for `hidden` values": {
+      "status": "passed",
+      "lastRunTimestamp": 1795617514687
+    },
+    "7.5 Write property test for the save and load round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1795617586518
+    },
+    "7.4 Write property test that builder results pass `isStack`": {
+      "status": "passed",
+      "lastRunTimestamp": 1795617593482
+    }
+  },
+  "executionHistory": {
+    "1.1 Add six error codes to `src/domain/result.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614399358
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614437562
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614539972
+      }
+    ],
+    "1.2 Update the length offset in `src/domain/validate.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614399970
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614550075
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614663551
+      }
+    ],
+    "1.3 Add `hidden?: boolean` to `CardBase` in `src/domain/types.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614401531
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614438818
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614540807
+      }
+    ],
+    "2.1 Create `src/domain/cards.ts` with `NAME_MAX_LENGTH`, `validateName`, `findCardIndex`, `isVisible`, `renameStack` and `renameCard`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614402014
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614550573
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614665277
+      }
+    ],
+    "2.2 Write unit tests in `src/domain/cards.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614402163
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614672686
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614809541
+      }
+    ],
+    "2.3 Write property test for name validation": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614402329
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614817612
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615068114
+      }
+    ],
+    "2.4 Write property test for `renameCard` targeting and idempotence": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614402586
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615087518
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615193855
+      }
+    ],
+    "3.1 Add `moveCard` to `src/domain/cards.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614402834
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614673238
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614810544
+      }
+    ],
+    "3.2 Add `moveCard` unit tests to `src/domain/cards.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614403117
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614817956
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615060516
+      }
+    ],
+    "3.3 Write property test for swapping with the neighbour": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614403288
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615199884
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615932892
+      }
+    ],
+    "3.4 Write property test for the move round trip": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614403466
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615943589
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615989129
+      }
+    ],
+    "3.5 Write property test for bad directions": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614403642
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615996592
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616055078
+      }
+    ],
+    "4.1 Add `setCardHidden` to `src/domain/cards.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614403937
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614818244
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615068453
+      }
+    ],
+    "4.2 Add `visibleCards` to `src/domain/cards.ts` and export the new functions and `NAME_MAX_LENGTH` from `src/domain/index.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614404116
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615088878
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615195702
+      }
+    ],
+    "4.3 Add `setCardHidden` and `visibleCards` unit tests to `src/domain/cards.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614404306
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615200631
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615934397
+      }
+    ],
+    "4.4 Write property test for hiding rules": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614404475
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616074601
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616327834
+      }
+    ],
+    "4.5 Write property test for bad `hidden` values": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614404649
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616332328
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616405524
+      }
+    ],
+    "4.6 Write property test for unknown card ids": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614404809
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616411058
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616467700
+      }
+    ],
+    "4.7 Write property test for `visibleCards`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614405001
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616472778
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616825867
+      }
+    ],
+    "5.1 Write property test for data safety": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614405174
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616831525
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616898637
+      }
+    ],
+    "5.2 Write property test for frozen input": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614405330
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616903353
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616980475
+      }
+    ],
+    "5.3 Write property test for call sequences": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614405498
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616984885
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617044135
+      }
+    ],
+    "6. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406013
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617050115
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617096864
+      }
+    ],
+    "7.1 Change `isCard` in `src/storage/isStack.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406209
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617101411
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617147872
+      }
+    ],
+    "7.2 Write unit tests in a new file `src/storage/isStack.hidden.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406358
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617155911
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617352881
+      }
+    ],
+    "7.3 Write property test for `hidden` values": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406528
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617359646
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617528377
+      }
+    ],
+    "7.4 Write property test that builder results pass `isStack`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406682
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617533421
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617604285
+      }
+    ],
+    "7.5 Write property test for the save and load round trip": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406820
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617533699
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617605154
+      }
+    ],
+    "8.1 Add `buildFarmStallStack` to `src/stacks/starterStack.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614406976
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617102388
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617149220
+      }
+    ],
+    "8.2 Write tests in a new file `src/stacks/starterStack.farm.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614407317
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617156420
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617353601
+      }
+    ],
+    "8.3 Create `src/domain-ui/sampleItems.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614407519
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617103122
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617149449
+      }
+    ],
+    "8.4 Write unit tests in `src/domain-ui/sampleItems.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614407708
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617157282
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617354804
+      }
+    ],
+    "9.1 Create `src/storage/lastOpened.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614407855
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617103933
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617150327
+      }
+    ],
+    "9.2 Write unit tests in `src/storage/lastOpened.test.ts`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614408029
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617158161
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617355408
+      }
+    ],
+    "10. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614408198
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617609939
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617642162
+      }
+    ],
+    "11.1 Create `src/components/Dialog.tsx` and `Dialog.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614408372
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617646988
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617708032
+      }
+    ],
+    "12.1 Create `src/components/ModeSwitch.tsx` and `ModeSwitch.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614408628
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617647724
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617711612
+      }
+    ],
+    "13.1 Add an optional `ariaLabel?: string` prop to `src/components/Button.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614408837
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617648691
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617709327
+      }
+    ],
+    "13.2 Create `src/components/builder/RenameDialog.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409013
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617717427
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617756748
+      }
+    ],
+    "13.3 Create `src/components/builder/BuilderCardRow.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409195
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617763451
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617813400
+      }
+    ],
+    "13.4 Create `src/components/builder/BuilderPanel.tsx` and `BuilderPanel.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409354
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617817260
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617918377
+      }
+    ],
+    "14.1 Create `src/components/builder/StarterChooser.tsx` and `StarterChooser.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409539
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617649687
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617710685
+      }
+    ],
+    "15.1 Create `src/components/StackPicker.tsx` and `StackPicker.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409690
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617650119
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617709638
+      }
+    ],
+    "16.1 Add truncation to `src/components/TabBar.css`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614409839
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617712187
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617755528
+      }
+    ],
+    "17. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410030
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617923565
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617992702
+      }
+    ],
+    "18.1 Change the Tab_Bar wiring in `src/App.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410213
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617994118
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618048360
+      }
+    ],
+    "19.1 Run `npx vitest run` and report the result": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410364
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618053827
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618081237
+      }
+    ],
+    "20.1 Add Mode_Switch and Builder_Panel wiring to `src/App.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410547
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618082834
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618428543
+      }
+    ],
+    "20.2 Add the Starter_Chooser to `src/App.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410726
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618433470
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618540112
+      }
+    ],
+    "20.3 Add the Stack_Picker, save sequencing and last-opened id to `src/App.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614410884
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618545255
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618859421
+      }
+    ],
+    "21.1 Write `src/components/ModeSwitch.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614411053
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618866813
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618990674
+      }
+    ],
+    "21.2 Write `src/components/Dialog.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614411214
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618867664
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618992095
+      }
+    ],
+    "21.3 Write `src/components/builder/BuilderPanel.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614411400
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618868262
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618992678
+      }
+    ],
+    "21.4 Write `src/components/builder/StarterChooser.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614411625
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618869385
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618994238
+      }
+    ],
+    "21.5 Write `src/components/StackPicker.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614412031
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618870843
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618994521
+      }
+    ],
+    "21.6 Write `src/App.starter.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614412260
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795619000315
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619611519
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619613576
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619634879
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619829630
+      }
+    ],
+    "21.7 Write `src/App.picker.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614412500
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795619001734
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619612546
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619613747
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619636447
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619831470
+      }
+    ],
+    "21.8 Write `src/App.tabs.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614412700
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795619001941
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619613243
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619613911
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619636800
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619831873
+      }
+    ],
+    "21.9 Write `src/App.hiddenSales.test.tsx`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614412896
+      },
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795619003260
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619614095
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619637137
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619832102
+      }
+    ],
+    "22. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614413110
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619842623
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619921494
+      }
+    ],
+    "23.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614413372
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619932826
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795620049449
+      }
+    ],
+    "23.2 Run the production build (`npm run build`).": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614413551
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795620053275
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795620126204
+      }
+    ],
+    "23.3 Do a manual check in the browser and write down the result": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614413731
+      },
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795620134548
+      }
+    ],
+    "23.4 Update `KIRO_NOTES.md`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614413907
+      }
+    ],
+    "1. Error codes and the hidden flag": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795614665023
+      }
+    ],
+    "2. `renameStack` and `renameCard`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795615194755
+      }
+    ],
+    "3. `moveCard`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616056242
+      }
+    ],
+    "4. `setCardHidden` and `visibleCards`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795616826652
+      }
+    ],
+    "5. Cross-function properties for the builder functions": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617044866
+      }
+    ],
+    "8. Farm produce stall starter and sample items": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617354955
+      }
+    ],
+    "9. Last-opened id helpers": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617355630
+      }
+    ],
+    "7. Backward-compatible storage for `hidden`": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617605893
+      }
+    ],
+    "11. Shared Dialog": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617708668
+      }
+    ],
+    "15. Stack_Picker": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617709790
+      }
+    ],
+    "14. Starter_Chooser": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617710854
+      }
+    ],
+    "12. Mode_Switch": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617711809
+      }
+    ],
+    "16. Tab_Bar overflow": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617756157
+      }
+    ],
+    "13. Builder_Panel": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795617919740
+      }
+    ],
+    "18. App_Shell tab wiring": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618049197
+      }
+    ],
+    "19. Full test run after tab wiring": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618082604
+      }
+    ],
+    "20. App_Shell wiring": [
+      {
+        "executionId": "7e8c075e-f8f1-4264-b962-5b15222a5ec5",
+        "chatSessionId": "sess_8919dca6-ef57-4a61-a2aa-ea1546149181",
+        "timestamp": 1795618861015
+      }
+    ],
+    "21. Component tests": [
+      {
+        "executionId": "97b4a519-968d-44b7-9c9c-a30e6a2d83b3",
+        "chatSessionId": "sess_2fd51fb2-2387-4cbc-96f8-0fa57ad941d9",
+        "timestamp": 1795619832288
+      }
+    ]
+  }
+}

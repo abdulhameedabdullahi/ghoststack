@@ -28,6 +28,8 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 - **Starter_Function:** `buildStarterStack` or `buildFarmStallStack`.
 - **Starter_Ids:** the object of caller-made ids passed to a Starter_Function (the existing `StarterStackIds`).
 - **Tab_Bar:** the existing React component that shows one tab per visible card.
+- **`visibleCards`:** the pure Domain function that takes a Stack and returns its visible cards in Card order.
+- **Sample items:** a small fixed list of example Items the owner can add to a new Stack, clearly marked as sample data.
 - **App_Shell:** the React component in `src/App.tsx` that loads the Stack, saves changes, shows the Tab_Bar and shows the selected card's view.
 - **Play mode:** the everyday view of the App_Shell, as it works today.
 - **Builder mode:** the view where the owner changes the shape of the Stack.
@@ -175,7 +177,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 #### Acceptance Criteria
 
 1. THE stacks module SHALL provide a pure `buildFarmStallStack` function that takes Starter_Ids and returns a Stack, alongside `buildStarterStack`.
-2. THE `buildFarmStallStack` function SHALL return a Stack named "Farm produce stall" with currency `NGN` and `schemaVersion` 1.
+2. THE `buildFarmStallStack` function SHALL return a Stack named "Farm produce stall" with the same default currency constant that `buildStarterStack` uses (not a second copy of the value) and `schemaVersion` 1.
 3. THE `buildFarmStallStack` function SHALL return exactly four cards, one of each type, in the order stock, sales-log, debts, daily-summary, with the ids taken from the Starter_Ids.
 4. THE `buildFarmStallStack` function SHALL title the cards "Produce in stock", "Sales book", "Money owed to you" and "Today's totals".
 5. THE `buildFarmStallStack` function SHALL return a Stack with no Items, Sales or Debts and with no `hidden` flag.
@@ -183,6 +185,9 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 7. THE Starter_Function SHALL return the same Stack for the same Starter_Ids, and SHALL NOT read the clock, make ids or call storage.
 8. THE existing `buildStarterStack` function SHALL keep returning the same Stack it returns today.
 9. WHERE the owner chooses "Add sample items", THE App_Shell SHALL add a small fixed list of sample Items to the new Stack's Stock card, using the existing `addItem` function.
+10. THE sample Items SHALL be clearly sample data, for example by a name or note that says "Sample", so the owner can tell them from real items.
+11. THE App_Shell (the UI layer) SHALL make the ids for the sample Items, and THE Starter_Function SHALL NOT make them.
+12. THE App_Shell SHALL add every sample Item to the new Stack in memory and SHALL save the finished Stack once. IF `addItem` fails for a sample Item or the save fails, THEN THE App_Shell SHALL show a plain-language error, SHALL stay on the Starter_Chooser, and SHALL save and open no stack.
 
 ### Requirement 10: Choose a starter
 
@@ -190,14 +195,15 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 
 #### Acceptance Criteria
 
-1. WHEN the database holds no valid stack, THE App_Shell SHALL show the Starter_Chooser and SHALL NOT create a stack on its own.
-2. WHILE the App_Shell is in Builder mode, THE Builder_Panel SHALL offer a "Choose a starter" control that opens the Starter_Chooser.
-3. THE Starter_Chooser SHALL offer exactly two choices, "Provisions shop" and "Farm produce stall", each with a short plain-language description.
-4. WHEN the owner picks a choice, THE App_Shell SHALL make fresh ids with `crypto.randomUUID`, build the matching Stack with the Starter_Function, save it, open it in Play mode and select the first visible card.
-5. WHEN the owner picks a choice, THE App_Shell SHALL keep every previously saved Stack in storage unchanged.
-6. IF saving the new Stack fails, THEN THE App_Shell SHALL show the existing plain-language save error, SHALL stay on the Starter_Chooser, and SHALL offer a "Try again" button.
-7. WHILE the Starter_Chooser was opened from Builder mode, THE Starter_Chooser SHALL offer a "Cancel" button that returns to the Builder_Panel without creating a stack.
-8. THE Starter_Chooser SHALL show one main action per choice and SHALL be usable on a screen 360px wide without sideways scrolling.
+1. WHEN `listStacks` returns an empty list, THE App_Shell SHALL show the Starter_Chooser and SHALL NOT create a stack on its own. THE App_Shell SHALL show the Starter_Chooser only in that case.
+2. IF saved data cannot be read, THEN `listStacks` SHALL return an empty list, THE App_Shell SHALL show the Starter_Chooser as it does on a first run, and THE App_Shell SHALL NOT create or save any stack until the owner picks a starter.
+3. WHILE the App_Shell is in Builder mode, THE Builder_Panel SHALL offer a "Choose a starter" control that opens the Starter_Chooser.
+4. THE Starter_Chooser SHALL offer exactly two choices, "Provisions shop" and "Farm produce stall", each with a short plain-language description.
+5. WHEN the owner picks a choice, THE App_Shell SHALL make fresh ids with `crypto.randomUUID`, build the matching Stack with the Starter_Function, save it, open it in Play mode and select the first visible card.
+6. WHEN the owner picks a choice, THE App_Shell SHALL keep every previously saved Stack in storage unchanged.
+7. IF saving the new Stack fails, THEN THE App_Shell SHALL show the existing plain-language save error, SHALL stay on the Starter_Chooser, and SHALL offer a "Try again" button.
+8. WHILE the Starter_Chooser was opened from Builder mode, THE Starter_Chooser SHALL offer a "Cancel" button that returns to the Builder_Panel without creating a stack.
+9. THE Starter_Chooser SHALL show one main action per choice and SHALL be usable on a screen 360px wide without sideways scrolling.
 
 ### Requirement 11: Stack picker
 
@@ -208,10 +214,12 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 1. WHEN two or more stacks are saved, THE App_Shell SHALL show the Stack_Picker listing each saved Stack by name.
 2. WHEN only one stack is saved, THE App_Shell SHALL still show the current stack name and SHALL NOT show an empty or single-choice picker.
 3. WHEN the owner picks a stack in the Stack_Picker, THE App_Shell SHALL load it with `loadStack`, show it in Play mode and select its first visible card.
-4. IF `loadStack` returns an error, THEN THE App_Shell SHALL show that error's message and SHALL keep the current stack open.
-5. WHEN the owner renames the current stack, THE Stack_Picker SHALL show the new name.
-6. WHEN the App_Shell starts and at least one stack is saved, THE App_Shell SHALL open the stack the owner opened last, or the first saved stack if no earlier choice is known or the earlier stack no longer loads.
-7. THE Stack_Picker SHALL NOT offer to delete a stack.
+4. THE App_Shell SHALL either finish every pending save before it opens another stack, or key every save by Stack id, so that a save never writes to the wrong stack.
+5. IF `loadStack` returns an error, THEN THE App_Shell SHALL show that error's message and SHALL keep the current stack open.
+6. WHEN the owner renames the current stack, THE Stack_Picker SHALL show the new name.
+7. WHEN the App_Shell starts and at least one stack is saved, THE App_Shell SHALL open the stack the owner opened last, or the first saved stack if no earlier choice is known or the earlier stack no longer loads.
+8. THE App_Shell SHALL store the id of the last-opened stack in `localStorage`, with every read and write wrapped in try/catch, and SHALL NOT store it in the Stack or in IndexedDB.
+9. THE Stack_Picker SHALL NOT offer to delete a stack.
 
 ### Requirement 12: Accessibility and plain wording
 
@@ -245,3 +253,71 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 8. THE test suite SHALL include a property that, for any valid Stack with the `hidden` flag removed from every card, the Stack_Checker accepts it.
 9. THE test suite SHALL include a property that, for any Name made of whitespace only or longer than 40 characters after trimming, `renameStack` and `renameCard` return an error, and for any other string they return a Stack with the trimmed Name.
 10. THE test suite SHALL run each property for at least 100 runs.
+11. THE test suite SHALL include a property that, for any valid Stack and any successful Builder_Function call, the result is accepted by the Stack_Checker.
+12. THE test suite SHALL include a property that, for any valid Stack and any valid Name, applying `renameStack` or `renameCard` twice with the same Name gives the same Stack as applying it once.
+13. THE test suite SHALL include a property that, for any valid Stack and any Card that has no `hidden` flag, hiding it and then showing it again gives a Stack deep-equal to the original, whenever the hide is allowed.
+14. THE test suite SHALL include a property that, for any valid Stack, `setCardHidden` with a `hidden` value equal to the Card's current state returns a Stack deep-equal to the input.
+
+### Requirement 14: Hiding a card changes only what is displayed
+
+**User Story:** As a shop owner, I want to hide a card without losing its features or changing my totals, so that hiding is always safe.
+
+#### Acceptance Criteria
+
+1. THE hide action SHALL change only which tabs the Tab_Bar shows, and SHALL NOT change any Item, Sale or Debt.
+2. THE Stock, Sales log, Debts and Daily summary logic and totals SHALL keep finding their cards by card type, whether the Card is hidden or not.
+3. WHEN the Sales log card is hidden, THE "Record a sale" action SHALL still work, and SHALL save the Sale to the Sales log card.
+4. WHEN a card is hidden or shown, THE Daily summary figures SHALL stay the same as before the change.
+
+### Requirement 15: Focus in the Builder panel
+
+**User Story:** As a keyboard and screen reader user, I want focus to stay where I was working after a change, so that I do not lose my place.
+
+#### Acceptance Criteria
+
+1. WHEN the owner activates "Move up" or "Move down" for a Card, THE Builder_Panel SHALL keep focus on the same Card's control that was activated.
+2. WHEN the owner activates "Hide" or "Show" for a Card, THE Builder_Panel SHALL keep focus on the same Card's control.
+3. IF that control is now disabled or has been replaced, THEN THE Builder_Panel SHALL move focus to the opposite control of the same Card: "Move down" for "Move up", "Move up" for "Move down", "Show" for "Hide" and "Hide" for "Show".
+
+### Requirement 16: Tab labels fit a small screen
+
+**User Story:** As an owner on a 360px phone, I want long card titles to fit, so that the page never scrolls sideways.
+
+#### Acceptance Criteria
+
+1. THE Tab_Bar SHALL NOT cause page-level sideways scroll on a screen 360px wide. The bar SHALL either wrap onto more lines or scroll inside itself.
+2. WHEN a tab title is too long to fit, THE Tab_Bar SHALL truncate it visually.
+3. THE Tab_Bar SHALL keep the full title available to screen readers, for example in the tab's accessible name.
+
+### Requirement 17: Visible cards function
+
+**User Story:** As a maintainer, I want one tested place that decides which cards are visible, so that the tabs and the rules never disagree.
+
+#### Acceptance Criteria
+
+1. THE domain SHALL provide a pure `visibleCards` function that takes a Stack and returns its visible cards.
+2. THE `visibleCards` function SHALL return only visible cards, in Card order, and SHALL NOT change the Stack.
+3. WHEN the input Stack has at least one visible card, THE `visibleCards` function SHALL return a non-empty list.
+4. THE Tab_Bar input SHALL come from `visibleCards`.
+5. THE test suite SHALL include a fast-check property that, for any valid Stack, `visibleCards` returns visible cards only, keeps Card order, and returns a non-empty list when the input has a visible card.
+
+### Requirement 18: Component tests
+
+**User Story:** As a maintainer, I want component tests for the new screens, so that the owner's flows keep working.
+
+#### Acceptance Criteria
+
+1. THE test suite SHALL include testing-library component tests for the Mode_Switch.
+2. THE test suite SHALL include component tests for the Builder_Panel that cover error placement, disabled buttons and focus after a move.
+3. THE test suite SHALL include component tests for the Starter_Chooser that cover a save failure and the "Cancel" button.
+4. THE test suite SHALL include component tests for the Stack_Picker.
+5. THE test suite SHALL include component tests for hidden-Sales-log behaviour, including that "Record a sale" still works.
+
+### Requirement 19: Escape closes a dialog
+
+**User Story:** As a keyboard user, I want to press Escape to close any dialog, so that I can back out easily.
+
+#### Acceptance Criteria
+
+1. WHEN a Dialog is open and the owner presses Escape, THE App_Shell SHALL close the Dialog.
+2. WHEN a Dialog closes after Escape, THE App_Shell SHALL return focus to the Opener.

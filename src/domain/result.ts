@@ -18,6 +18,12 @@ export const ERROR_MESSAGES = {
   BAD_ITEM_NAME: 'Please type a name for this item.',
   BAD_PRICE:
     'Please type a price using numbers only, like 1250 or 1250.50.',
+  NAME_REQUIRED: 'Please type a name.',
+  NAME_TOO_LONG: 'That name is too long. Please use 40 characters or fewer.',
+  CANNOT_MOVE_FURTHER: "This card can't move any further that way.",
+  BAD_DIRECTION: 'Please use the up or down button.',
+  MUST_STAY_VISIBLE: 'At least one card must stay showing.',
+  BAD_HIDDEN_VALUE: 'Please use the hide or show button.',
 } as const;
 
 export type ErrorCode = keyof typeof ERROR_MESSAGES;

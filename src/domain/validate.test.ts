@@ -78,7 +78,7 @@ describe("error table", () => {
     };
     for (const [code, message] of Object.entries(existing))
       expect(ERROR_MESSAGES[code as keyof typeof ERROR_MESSAGES]).toBe(message);
-    expect(ERROR_CODES.length).toBe(Object.keys(existing).length + 2);
+    expect(ERROR_CODES.length).toBe(Object.keys(existing).length + 8);
   });
   it("builds ok and err results", () => {
     expect(ok(1)).toEqual({ ok: true, value: 1 });

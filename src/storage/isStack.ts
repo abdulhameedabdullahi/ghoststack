@@ -60,6 +60,7 @@ function isDebt(d: Obj): boolean {
 
 function isCard(c: Obj): boolean {
   if (!isStr(c.id) || !isStr(c.title)) return false;
+  if (c.hidden !== undefined && typeof c.hidden !== "boolean") return false;
   switch (c.type) {
     case "stock":
       return allOf(c.items, isItem);

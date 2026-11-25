@@ -24,3 +24,19 @@ export function buildStarterStack(ids: StarterStackIds): Stack {
     ],
   };
 }
+
+/** Builds the empty "Farm produce stall" starter stack from caller-supplied ids. */
+export function buildFarmStallStack(ids: StarterStackIds): Stack {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    id: ids.stackId,
+    name: "Farm produce stall",
+    currency: DEFAULT_CURRENCY,
+    cards: [
+      { id: ids.stockCardId, type: "stock", title: "Produce in stock", items: [] },
+      { id: ids.salesCardId, type: "sales-log", title: "Sales book", sales: [] },
+      { id: ids.debtsCardId, type: "debts", title: "Money owed to you", debts: [] },
+      { id: ids.summaryCardId, type: "daily-summary", title: "Today's totals" },
+    ],
+  };
+}

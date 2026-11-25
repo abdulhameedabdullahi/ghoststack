@@ -11,6 +11,8 @@ export interface ButtonProps {
   buttonRef?: Ref<HTMLButtonElement>;
   /** Optional data-* attributes for the underlying button element. */
   dataAttributes?: Record<`data-${string}`, string>;
+  /** Optional accessible name, used when the visible text is short or vague. */
+  ariaLabel?: string;
 }
 
 export function Button({
@@ -21,6 +23,7 @@ export function Button({
   disabled = false,
   buttonRef,
   dataAttributes,
+  ariaLabel,
 }: ButtonProps) {
   return (
     <button
@@ -30,6 +33,7 @@ export function Button({
       className={`button button--${variant}`}
       onClick={onClick}
       disabled={disabled}
+      aria-label={ariaLabel}
     >
       {variant === "danger" && (
         <span className="button__icon" aria-hidden="true">

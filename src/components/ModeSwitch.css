@@ -1,0 +1,32 @@
+.mode-switch {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.mode-switch__button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.mode-switch__button--active {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: bold;
+}
+
+.mode-switch__button:focus-visible {
+  outline: var(--border-width) solid var(--color-fg);
+  outline-offset: 2px;
+}
