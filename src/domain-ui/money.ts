@@ -43,3 +43,9 @@ export function parseKobo(text: string): Result<Kobo> {
   if (!Number.isSafeInteger(kobo)) return err('BAD_PRICE');
   return ok(kobo);
 }
+
+/** Formats a possibly negative kobo amount. The sign is carried by the word, never a minus sign. Zero is "Profit". */
+export function formatSignedKobo(kobo: number): string {
+  if (kobo < 0) return 'Loss: ' + formatKobo(Math.abs(kobo));
+  return 'Profit: ' + formatKobo(kobo);
+}

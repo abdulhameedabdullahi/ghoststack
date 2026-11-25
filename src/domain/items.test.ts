@@ -4,6 +4,7 @@ import {
   deleteItem,
   isLowStock,
   isOutOfStock,
+  lowStockItems,
   updateItem,
   type AddItemInput,
 } from "./items";
@@ -212,5 +213,64 @@ describe("isLowStock / isOutOfStock boundaries", () => {
   it("isOutOfStock is true only at zero", () => {
     expect(isOutOfStock(item(0, 2))).toBe(true);
     expect(isOutOfStock(item(1, 2))).toBe(false);
+  });
+});
+
+describe("lowStockItems", () => {
+  const mk = (id: string, quantity: number, lowStockLevel: number): Item => ({
+    id,
+    name: id,
+    quantity,
+    costPrice: 100,
+    sellPrice: 150,
+    lowStockLevel,
+  });
+  const stackOf = (cards: Stack["cards"]): Stack => ({
+    schemaVersion: 1,
+    id: "stack-1",
+    name: "Shop",
+    currency: "NGN",
+    cards,
+  });
+
+  it("gives [] when the Stack has no Stock card", () => {
+    const stack = stackOf([
+      { id: "sales-1", title: "Sales", type: "sales-log", sales: [sale] },
+    ]);
+    expect(lowStockItems(stack)).toEqual([]);
+  });
+
+  it("gives [] when no Item is low", () => {
+    const stack = stackOf([
+      { id: "s1", title: "A", type: "stock", items: [mk("a", 10, 2), mk("b", 5, 4)] },
+    ]);
+    expect(lowStockItems(stack)).toEqual([]);
+  });
+
+  it("keeps card order then item order across two Stock cards", () => {
+    const a = mk("a", 1, 2);
+    const b = mk("b", 9, 2);
+    const c = mk("c", 0, 0);
+    const d = mk("d", 8, 2);
+    const e = mk("e", 2, 5);
+    const stack = stackOf([
+      { id: "s1", title: "A", type: "stock", items: [a, b, c] },
+      { id: "s2", title: "B", type: "stock", items: [d, e] },
+    ]);
+    expect(lowStockItems(stack).map((i) => i.id)).toEqual(["a", "c", "e"]);
+  });
+
+  it("includes an Item exactly at its lowStockLevel", () => {
+    const edge = mk("edge", 3, 3);
+    const stack = stackOf([
+      { id: "s1", title: "A", type: "stock", items: [edge, mk("above", 4, 3)] },
+    ]);
+    expect(lowStockItems(stack)).toEqual([edge]);
+  });
+
+  it("includes an out-of-stock Item", () => {
+    const out = mk("out", 0, 2);
+    const stack = stackOf([{ id: "s1", title: "A", type: "stock", items: [out] }]);
+    expect(lowStockItems(stack)).toEqual([out]);
   });
 });

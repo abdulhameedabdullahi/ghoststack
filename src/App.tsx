@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./components/Button";
 import { StockCardView } from "./components/cards/StockCardView";
-import type { Stack, StockCard } from "./domain/types";
+import { SalesLogCardView } from "./components/cards/SalesLogCardView";
+import { DailySummaryCardView } from "./components/cards/DailySummaryCardView";
+import { TabBar } from "./components/TabBar";
+import type { CardType, SalesLogCard, Stack, StockCard } from "./domain/types";
+import { todayRange, type DayRange } from "./domain-ui/dayRange";
 import { buildStarterStack } from "./stacks/starterStack";
 import {
   STORAGE_ERROR_MESSAGES,
@@ -26,6 +30,22 @@ export default function App() {
   const [midnight, setMidnight] = useState(
     () => document.documentElement.dataset.theme === "midnight",
   );
+
+  const [selectedTab, setSelectedTab] = useState<CardType>("stock");
+  const [dayRange, setDayRange] = useState<DayRange>(() => todayRange());
+
+  const selectTab = (id: string) => {
+    if (id === "daily-summary") setDayRange(todayRange());
+    setSelectedTab(id as CardType);
+  };
+
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") setDayRange(todayRange());
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
   useEffect(() => {
     // Run the load once, even under StrictMode's double effect run.
@@ -109,6 +129,18 @@ export default function App() {
     (c): c is StockCard => c.type === "stock",
   );
 
+  const salesCard = stack?.cards.find(
+    (c): c is SalesLogCard => c.type === "sales-log",
+  );
+  const debtsCard = stack?.cards.find((c) => c.type === "debts");
+  const summaryCard = stack?.cards.find((c) => c.type === "daily-summary");
+  const tabs: { id: CardType; label: string }[] = [
+    { id: stockCard?.type ?? "stock", label: "Stock" },
+    { id: salesCard?.type ?? "sales-log", label: "Sales log" },
+    { id: debtsCard?.type ?? "debts", label: "Debts" },
+    { id: summaryCard?.type ?? "daily-summary", label: "Daily summary" },
+  ];
+
   return (
     <main>
       <Button onClick={toggleTheme}>
@@ -123,11 +155,32 @@ export default function App() {
       {loadState.kind === "loading" && <p>Opening your shop…</p>}
       {loadState.kind === "error" && <p role="alert">{loadState.message}</p>}
       {loadState.kind === "ready" && stack && stockCard && (
-        <StockCardView
-          stack={stack}
-          card={stockCard}
-          onStackChange={onStackChange}
-        />
+        <>
+          <TabBar tabs={tabs} selectedId={selectedTab} onSelect={selectTab} />
+          <div
+            role="tabpanel"
+            id={`panel-${selectedTab}`}
+            aria-labelledby={`tab-${selectedTab}`}
+          >
+            {selectedTab === "stock" && (
+              <StockCardView
+                stack={stack}
+                card={stockCard}
+                onStackChange={onStackChange}
+                salesCardId={salesCard?.id}
+              />
+            )}
+            {selectedTab === "sales-log" && salesCard && (
+              <SalesLogCardView stack={stack} card={salesCard} />
+            )}
+            {selectedTab === "debts" && (
+              <p>Coming soon: a Debts card view.</p>
+            )}
+            {selectedTab === "daily-summary" && (
+              <DailySummaryCardView stack={stack} dayRange={dayRange} />
+            )}
+          </div>
+        </>
       )}
     </main>
   );

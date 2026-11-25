@@ -153,3 +153,18 @@ export function isLowStock(item: Item): boolean {
 export function isOutOfStock(item: Item): boolean {
   return item.quantity === 0;
 }
+
+/**
+ * Every low-stock Item in the Stack, using isLowStock. Stock cards in order,
+ * then Items in card order. Pure: returns a new array, never changes the input.
+ */
+export function lowStockItems(stack: Stack): Item[] {
+  const result: Item[] = [];
+  for (const card of stack.cards) {
+    if (card.type !== "stock") continue;
+    for (const item of card.items) {
+      if (isLowStock(item)) result.push(item);
+    }
+  }
+  return result;
+}

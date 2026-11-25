@@ -1,6 +1,6 @@
-﻿import { describe, it } from "vitest";
+import { describe, it } from "vitest";
 import fc from "fast-check";
-import { formatKobo, parseKobo } from "./money";
+import { formatKobo, formatSignedKobo, parseKobo } from "./money";
 import { ok } from "../domain/result";
 
 const arbKobo = fc.oneof(
@@ -96,6 +96,30 @@ describe("invalid typed prices", () => {
         return !r.ok && r.error.code === "BAD_PRICE";
       }),
       { numRuns: 300 },
+    );
+  });
+});
+
+// --- Property 24 ---
+
+const arbSafeInteger = fc.integer({ min: Number.MIN_SAFE_INTEGER, max: Number.MAX_SAFE_INTEGER });
+
+describe("formatSignedKobo", () => {
+  // Feature: sales-and-daily-summary, Property 24: formatSignedKobo labels the sign and reuses formatKobo for the amount
+  it("starts with Loss: iff n < 0, otherwise Profit:, and the amount equals formatKobo(abs(n))", () => {
+    // **Validates: Requirements 6.4, 8.14**
+    fc.assert(
+      fc.property(arbSafeInteger, (n) => {
+        const out = formatSignedKobo(n);
+        const prefix = n < 0 ? "Loss: " : "Profit: ";
+        const otherPrefix = n < 0 ? "Profit: " : "Loss: ";
+        return (
+          out.startsWith(prefix) &&
+          !out.startsWith(otherPrefix) &&
+          out.slice(prefix.length) === formatKobo(Math.abs(n))
+        );
+      }),
+      { numRuns: 200 },
     );
   });
 });

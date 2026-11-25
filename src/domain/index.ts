@@ -21,10 +21,10 @@ export { ok, err, domainError, ERROR_MESSAGES, ERROR_CODES } from "./result";
 export { isWholeNumber, isPositiveWhole, isSafeMoney } from "./validate";
 
 export type { RecordSaleInput } from "./sales";
-export { recordSale, saleTotal } from "./sales";
+export { recordSale, saleTotal, dailyTotal, estimatedProfit, salesNewestFirst } from "./sales";
 
 export type { RecordDebtInput, SettleDebtInput } from "./debts";
 export { recordDebt, settleDebt, totalOwed } from "./debts";
 
 export type { AddItemInput, UpdateItemInput, DeleteItemInput } from "./items";
-export { addItem, updateItem, deleteItem, isLowStock, isOutOfStock } from "./items";
+export { addItem, updateItem, deleteItem, isLowStock, isOutOfStock, lowStockItems } from "./items";

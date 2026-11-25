@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { recordSale, saleTotal, type RecordSaleInput } from "./sales";
+import {
+  dailyTotal,
+  estimatedProfit,
+  recordSale,
+  saleTotal,
+  salesNewestFirst,
+  type RecordSaleInput,
+} from "./sales";
 import type { Sale, SalesLogCard, Stack, StockCard } from "./types";
 
 function deepFreeze<T>(o: T): T {
@@ -195,5 +202,177 @@ describe("recordSale does not mutate input", () => {
     ];
     for (const b of bad) expect(recordSale(input(stack, b)).ok).toBe(false);
     expect(stack).toEqual(snapshot);
+  });
+});
+
+const START = "2024-03-10T00:00:00.000Z";
+const END = "2024-03-11T00:00:00.000Z";
+
+function sale(over: Partial<Sale> = {}): Sale {
+  return {
+    id: "s",
+    itemId: "item-1",
+    quantity: 1,
+    unitPrice: 500,
+    unitCost: 300,
+    time: "2024-03-10T12:00:00.000Z",
+    ...over,
+  };
+}
+
+describe("dailyTotal", () => {
+  it("returns ok(0) for no Sales", () => {
+    expect(dailyTotal([], START, END)).toEqual({ ok: true, value: 0 });
+  });
+
+  it("includes a Sale exactly at start", () => {
+    const r = dailyTotal([sale({ time: START, quantity: 2 })], START, END);
+    expect(r).toEqual({ ok: true, value: 1000 });
+  });
+
+  it("excludes a Sale exactly at end", () => {
+    const r = dailyTotal([sale({ time: END })], START, END);
+    expect(r).toEqual({ ok: true, value: 0 });
+  });
+
+  it("skips Sales outside the window", () => {
+    const r = dailyTotal(
+      [sale({ time: "2024-03-09T23:59:59.999Z" }), sale({ id: "b" })],
+      START,
+      END,
+    );
+    expect(r).toEqual({ ok: true, value: 500 });
+  });
+
+  it("skips an unparseable time and does not return NaN", () => {
+    const r = dailyTotal(
+      [sale({ id: "a" }), sale({ id: "b", time: "not a date" }), sale({ id: "c", quantity: 2 })],
+      START,
+      END,
+    );
+    expect(r).toEqual({ ok: true, value: 1500 });
+  });
+
+  it("returns AMOUNT_TOO_BIG when the sum overflows on the second Sale", () => {
+    const r = dailyTotal(
+      [
+        sale({ id: "a", unitPrice: Number.MAX_SAFE_INTEGER - 10 }),
+        sale({ id: "b", unitPrice: 100 }),
+      ],
+      START,
+      END,
+    );
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.code).toBe("AMOUNT_TOO_BIG");
+  });
+
+  it("returns AMOUNT_TOO_BIG when one Sale's own amount is unsafe", () => {
+    const r = dailyTotal([sale({ quantity: 2, unitPrice: Number.MAX_SAFE_INTEGER })], START, END);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.code).toBe("AMOUNT_TOO_BIG");
+  });
+});
+
+describe("estimatedProfit", () => {
+  it("returns ok(0) for no Sales", () => {
+    expect(estimatedProfit([], START, END)).toEqual({ ok: true, value: 0 });
+  });
+
+  it("uses the Sale's stored prices and quantity", () => {
+    const r = estimatedProfit(
+      [sale({ id: "a", unitPrice: 500, unitCost: 300, quantity: 3 })],
+      START,
+      END,
+    );
+    expect(r).toEqual({ ok: true, value: 600 });
+  });
+
+  it("includes start, excludes end", () => {
+    const r = estimatedProfit(
+      [sale({ id: "a", time: START }), sale({ id: "b", time: END })],
+      START,
+      END,
+    );
+    expect(r).toEqual({ ok: true, value: 200 });
+  });
+
+  it("gives a negative profit when price is below cost", () => {
+    const r = estimatedProfit([sale({ unitPrice: 100, unitCost: 400, quantity: 2 })], START, END);
+    expect(r).toEqual({ ok: true, value: -600 });
+  });
+
+  it("skips an unparseable time and does not return NaN", () => {
+    const r = estimatedProfit(
+      [sale({ id: "a" }), sale({ id: "b", time: "garbage" })],
+      START,
+      END,
+    );
+    expect(r).toEqual({ ok: true, value: 200 });
+  });
+
+  it("returns AMOUNT_TOO_BIG when the sum overflows on the second Sale", () => {
+    const r = estimatedProfit(
+      [
+        sale({ id: "a", unitPrice: Number.MAX_SAFE_INTEGER - 10, unitCost: 0 }),
+        sale({ id: "b", unitPrice: 100, unitCost: 0 }),
+      ],
+      START,
+      END,
+    );
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.code).toBe("AMOUNT_TOO_BIG");
+  });
+});
+
+describe("salesNewestFirst", () => {
+  const ids = (sales: Sale[]) => sales.map((s) => s.id);
+
+  it("keeps an already newest-first list in order", () => {
+    const input = [
+      sale({ id: "a", time: "2024-03-10T12:00:00.000Z" }),
+      sale({ id: "b", time: "2024-03-10T11:00:00.000Z" }),
+      sale({ id: "c", time: "2024-03-10T10:00:00.000Z" }),
+    ];
+    expect(ids(salesNewestFirst(input))).toEqual(["a", "b", "c"]);
+  });
+
+  it("puts the later input position first when times are equal", () => {
+    const t = "2024-03-10T12:00:00.000Z";
+    const input = [sale({ id: "a", time: t }), sale({ id: "b", time: t })];
+    expect(ids(salesNewestFirst(input))).toEqual(["b", "a"]);
+  });
+
+  it("sorts a Sale with an unparseable time last", () => {
+    const input = [
+      sale({ id: "bad", time: "not a time" }),
+      sale({ id: "old", time: "2024-03-10T08:00:00.000Z" }),
+      sale({ id: "new", time: "2024-03-10T09:00:00.000Z" }),
+    ];
+    expect(ids(salesNewestFirst(input))).toEqual(["new", "old", "bad"]);
+  });
+
+  it("keeps later-first order between two unparseable times", () => {
+    const input = [
+      sale({ id: "bad1", time: "nope" }),
+      sale({ id: "bad2", time: "" }),
+    ];
+    expect(ids(salesNewestFirst(input))).toEqual(["bad2", "bad1"]);
+  });
+
+  it("returns an empty list for an empty list", () => {
+    expect(salesNewestFirst([])).toEqual([]);
+  });
+
+  it("does not change the order of the input array", () => {
+    const input = [
+      sale({ id: "a", time: "2024-03-10T08:00:00.000Z" }),
+      sale({ id: "b", time: "2024-03-10T09:00:00.000Z" }),
+    ];
+    const copy = [...input];
+    const out = salesNewestFirst(input);
+    expect(out).not.toBe(input);
+    expect(input).toEqual(copy);
+    expect(input[0]).toBe(copy[0]);
+    expect(input[1]).toBe(copy[1]);
   });
 });

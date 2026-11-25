@@ -5,6 +5,7 @@ import {
   deleteItem,
   isLowStock,
   isOutOfStock,
+  lowStockItems,
   updateItem,
 } from "./items";
 import { recordSale } from "./sales";
@@ -689,6 +690,114 @@ describe("Property 13: no sequence of item and sale operations produces an inval
             stack = applyOperation(stack, op);
             expectNoInvalidNumbers(stack);
           }
+        },
+      ),
+      RUNS,
+    );
+  });
+});
+
+// ---- lowStockItems (Property 19) ----
+
+/** An Item with a unique id where quantity often equals, or sits next to, the level. */
+const arbBoundaryItem = (id: string): fc.Arbitrary<Item> =>
+  fc
+    .tuple(
+      arbName,
+      fc.integer({ min: 0, max: 10 }),
+      fc.constantFrom(0, 0, 1, -1),
+      fc.boolean(),
+      arbKobo,
+      arbKobo,
+    )
+    .map(([name, level, offset, atLevel, costPrice, sellPrice]) => ({
+      id,
+      name,
+      lowStockLevel: level,
+      quantity: atLevel ? level : Math.max(0, level + offset),
+      costPrice,
+      sellPrice,
+    }));
+
+/**
+ * A Stack with two to four Stock cards (some empty), mixed with other cards,
+ * and many Items with quantity === lowStockLevel.
+ */
+const arbMultiStockStack: fc.Arbitrary<Stack> = fc
+  .array(fc.integer({ min: 0, max: 5 }), { minLength: 2, maxLength: 4 })
+  .chain((sizes) => {
+    let next = 0;
+    const cards = sizes.map((size, c) => {
+      const ids = Array.from({ length: size }, () => `item-${next++}`);
+      return fc
+        .tuple(...ids.map(arbBoundaryItem))
+        .map(
+          (items): StockCard => ({
+            id: `stock-${c}`,
+            type: "stock",
+            title: `Stock ${c}`,
+            items,
+          }),
+        );
+    });
+    return fc.tuple(...cards);
+  })
+  .map((stockCards): Stack => {
+    const [first, ...rest] = stockCards;
+    return {
+      schemaVersion: 1,
+      id: "stack-1",
+      name: "Test",
+      currency: "NGN",
+      cards: [
+        first,
+        { id: SALES_ID, type: "sales-log", title: "Sales", sales: [] },
+        ...rest,
+        { id: "debts-1", type: "debts", title: "Debts", debts: [] },
+        { id: "summary-1", type: "daily-summary", title: "Summary" },
+      ],
+    };
+  });
+
+describe("Property 19: lowStockItems matches isLowStock, in stack order", () => {
+  it("**Validates: Requirements 3.1, 3.2, 3.3, 3.5, 8.8**", () => {
+    fc.assert(
+      fc.property(
+        fc.oneof(arbMultiStockStack, arbStack),
+        (stack) => {
+          const expected: Item[] = [];
+          for (const card of stack.cards) {
+            if (card.type !== "stock") continue;
+            for (const item of card.items) {
+              if (isLowStock(item)) expected.push(item);
+            }
+          }
+          const result = lowStockItems(stack);
+          expect(result).toEqual(expected);
+          result.forEach((item, i) => expect(item).toBe(expected[i]));
+          expect(result.every(isLowStock)).toBe(true);
+        },
+      ),
+      RUNS,
+    );
+  });
+});
+
+// ---- lowStockItems frozen input (Property 22, Stack part) ----
+
+describe("Property 22: lowStockItems never mutates a frozen input (Stack part)", () => {
+  it("**Validates: Requirements 3.4, 8.5**", () => {
+    fc.assert(
+      fc.property(
+        fc.oneof(arbMultiStockStack, arbStack),
+        (stack) => {
+          const snapshot = structuredClone(stack);
+          deepFreeze(stack);
+          const result = lowStockItems(stack);
+          expect(stack).toEqual(snapshot);
+          expect(Array.isArray(result)).toBe(true);
+          // Returned list is a new array, not the frozen Stock card list.
+          expect(Object.isFrozen(result)).toBe(false);
         },
       ),
       RUNS,

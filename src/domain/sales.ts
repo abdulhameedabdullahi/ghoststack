@@ -29,6 +29,80 @@ export function saleTotal(sale: Sale): Kobo {
 }
 
 /**
+ * Sum of sale amounts for Sales with start <= time < end.
+ * Times are compared as parsed instants, never as strings. A Sale whose time
+ * cannot be parsed is skipped. Returns AMOUNT_TOO_BIG if a Sale's own amount
+ * or the running sum is not a safe integer. Never changes its input.
+ */
+export function dailyTotal(
+  sales: readonly Sale[],
+  start: IsoString,
+  end: IsoString,
+): Result<Kobo> {
+  const startMs = Date.parse(start);
+  const endMs = Date.parse(end);
+  let sum = 0;
+  for (const sale of sales) {
+    const t = Date.parse(sale.time);
+    if (Number.isNaN(t) || t < startMs || t >= endMs) continue;
+    const amount = saleTotal(sale);
+    if (!Number.isSafeInteger(amount)) return err("AMOUNT_TOO_BIG");
+    sum += amount;
+    if (!Number.isSafeInteger(sum)) return err("AMOUNT_TOO_BIG");
+  }
+  return ok(sum);
+}
+
+/**
+ * Sum of (unitPrice - unitCost) * quantity for Sales with start <= time < end.
+ * Uses each Sale's own prices. Times are compared as parsed instants. A Sale
+ * whose time cannot be parsed is skipped. Returns AMOUNT_TOO_BIG if a Sale's
+ * own amount or the running sum is not a safe integer. Amounts can be negative,
+ * so the result can depend on order: it stops at the first unsafe running sum.
+ * Never changes its input.
+ */
+export function estimatedProfit(
+  sales: readonly Sale[],
+  start: IsoString,
+  end: IsoString,
+): Result<Kobo> {
+  const startMs = Date.parse(start);
+  const endMs = Date.parse(end);
+  let sum = 0;
+  for (const sale of sales) {
+    const t = Date.parse(sale.time);
+    if (Number.isNaN(t) || t < startMs || t >= endMs) continue;
+    const amount = (sale.unitPrice - sale.unitCost) * sale.quantity;
+    if (!Number.isSafeInteger(amount)) return err("AMOUNT_TOO_BIG");
+    sum += amount;
+    if (!Number.isSafeInteger(sum)) return err("AMOUNT_TOO_BIG");
+  }
+  return ok(sum);
+}
+
+/**
+ * Returns the Sales newest first, as a new array. Times are compared as parsed
+ * instants. A Sale whose time cannot be parsed goes after all others. Ties
+ * (and pairs of unparseable times) put the later input position first.
+ * Never changes its input.
+ */
+export function salesNewestFirst(sales: readonly Sale[]): Sale[] {
+  const indexed = sales.map((sale, index) => ({
+    sale,
+    index,
+    t: Date.parse(sale.time),
+  }));
+  indexed.sort((a, b) => {
+    const aBad = Number.isNaN(a.t);
+    const bBad = Number.isNaN(b.t);
+    if (aBad !== bBad) return aBad ? 1 : -1;
+    if (!aBad && a.t !== b.t) return b.t - a.t;
+    return b.index - a.index;
+  });
+  return indexed.map((entry) => entry.sale);
+}
+
+/**
  * Records a sale. Returns a new Stack and never changes the input.
  * A card of the wrong kind counts as not found.
  */

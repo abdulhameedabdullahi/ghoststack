@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { domainError } from "../domain";
-import { formatKobo, parseKobo } from "./money";
+import { formatKobo, formatSignedKobo, parseKobo } from "./money";
 
 describe("formatKobo", () => {
   it.each([
@@ -38,5 +38,31 @@ describe("parseKobo", () => {
       ok: false,
       error: domainError("BAD_PRICE"),
     });
+  });
+});
+
+describe("formatSignedKobo", () => {
+  it("formats zero as Profit", () => {
+    expect(formatSignedKobo(0)).toBe("Profit: " + formatKobo(0));
+  });
+
+  it("formats a positive amount as Profit", () => {
+    expect(formatSignedKobo(125050)).toBe("Profit: " + formatKobo(125050));
+  });
+
+  it("formats a negative amount as Loss with no minus sign", () => {
+    const text = formatSignedKobo(-125050);
+    expect(text.startsWith("Loss: ")).toBe(true);
+    expect(text).not.toContain("-");
+    expect(text).toBe("Loss: " + formatKobo(125050));
+  });
+
+  it("handles Number.MAX_SAFE_INTEGER and its negation", () => {
+    expect(formatSignedKobo(Number.MAX_SAFE_INTEGER)).toBe(
+      "Profit: " + formatKobo(Number.MAX_SAFE_INTEGER),
+    );
+    expect(formatSignedKobo(-Number.MAX_SAFE_INTEGER)).toBe(
+      "Loss: " + formatKobo(Number.MAX_SAFE_INTEGER),
+    );
   });
 });
