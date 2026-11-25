@@ -1,0 +1,86 @@
+.backup-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 100%;
+  min-width: 0;
+  font-family: var(--font-body);
+  color: var(--color-fg);
+}
+
+.backup-controls__load {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.backup-controls__label {
+  font-weight: bold;
+}
+
+.backup-controls__input {
+  max-width: 100%;
+  min-height: var(--tap-min);
+  font-family: var(--font-body);
+  color: var(--color-fg);
+}
+
+.backup-controls__input::file-selector-button {
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
+  margin-right: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.backup-controls__input:focus-visible,
+.backup-controls__input:focus-visible::file-selector-button,
+.backup-message:focus-visible {
+  outline: var(--border-width) solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.backup-controls__tip {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.backup-message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+.backup-message--success {
+  border-style: solid;
+}
+
+.backup-message--error {
+  border-style: double;
+  border-width: calc(var(--border-width) * 2);
+}
+
+.backup-message__icon {
+  flex: 0 0 auto;
+}
+
+.backup-message__text {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

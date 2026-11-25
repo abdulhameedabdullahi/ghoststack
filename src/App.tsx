@@ -29,7 +29,27 @@ import {
   loadStack,
   saveStack,
 } from "./storage/stackStore";
+import { requestPersistentStorage } from "./pwa/requestPersistentStorage";
 import { readLastOpenedId, rememberLastOpenedId } from "./storage/lastOpened";
+import { useServiceWorkerNotices } from "./pwa/useServiceWorkerNotices";
+import { NoticeArea } from "./components/NoticeArea";
+import {
+  BACKUP_LOADED,
+  BACKUP_READ_FAILED,
+  BACKUP_READY,
+  BACKUP_SAVE_FAILED,
+  type BackupMessageState,
+} from "./components/backup/backupMessages";
+import { downloadText } from "./components/backup/downloadText";
+import { readFileText } from "./components/backup/readFileText";
+import { makeUnusedStackId } from "./storage/freshStackId";
+import {
+  BACKUP_ERROR_MESSAGES,
+  SIZE_LIMIT,
+  backupFileName,
+  parseBackup,
+  serializeStack,
+} from "./domain-ui/backup";
 
 type LoadState =
   | { kind: "loading" }
@@ -45,6 +65,9 @@ export default function App() {
   const latestStackRef = useRef<Stack | null>(null);
   const saveQueueRef = useRef<Promise<void>>(Promise.resolve());
   const [saveError, setSaveError] = useState<string | null>(null);
+  // Mirrors what enqueueSave passes to setSaveError, readable from async code.
+  const saveErrorRef = useRef<string | null>(null);
+  const persistAskedRef = useRef(false);
   const [savedStacks, setSavedStacks] = useState<
     { id: string; name: string }[]
   >([]);
@@ -60,6 +83,20 @@ export default function App() {
   const [mode, setMode] = useState<Mode>("play");
   const [starterChooserOpen, setStarterChooserOpen] = useState(false);
   const [dayRange, setDayRange] = useState<DayRange>(() => todayRange());
+  const { notice, closeOffline, applyUpdate } = useServiceWorkerNotices();
+  const [backupMessage, setBackupMessage] = useState<BackupMessageState>(null);
+  const backupSeqRef = useRef(0);
+  const [reloading, setReloading] = useState(false);
+  const loadBusyRef = useRef(false);
+  const [loadBusy, setLoadBusy] = useState(false);
+  const [focusFirstTab, setFocusFirstTab] = useState(false);
+
+  // A message shown next to the backup buttons is dropped when the mode changes.
+  useEffect(() => {
+    setBackupMessage((prev) =>
+      prev && prev.place === "controls" ? null : prev,
+    );
+  }, [mode]);
 
   const visible = stack ? visibleCards(stack) : [];
   const selectedCard = visible.find((c) => c.id === selectedCardId) ?? visible[0];
@@ -132,6 +169,82 @@ export default function App() {
     }
   }, []);
 
+  // Asks the browser to keep our data, once, after the first good save.
+  const notePersistOnce = useCallback(() => {
+    if (persistAskedRef.current) return;
+    persistAskedRef.current = true;
+    requestPersistentStorage();
+  }, []);
+
+  // Waits until no more saves are queued. Returns the latest save error.
+  const drainSaves = useCallback(async (): Promise<string | null> => {
+    let q: Promise<void>;
+    do {
+      q = saveQueueRef.current;
+      await q;
+    } while (q !== saveQueueRef.current);
+    return saveErrorRef.current;
+  }, []);
+
+  const handleReload = useCallback(async () => {
+    setReloading(true);
+    try {
+      const saveProblem = await drainSaves();
+      if (saveProblem) {
+        backupSeqRef.current += 1;
+        setBackupMessage({
+          seq: backupSeqRef.current,
+          kind: "error",
+          text: saveProblem,
+          place: "notice",
+        });
+        return;
+      }
+      try {
+        await applyUpdate();
+      } catch {
+        // The notice stays open so the owner can try again.
+      }
+    } finally {
+      setReloading(false);
+    }
+  }, [drainSaves, applyUpdate]);
+
+  const handleSaveBackup = useCallback(async () => {
+    const show = (kind: "success" | "error", text: string) => {
+      backupSeqRef.current += 1;
+      setBackupMessage({
+        seq: backupSeqRef.current,
+        kind,
+        text,
+        place: "controls",
+      });
+    };
+    try {
+      await drainSaves();
+      const current = latestStackRef.current;
+      if (!current) return;
+      const now = new Date();
+      const text = serializeStack(current);
+      const name = backupFileName(current.name, {
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        day: now.getDate(),
+      });
+      downloadText(text, name, "application/json");
+      show("success", BACKUP_READY);
+    } catch {
+      show("error", BACKUP_SAVE_FAILED);
+    }
+  }, [drainSaves]);
+
+  // Focus the first tab after a backup is loaded and Play mode is showing.
+  useEffect(() => {
+    if (!focusFirstTab) return;
+    document.querySelector<HTMLElement>('[role="tab"]')?.focus();
+    setFocusFirstTab(false);
+  }, [focusFirstTab, mode, stack]);
+
   const enqueueSave = useCallback(() => {
     setSavesInFlight((n) => n + 1);
     saveQueueRef.current = saveQueueRef.current.then(async () => {
@@ -145,19 +258,23 @@ export default function App() {
           result = null;
         }
         if (result && result.ok) {
+          saveErrorRef.current = null;
           setSaveError(null);
+          notePersistOnce();
           await refreshSavedStacks();
-        } else
-          setSaveError(
+        } else {
+          const message =
             result && !result.ok
               ? result.error.message
-              : STORAGE_ERROR_MESSAGES.SAVE_FAILED,
-          );
+              : STORAGE_ERROR_MESSAGES.SAVE_FAILED;
+          saveErrorRef.current = message;
+          setSaveError(message);
+        }
       } finally {
         setSavesInFlight((n) => n - 1);
       }
     });
-  }, [refreshSavedStacks]);
+  }, [refreshSavedStacks, notePersistOnce]);
 
   const openStack = useCallback(
     async (id: string) => {
@@ -184,6 +301,61 @@ export default function App() {
       await refreshSavedStacks();
     },
     [refreshSavedStacks],
+  );
+
+  const handleLoadFile = useCallback(
+    async (file: File) => {
+      if (loadBusyRef.current) return;
+      loadBusyRef.current = true;
+      setLoadBusy(true);
+      const fail = (text: string) => {
+        backupSeqRef.current += 1;
+        setBackupMessage({
+          seq: backupSeqRef.current,
+          kind: "error",
+          text,
+          place: "controls",
+        });
+      };
+      try {
+        if (file.size > SIZE_LIMIT) return fail(BACKUP_ERROR_MESSAGES.TOO_LARGE);
+        let text: string;
+        try {
+          text = await readFileText(file);
+        } catch {
+          return fail(BACKUP_READ_FAILED);
+        }
+        const freshId = await makeUnusedStackId();
+        if (freshId === null) return fail(STORAGE_ERROR_MESSAGES.SAVE_FAILED);
+        const parsed = parseBackup(text, freshId);
+        if (!parsed.ok) return fail(parsed.error.message);
+        await drainSaves();
+        const saved = await saveStack(parsed.value);
+        if (!saved.ok) return fail(saved.error.message);
+        notePersistOnce();
+        await drainSaves();
+        await openStack(parsed.value.id);
+        if (latestStackRef.current?.id !== parsed.value.id) {
+          void refreshSavedStacks();
+          return fail(STORAGE_ERROR_MESSAGES.UNREADABLE_DATA);
+        }
+        setFocusFirstTab(true);
+        backupSeqRef.current += 1;
+        setBackupMessage({
+          seq: backupSeqRef.current,
+          kind: "success",
+          text: BACKUP_LOADED,
+          place: "notice",
+        });
+      } catch {
+        void refreshSavedStacks();
+        fail(STORAGE_ERROR_MESSAGES.SAVE_FAILED);
+      } finally {
+        loadBusyRef.current = false;
+        setLoadBusy(false);
+      }
+    },
+    [drainSaves, notePersistOnce, openStack, refreshSavedStacks],
   );
 
   const onStackChange = useCallback(
@@ -271,6 +443,14 @@ export default function App() {
       <Button onClick={toggleTheme}>
         {midnight ? "Midnight mode: on" : "Midnight mode: off"}
       </Button>
+      <NoticeArea
+        notice={notice}
+        onCloseOffline={closeOffline}
+        onReload={() => void handleReload()}
+        reloading={reloading}
+        backupMessage={backupMessage}
+        onCloseBackupMessage={() => setBackupMessage(null)}
+      />
       {saveError && (
         <div role="alert">
           <p>{saveError}</p>
@@ -307,6 +487,13 @@ export default function App() {
                 stack={stack}
                 onStackChange={onStackChange}
                 onOpenStarterChooser={() => setStarterChooserOpen(true)}
+                backup={{
+                  onSave: () => handleSaveBackup(),
+                  onLoadFile: handleLoadFile,
+                  busy: loadBusy,
+                  message:
+                    backupMessage?.place === "controls" ? backupMessage : null,
+                }}
               />
             ) : (
               <>

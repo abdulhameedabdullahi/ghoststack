@@ -10,6 +10,8 @@ import {
 import type { Stack } from "../../domain";
 import { Button } from "../Button";
 import { BuilderCardRow } from "./BuilderCardRow";
+import { BackupControls } from "../backup/BackupControls";
+import type { BackupControlsProps } from "../backup/BackupControls";
 import { RenameDialog } from "./RenameDialog";
 import "./BuilderPanel.css";
 
@@ -17,6 +19,7 @@ export interface BuilderPanelProps {
   stack: Stack;
   onStackChange: (s: Stack) => void;
   onOpenStarterChooser: () => void;
+  backup?: BackupControlsProps;
 }
 
 type PendingFocus =
@@ -37,6 +40,7 @@ export function BuilderPanel({
   stack,
   onStackChange,
   onOpenStarterChooser,
+  backup,
 }: BuilderPanelProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -162,6 +166,7 @@ export function BuilderPanel({
 
       <div className="builder-panel__footer">
         <Button onClick={onOpenStarterChooser}>Choose a starter</Button>
+        {backup && <BackupControls {...backup} />}
       </div>
 
       {renaming?.kind === "stack" && (

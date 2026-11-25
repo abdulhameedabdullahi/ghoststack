@@ -39,6 +39,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 - **Play mode / Builder mode:** the everyday view and the view where the owner changes the shape of the Stack, as defined by `builder-mode-and-starter-stacks`.
 - **Storage layer:** the code in `src/storage/` that saves and loads Stacks with IndexedDB, including `saveStack`, `loadStack` and `listStacks`.
 - **Save_Queue:** the App_Shell's existing mechanism that finishes pending saves in order.
+- **Base_Path:** the URL path the app is hosted under. Its value is "/" for now (root hosting, for example Vercel or Netlify; not deployed yet).
 - **Manifest:** the web app manifest file that tells the phone how to install GhostStack.
 - **Service_Worker:** the script that stores the built app files on the device and serves them when there is no internet.
 - **Precache:** the list of built files (page, scripts, styles, icons, manifest and the bundled font) that the Service_Worker stores at install time.
@@ -66,6 +67,8 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 6. THE `index.html` page SHALL link the Manifest, SHALL set a `theme-color` meta tag and SHALL link an icon for iPhone home screens.
 7. THE icon files and the Manifest SHALL be served from `public/` or generated at build time, and SHALL be part of the Precache.
 8. THE Manifest SHALL use simple English text and SHALL contain no cloud, account or payment wording.
+9. THE project SHALL define the Base_Path as one constant in `src/pwa/manifestConfig.ts` that `vite.config.ts` imports, with the value "/" for now, and THE Vite `base` option, the Manifest `scope` and `start_url`, and the Service_Worker scope SHALL all take their value from that constant.
+10. THE project SHALL generate the three PNG icons (192×192, 512×512 and maskable) with a small Node script that uses only built-in Node modules and draws a retro pixel-art ghost, and THE project SHALL add no package for this.
 
 ### Requirement 2: Offline loading
 
@@ -81,6 +84,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 6. THE Service_Worker SHALL register only in a production build, and SHALL leave the dev server and the test suite without a Service_Worker.
 7. IF the browser does not support service workers, THEN THE App_Shell SHALL keep working as it does today and SHALL show no error.
 8. IF the Service_Worker fails to register, THEN THE App_Shell SHALL keep working as it does today and SHALL show no error to the owner.
+9. THE registration module SHALL register the Service_Worker in prompt mode, so that a new Service_Worker waits and does not call `skipWaiting` or take over until the owner activates "Reload".
 
 ### Requirement 3: Ready for offline use notice
 
@@ -105,7 +109,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 1. WHEN a new version of the app has been downloaded and is waiting, THE App_Shell SHALL show the Update_Notice in the Notice_Area.
 2. THE Update_Notice SHALL read "A new version is ready. Reload to update." and SHALL have a "Reload" button that is at least 44px high and 44px wide.
 3. WHILE the Update_Notice is shown, THE App_Shell SHALL keep every open form, every typed value and the current screen as they are.
-4. THE App_Shell SHALL NOT reload the page or activate the waiting Service_Worker until the owner activates "Reload".
+4. THE App_Shell SHALL NOT reload the page, call `skipWaiting` or activate the waiting Service_Worker until the owner activates "Reload", and SHALL NOT reload the page automatically at any other time.
 5. WHEN the owner activates "Reload", THE App_Shell SHALL wait for the Save_Queue to finish, then activate the waiting Service_Worker and reload the page.
 6. IF the Save_Queue reports a save error when the owner activates "Reload", THEN THE App_Shell SHALL keep the page open and SHALL show the save error message.
 7. THE Update_Notice SHALL use `role="status"` and SHALL NOT take keyboard focus away from the control the owner is using.
@@ -123,6 +127,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 3. WHILE the device is offline, THE Backup_Controls SHALL work, because neither "Save a backup" nor "Load a backup" uses the network.
 4. THE App_Shell SHALL NOT call `fetch` or open any network connection to run a feature of this spec.
 5. THE Service_Worker SHALL NOT cache, read or write any IndexedDB data.
+6. WHEN the first save of user data succeeds, THE App_Shell SHALL call `navigator.storage.persist()` once if it is available, as a best-effort request, SHALL NOT call it when the page loads, and SHALL show no message and no error if it is missing, refused or fails.
 
 ### Requirement 6: Serialize a stack to a backup
 
@@ -142,7 +147,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 10. THE `src/domain-ui/` module SHALL provide a pure `backupFileName` function that takes a shop name and a date given as year, month and day numbers, and returns a Backup_File_Name.
 11. THE `backupFileName` function SHALL lower-case the shop name, replace each run of characters other than letters, digits and hyphens with one hyphen, remove hyphens at both ends, and join the result, a hyphen and the date as YYYY-MM-DD with a `.json` ending.
 12. IF the shop name has no letters or digits after cleaning, THEN THE `backupFileName` function SHALL use "shop" in place of the shop name.
-13. THE `backupFileName` function SHALL return a name of at most 60 characters before the `.json` ending, by cutting the shop part, never the date.
+13. THE `backupFileName` function SHALL return a name of at most 60 characters before the `.json` ending, by cutting the shop part, never the date, and without ending the cut text on one half of a surrogate pair.
 
 ### Requirement 7: Save a backup button
 
@@ -154,11 +159,12 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 2. WHILE the App_Shell is in Play mode, THE App_Shell SHALL NOT show the Backup_Controls.
 3. WHEN the owner activates "Save a backup", THE App_Shell SHALL wait for the Save_Queue to finish, then make the text with `serializeStack` for the current Stack and start a download of that text as a `.json` file named with `backupFileName`.
 4. THE App_Shell SHALL read the current date in the UI layer and pass it to `backupFileName`.
-5. WHEN the download has started, THE App_Shell SHALL show the Backup_Message "Backup saved. Keep the file somewhere safe, like your email or a memory card." and SHALL keep focus on the "Save a backup" button.
-6. WHEN the download has started, THE App_Shell SHALL release any temporary file address it made for the download.
+5. WHEN the download has started, THE App_Shell SHALL show the Backup_Message "Your backup file is ready." and SHALL keep focus on the "Save a backup" button.
+6. WHEN the download has started, THE App_Shell SHALL revoke the temporary file address (object URL) it made for the download after about 1 second.
 7. IF the download cannot start, THEN THE App_Shell SHALL show a Backup_Message that says the backup could not be saved and tells the owner to try again, and SHALL leave the Stack and storage unchanged.
 8. THE "Save a backup" button SHALL change no data in the Stack or in storage.
 9. THE Backup_Message SHALL use the shop name only inside the file name, and SHALL NOT include any money amount.
+10. WHILE the App_Shell is in Builder mode, THE Builder_Panel SHALL show the line "Tip: save a backup from time to time." near the Backup_Controls.
 
 ### Requirement 8: Parse and check a backup
 
@@ -178,6 +184,8 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 10. THE `parseBackup` function SHALL check the checks in the order of acceptance criteria 2 to 7, so that the same input always gives the same error code.
 11. THE Backup_Error messages SHALL say what went wrong and what to do next, in short sentences with everyday words, and SHALL NOT contain the word "kobo", the word "schema", a file path, or a stack trace.
 12. THE `parseBackup` function SHALL be pure: same inputs, same output, no clock read, no id made, no storage call.
+13. THE `parseBackup` function SHALL build the Restored_Stack by reading only the known Stack fields from the parsed file, and SHALL drop every unknown key at every level, without copying keys from the parsed JSON with `Object.assign` or the spread operator.
+14. IF any card in the `stack` field has a title that is blank or longer than 40 characters after trimming, THEN THE `parseBackup` function SHALL return an `INVALID_STACK` error, as part of the check in acceptance criterion 7.
 
 ### Requirement 9: Restored stack identity and name
 
@@ -186,13 +194,14 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 #### Acceptance Criteria
 
 1. WHEN the text is accepted, THE `parseBackup` function SHALL return a Restored_Stack whose `id` is the fresh id passed in.
-2. WHEN the text is accepted, THE `parseBackup` function SHALL return a Restored_Stack whose `currency`, `schemaVersion` and cards, with every Item, Sale, Debt, card id, card title and `hidden` flag, are deep-equal to the file's Stack.
+2. WHEN the text is accepted, THE `parseBackup` function SHALL return a Restored_Stack whose `currency`, `schemaVersion` and cards, with every known field of every Item, Sale, Debt, card id, card title and `hidden` flag, are deep-equal to the file's Stack.
 3. WHEN the text is accepted, THE `parseBackup` function SHALL return a Restored_Stack whose `name` is the file's name, trimmed and, where needed, cut short, followed by the Restored_Suffix.
 4. THE `parseBackup` function SHALL return a Restored_Stack whose `name` has at most 40 characters after trimming, by cutting the file's name before the Restored_Suffix is added, so that the Restored_Suffix always stays complete.
 5. IF the file's name is empty after trimming, THEN THE `parseBackup` function SHALL return the name "My shop (restored)".
 6. IF cutting the file's name leaves spaces at the end of the cut text, THEN THE `parseBackup` function SHALL remove those spaces before it adds the Restored_Suffix.
 7. THE `parseBackup` function SHALL return a Restored_Stack that the Stack_Checker accepts.
 8. THE `parseBackup` function SHALL NOT change the Backup_File text, and SHALL NOT return an object that shares nested objects with any caller-owned value.
+9. WHEN `parseBackup` or `backupFileName` cuts a name to fit a limit, THE function SHALL NOT end the cut text on one half of a surrogate pair.
 
 ### Requirement 10: Load a backup button
 
@@ -201,11 +210,11 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 #### Acceptance Criteria
 
 1. WHILE the App_Shell is in Builder mode, THE Builder_Panel SHALL show a "Load a backup" file chooser in the Backup_Controls, with a visible text label "Load a backup" joined to the file input.
-2. THE file chooser SHALL accept files with the `.json` ending and the JSON type, and SHALL leave the owner free to pick any other file, which `parseBackup` then rejects.
+2. THE file chooser SHALL set `accept=".json,application/json,text/plain"`, and SHALL leave the owner free to pick any other file, which `parseBackup` then rejects.
 3. WHEN the owner chooses a file larger than the Size_Limit, THE App_Shell SHALL show the `TOO_LARGE` message without reading the file into memory.
 4. WHEN the owner chooses a file within the Size_Limit, THE App_Shell SHALL read it as text, make a fresh id with `crypto.randomUUID`, call `parseBackup`, and wait for the Save_Queue to finish.
 5. IF the fresh id equals the id of any saved Stack, THEN THE App_Shell SHALL make another fresh id until it is different.
-6. WHEN `parseBackup` returns a Restored_Stack, THE App_Shell SHALL save it once with `saveStack` as a new record, refresh the saved stack list, open it in Play mode and select its first visible card.
+6. WHEN `parseBackup` returns a Restored_Stack, THE App_Shell SHALL save it once with `saveStack` as a new record, wait for the Save_Queue to finish again, then open it in Play mode and select its first visible card by calling the same function the Stack_Picker uses to open a saved Stack, and refresh the saved stack list.
 7. WHEN the Restored_Stack has been saved and opened, THE App_Shell SHALL move keyboard focus to the first tab in the Tab_Bar and show a Backup_Message "Backup loaded. Your shop is open as a new stack." in the Notice_Area.
 8. IF `parseBackup` returns a Backup_Error, THEN THE App_Shell SHALL show the error's message in a Backup_Message, SHALL save nothing, SHALL stay in Builder mode, SHALL keep the current Stack open and SHALL move keyboard focus to the Backup_Message.
 9. IF the file cannot be read, THEN THE App_Shell SHALL show a Backup_Message that says the file could not be read and tells the owner to try again, SHALL save nothing, SHALL stay in Builder mode and SHALL move keyboard focus to the Backup_Message.
@@ -261,6 +270,7 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 7. THE Offline_Test_List SHALL include a "Backup and restore" test: save a backup, load it on a second device while offline, and check that a new stack named with the Restored_Suffix opens and the original is unchanged.
 8. THE Offline_Test_List SHALL include a "Bad files" test: try a text file, a very large file and a JSON file from another app, and check that each shows a plain-language message.
 9. THE Offline_Test_List SHALL give each test numbered steps and an expected result in simple English.
+10. THE Offline_Test_List SHALL state that on an iPhone an app installed to the home screen has storage separate from Safari, and SHALL tell the tester to restore a backup into the installed home-screen app and check that the restored stack appears there.
 
 ### Requirement 14: Property-based tests
 
@@ -271,17 +281,19 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 1. THE test suite SHALL include a fast-check property that, for any valid Stack, `parseBackup(serializeStack(stack), freshId)` returns a Restored_Stack deep-equal to the original Stack in every field except `id` and the Restored_Suffix on `name`.
 2. THE test suite SHALL include a fast-check property that, for any string that is not valid JSON, and for any JSON text whose Stack the Stack_Checker rejects, `parseBackup` returns an error Result and does not throw.
 3. THE test suite SHALL include a fast-check property that, for any valid Stack and any fresh id, the Restored_Stack `name` never has more than 40 characters, always ends with the Restored_Suffix, and starts with the trimmed original name when that name has at most 29 characters.
-4. THE test suite SHALL include a fast-check property, using the Storage layer with `fake-indexeddb`, that for any set of valid saved Stacks and any valid Backup_File, saving the Restored_Stack leaves every previously saved Stack deep-equal to before and adds exactly one Stack.
+4. THE test suite SHALL include a fast-check property, using the Storage layer with `fake-indexeddb`, that for any set of valid saved Stacks and any valid Backup_File, saving the Restored_Stack leaves every previously saved Stack deep-equal to before and adds exactly one Stack. The property MAY use 25 runs.
 5. THE test suite SHALL include a fast-check property that, for any valid Stack whose text fields do not contain the words "undefined" or "NaN", the `serializeStack` output contains neither "undefined" nor "NaN".
 6. THE test suite SHALL include a fast-check property that, for any deeply frozen valid Stack, `serializeStack` and `parseBackup` do not throw and do not change their input.
 7. THE test suite SHALL include a fast-check property that, for any valid Stack, the `serializeStack` output parses as JSON and has `format` "ghoststack-backup", `backupVersion` 1 and a `stack` that is deep-equal to the input.
 8. THE test suite SHALL include a fast-check property that, for any valid Stack, `parseBackup` returns a Stack the Stack_Checker accepts, with `id` equal to the fresh id passed in.
 9. THE test suite SHALL include a fast-check property that, for any valid Stack, `serializeStack` returns the same text when called twice on the same input.
-10. THE test suite SHALL include a fast-check property that, for any text longer than the Size_Limit, `parseBackup` returns `TOO_LARGE`, and for any valid backup text of at most the Size_Limit, `parseBackup` does not return `TOO_LARGE`.
+10. THE test suite SHALL include a fast-check property that, for any text longer than the Size_Limit, `parseBackup` returns `TOO_LARGE`, and for any valid backup text of at most the Size_Limit, `parseBackup` does not return `TOO_LARGE`. The property MAY use 25 runs, and SHALL build the oversized text with `repeat()`.
 11. THE test suite SHALL include a fast-check property that, for any valid Stack whose `backupVersion` or `schemaVersion` is changed to a value other than 1, `parseBackup` returns `WRONG_BACKUP_VERSION` or `WRONG_STACK_VERSION` respectively.
 12. THE test suite SHALL include a fast-check property that, for any shop name string and any valid date, `backupFileName` returns a name that ends with the date and ".json", uses only lower-case letters, digits, hyphens and one dot, and has at most 60 characters before the ".json" ending.
-13. THE test suite SHALL include a fast-check property that, for any valid Stack, the restored money totals (stock value, total of sales, total owed) equal the totals of the original Stack.
-14. THE test suite SHALL run each property for at least 100 runs.
+13. THE test suite SHALL include a fast-check property that, for any valid Stack, the restored money totals (stock value, total of sales, total owed) equal the totals of the original Stack. The property SHALL compute the totals with existing domain functions only and SHALL add no domain function.
+14. THE test suite SHALL run each property for at least 100 runs, except the properties in 14.4 and 14.10, which MAY use 25 runs.
+15. THE test suite SHALL include a fast-check property that, for any valid Stack and any extra keys added at any level of the backup text, no extra key appears in the `parseBackup` result.
+16. THE generators for a valid Stack in the properties of this requirement SHALL use card titles of 1 to 40 characters after trimming.
 
 ### Requirement 15: Unit and component tests
 
@@ -294,8 +306,9 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 3. THE test suite SHALL include a component test that a successful load opens the Restored_Stack in Play mode and leaves the earlier Stack in the Stack_Picker.
 4. THE test suite SHALL include component tests for the Offline_Notice and the Update_Notice that cover showing once, closing, the "Reload" button waiting for the Save_Queue, and no focus theft.
 5. THE test suite SHALL include a test that the service worker registration code does nothing in the test environment and does not throw when `navigator.serviceWorker` is missing.
-6. THE test suite SHALL include a build check that the production build output contains the Manifest, the three icons, a Service_Worker file, and the pixel font file in the Precache list.
+6. THE project SHALL provide a script, run with `npm run check:pwa` after the build and not inside the vitest suite, that checks that the production build output contains the Manifest, the three icons, a Service_Worker file, and the shipped pixel font file (the hashed `PressStart2P-Regular-*.woff2` file in `dist/assets/`) in the Precache list.
 7. THE test suite SHALL include a test that the Manifest holds the required name, display mode and icon entries.
+8. THE test suite SHALL include a unit test that `parseBackup` returns `INVALID_STACK` for a backup whose card title is blank, and for a backup whose card title is longer than 40 characters after trimming.
 
 ### Requirement 16: No change to existing behaviour
 
@@ -308,4 +321,5 @@ It builds on `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-s
 3. WHILE the App_Shell is in Play mode, THE App_Shell SHALL look and work as it does today, except for the Notice_Area that appears only when an Offline_Notice or an Update_Notice is due.
 4. THE new pure functions SHALL live in `src/domain-ui/`, the file reading, download and storage steps SHALL live in the UI and storage code, and the service worker setup SHALL live in `vite.config.ts` and a small registration module, with no React code in `src/domain-ui/`.
 5. THE only new package SHALL be `vite-plugin-pwa` or Workbox, added as a dev dependency, and THE project SHALL NOT add any other package without asking.
-6. THE `npm run build` command SHALL still run `tsc --noEmit` and `vite build` and finish without errors.
+6. THE `npm run build` command SHALL still run `tsc --noEmit` and `vite build` and finish without errors, including the type check of `vite.config.ts` resolving its import of `src/pwa/manifestConfig.ts`.
+7. IF installing `vite-plugin-pwa` reports a peer dependency error with the installed Vite version (Vite 8 support is to be verified at install), THEN THE implementer SHALL stop, report the exact error message, and add no other package and no override until the owner decides.
