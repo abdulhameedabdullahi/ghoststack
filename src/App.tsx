@@ -4,7 +4,14 @@ import { StockCardView } from "./components/cards/StockCardView";
 import { SalesLogCardView } from "./components/cards/SalesLogCardView";
 import { DailySummaryCardView } from "./components/cards/DailySummaryCardView";
 import { TabBar } from "./components/TabBar";
-import type { CardType, SalesLogCard, Stack, StockCard } from "./domain/types";
+import { DebtsPanel } from "./components/cards/DebtsPanel";
+import type {
+  CardType,
+  DebtsCard,
+  SalesLogCard,
+  Stack,
+  StockCard,
+} from "./domain/types";
 import { todayRange, type DayRange } from "./domain-ui/dayRange";
 import { buildStarterStack } from "./stacks/starterStack";
 import {
@@ -132,7 +139,9 @@ export default function App() {
   const salesCard = stack?.cards.find(
     (c): c is SalesLogCard => c.type === "sales-log",
   );
-  const debtsCard = stack?.cards.find((c) => c.type === "debts");
+  const debtsCard = stack?.cards.find(
+    (c): c is DebtsCard => c.type === "debts",
+  );
   const summaryCard = stack?.cards.find((c) => c.type === "daily-summary");
   const tabs: { id: CardType; label: string }[] = [
     { id: stockCard?.type ?? "stock", label: "Stock" },
@@ -174,7 +183,11 @@ export default function App() {
               <SalesLogCardView stack={stack} card={salesCard} />
             )}
             {selectedTab === "debts" && (
-              <p>Coming soon: a Debts card view.</p>
+              <DebtsPanel
+                stack={stack}
+                card={debtsCard}
+                onStackChange={onStackChange}
+              />
             )}
             {selectedTab === "daily-summary" && (
               <DailySummaryCardView stack={stack} dayRange={dayRange} />

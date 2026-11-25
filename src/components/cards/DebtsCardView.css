@@ -1,0 +1,80 @@
+.debts-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.debts-card__total {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.debts-card__heading {
+  margin: 0;
+}
+
+.debts-card__empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.debts-card__empty p {
+  margin: 0;
+}
+
+.debts-card__add {
+  min-height: var(--tap-min);
+}
+
+.debts-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.debts-card__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.debts-card__name {
+  font-weight: bold;
+}
+
+.debts-card__detail {
+  color: var(--color-muted-fg);
+}
+
+.debts-card__status {
+  font-weight: bold;
+}
+
+.debts-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+}
+
+.debts-card__confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.debts-card__confirm-text {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

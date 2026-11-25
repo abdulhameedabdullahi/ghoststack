@@ -1,0 +1,717 @@
+{
+  "pbtResults": {
+    "1.4 Write fast-check property test for ordering": {
+      "status": "passed",
+      "lastRunTimestamp": 1795589349147
+    },
+    "1.5 Write fast-check property test for frozen input (`debtsUnpaidFirst` part)": {
+      "status": "passed",
+      "lastRunTimestamp": 1795589423488
+    },
+    "2.3 Write fast-check property test for ignoring paid debts": {
+      "status": "passed",
+      "lastRunTimestamp": 1795589888591
+    },
+    "2.4 Write fast-check property test for grouping, name and sum": {
+      "status": "passed",
+      "lastRunTimestamp": 1795589963228
+    },
+    "2.5 Write fast-check property test for ordering": {
+      "status": "passed",
+      "lastRunTimestamp": 1795590039978
+    },
+    "2.6 Write fast-check property test for overflow and `NaN`": {
+      "status": "passed",
+      "lastRunTimestamp": 1795590202378
+    },
+    "2.7 Write fast-check property test for frozen input (`debtsByCustomer` part)": {
+      "status": "passed",
+      "lastRunTimestamp": 1795590353381
+    },
+    "2.8 Write fast-check property test for the sum of Customer totals": {
+      "status": "passed",
+      "lastRunTimestamp": 1795590468067
+    },
+    "2.9 Write fast-check property test for settling a debt": {
+      "status": "passed",
+      "lastRunTimestamp": 1795590521755
+    }
+  },
+  "executionHistory": {
+    "1.1 Implement `debtsUnpaidFirst` in `src/domain/debts.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587749388
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587763502
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589030443
+      }
+    ],
+    "1.2 Write unit tests in `src/domain/debts.test.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587750061
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589037141
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589099735
+      }
+    ],
+    "1.3 Write fast-check property test for permutation": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587750753
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589105214
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589273317
+      }
+    ],
+    "1.4 Write fast-check property test for ordering": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587751336
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589279645
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589371673
+      }
+    ],
+    "1.5 Write fast-check property test for frozen input (`debtsUnpaidFirst` part)": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587751496
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589378567
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589435557
+      }
+    ],
+    "2.1 Implement `CustomerTotal`, `customerKey` and `debtsByCustomer` in `src/domain/debts.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587751654
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589037426
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589100602
+      }
+    ],
+    "2.2 Write unit tests in `src/domain/debts.test.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587751817
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589105479
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589272533
+      }
+    ],
+    "2.3 Write fast-check property test for ignoring paid debts": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752013
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589441158
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589901815
+      }
+    ],
+    "2.4 Write fast-check property test for grouping, name and sum": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752147
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589905659
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589976102
+      }
+    ],
+    "2.5 Write fast-check property test for ordering": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752317
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589976959
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590087431
+      }
+    ],
+    "2.6 Write fast-check property test for overflow and `NaN`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752446
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590088689
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590237261
+      }
+    ],
+    "2.7 Write fast-check property test for frozen input (`debtsByCustomer` part)": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752693
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590236501
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590370921
+      }
+    ],
+    "2.8 Write fast-check property test for the sum of Customer totals": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752847
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590371662
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590479147
+      }
+    ],
+    "2.9 Write fast-check property test for settling a debt": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587752980
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590478401
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590531168
+      }
+    ],
+    "3.1 Export `debtsUnpaidFirst`, `debtsByCustomer` and the `CustomerTotal` type from `src/domain/index.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753133
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590535825
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591746426
+      }
+    ],
+    "4.1 Implement `debtFieldErrorFor` in `src/domain-ui/debtErrors.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753294
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590536758
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591747701
+      }
+    ],
+    "4.2 Write unit tests in `src/domain-ui/debtErrors.test.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753466
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591756650
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592220703
+      }
+    ],
+    "5.1 Install `jsdom` and `@testing-library/react` as dev dependencies": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753614
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590537381
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591747987
+      }
+    ],
+    "5.2 Create `src/test/setup.ts`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753742
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591757186
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592222060
+      }
+    ],
+    "6.1 Create `DebtForm.tsx` in `src/components/cards/`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587753947
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592225702
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592298192
+      }
+    ],
+    "7.1 Create `DebtsCardView.tsx` and `DebtsCardView.css` in `src/components/cards/`: display": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754071
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592300107
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592404213
+      }
+    ],
+    "7.2 Add the \"Record a debt\" flow to `DebtsCardView.tsx`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754194
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592405278
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592771900
+      }
+    ],
+    "7.3 Add the \"Mark as paid\" flow and the notices to `DebtsCardView.tsx`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754375
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592772762
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593832844
+      }
+    ],
+    "7.4 Add focus management to `DebtsCardView.tsx`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754551
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593831389
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593875111
+      }
+    ],
+    "8.1 Create `DebtsPanel.tsx` in `src/components/cards/`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754689
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593876780
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593934864
+      }
+    ],
+    "8.2 Wire the Debts tab in `src/App.tsx`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754844
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593940228
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594016507
+      }
+    ],
+    "9.1 Create the test file with fixtures and the display tests": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587754979
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593940488
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594018093
+      }
+    ],
+    "9.2 Add the \"Record a debt\" tests": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755139
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594022415
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594106263
+      }
+    ],
+    "9.3 Add the \"Mark as paid\" tests": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755315
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594107182
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594675741
+      }
+    ],
+    "9.4 Add the notice tests with fake timers": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755458
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594677428
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594749477
+      }
+    ],
+    "9.5 Add the focus tests": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755608
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594750372
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594796967
+      }
+    ],
+    "10.1 Run `npx vitest run` and `npx tsc --noEmit`. Fix any failure.": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755751
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594798587
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595007963
+      }
+    ],
+    "10.2 Run the production build.": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587755952
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595009702
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595149236
+      }
+    ],
+    "10.3 Do a manual check in the browser and write down the result": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587756095
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595152570
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595239082
+      }
+    ],
+    "10.4 Update `KIRO_NOTES.md` counts and add a log row.": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795587756238
+      },
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795595241570
+      },
+      {
+        "executionId": "232919c9-2047-4f4b-8202-8dee1ad61251",
+        "chatSessionId": "sess_870aa368-d0d0-415a-b895-dd1904238037",
+        "timestamp": 1795600338684
+      },
+      {
+        "executionId": "232919c9-2047-4f4b-8202-8dee1ad61251",
+        "chatSessionId": "sess_870aa368-d0d0-415a-b895-dd1904238037",
+        "timestamp": 1795600360536
+      },
+      {
+        "executionId": "b7b0bc52-d807-468c-bab6-bbcb4a6d4250",
+        "chatSessionId": "sess_15832b4d-9d2d-433d-b7a0-626cc494415e",
+        "timestamp": 1795610851283
+      }
+    ],
+    "1. `debtsUnpaidFirst` in the domain": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795589436297
+      }
+    ],
+    "2. `debtsByCustomer` in the domain": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795590532004
+      }
+    ],
+    "3. Domain exports": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795591747173
+      }
+    ],
+    "4. `debtFieldErrorFor` in the UI layer": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592221821
+      }
+    ],
+    "5. Component test setup": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592222212
+      }
+    ],
+    "6. Debt_Form": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795592299373
+      }
+    ],
+    "7. Debts_Card_View": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795593876527
+      }
+    ],
+    "8. `DebtsPanel` and App_Shell wiring": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594017864
+      }
+    ],
+    "9. Component tests in `src/components/cards/DebtsCardView.test.tsx`": [
+      {
+        "executionId": "c00f111a-efbe-4799-96d0-0a7a2d13141e",
+        "chatSessionId": "sess_889f64e3-b855-4ed7-a9e5-28924f7787be",
+        "timestamp": 1795594797836
+      }
+    ],
+    "10. Final check": [
+      {
+        "executionId": "b7b0bc52-d807-468c-bab6-bbcb4a6d4250",
+        "chatSessionId": "sess_15832b4d-9d2d-433d-b7a0-626cc494415e",
+        "timestamp": 1795610852709
+      }
+    ]
+  }
+}

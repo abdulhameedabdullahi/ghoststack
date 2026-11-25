@@ -23,8 +23,8 @@ export { isWholeNumber, isPositiveWhole, isSafeMoney } from "./validate";
 export type { RecordSaleInput } from "./sales";
 export { recordSale, saleTotal, dailyTotal, estimatedProfit, salesNewestFirst } from "./sales";
 
-export type { RecordDebtInput, SettleDebtInput } from "./debts";
-export { recordDebt, settleDebt, totalOwed } from "./debts";
+export type { RecordDebtInput, SettleDebtInput, CustomerTotal } from "./debts";
+export { recordDebt, settleDebt, totalOwed, debtsUnpaidFirst, debtsByCustomer } from "./debts";
 
 export type { AddItemInput, UpdateItemInput, DeleteItemInput } from "./items";
 export { addItem, updateItem, deleteItem, isLowStock, isOutOfStock, lowStockItems } from "./items";

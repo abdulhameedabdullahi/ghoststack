@@ -54,3 +54,13 @@ All money is an integer in the smallest currency unit (kobo for Naira).
 2. Domain function: checks the input and returns the new data, or a clear error.
 3. Storage: saves the new data on the device.
 4. UI: shows the updated data, or a friendly error message.
+
+## Debt form
+
+`DebtForm` (`src/components/cards/DebtForm.tsx`) is the form for recording a debt. It is a helper for the Debts card view, not a card type. It keeps the typed customer name and amount as raw text, and shows each error next to its own Field. The Debts card view does the parsing and calls the domain.
+
+## Debts card view
+
+`DebtsCardView` (`src/components/cards/DebtsCardView.tsx`) is the Play-mode view of the Debts card. It shows the total owed (`totalOwed`), a "Who owes you" list (`debtsByCustomer`) and the full debt list (`debtsUnpaidFirst`). It takes `stack`, `card` and `onStackChange`. The record-a-debt and mark-as-paid flows are added in later tasks.
+
+`DebtsPanel` (`src/components/cards/DebtsPanel.tsx`) is a small wrapper used by the app shell. It takes `stack`, an optional `card` and `onStackChange`. It shows `DebtsCardView` when the card exists, and otherwise a message that the shop has no Debts card. It never reads the card before checking it.

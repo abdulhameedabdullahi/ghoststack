@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import "./Button.css";
 
 export interface ButtonProps {
@@ -7,6 +7,10 @@ export interface ButtonProps {
   variant?: "main" | "danger";
   type?: "button" | "submit";
   disabled?: boolean;
+  /** Optional ref to the underlying button element. */
+  buttonRef?: Ref<HTMLButtonElement>;
+  /** Optional data-* attributes for the underlying button element. */
+  dataAttributes?: Record<`data-${string}`, string>;
 }
 
 export function Button({
@@ -15,9 +19,13 @@ export function Button({
   variant = "main",
   type = "button",
   disabled = false,
+  buttonRef,
+  dataAttributes,
 }: ButtonProps) {
   return (
     <button
+      ref={buttonRef}
+      {...dataAttributes}
       type={type}
       className={`button button--${variant}`}
       onClick={onClick}

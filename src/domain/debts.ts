@@ -25,6 +25,69 @@ export function totalOwed(debts: Debt[]): Kobo {
   return debts.reduce((sum, d) => (d.status === "unpaid" ? sum + d.amount : sum), 0);
 }
 
+/**
+ * Returns the Debts with unpaid ones first, as a new array of the same Debt
+ * objects. Inside each group, newest date first. A Debt whose date cannot be
+ * parsed goes after the others in its group. Ties (and pairs of unparseable
+ * dates) put the later input position first. Never changes its input.
+ */
+export function debtsUnpaidFirst(debts: readonly Debt[]): Debt[] {
+  const indexed = debts.map((debt, index) => ({
+    debt,
+    index,
+    t: Date.parse(debt.date),
+  }));
+  indexed.sort((a, b) => {
+    const aPaid = a.debt.status === "paid";
+    const bPaid = b.debt.status === "paid";
+    if (aPaid !== bPaid) return aPaid ? 1 : -1;
+    const aBad = Number.isNaN(a.t);
+    const bBad = Number.isNaN(b.t);
+    if (aBad !== bBad) return aBad ? 1 : -1;
+    if (!aBad && a.t !== b.t) return b.t - a.t;
+    return b.index - a.index;
+  });
+  return indexed.map((e) => e.debt);
+}
+
+/** One customer and the total they owe, in kobo. */
+export interface CustomerTotal {
+  name: string;
+  total: Kobo;
+}
+
+/** Same customer test: trim, collapse whitespace runs, lower case. No accent folding. */
+function customerKey(customer: string): string {
+  return customer.trim().replace(/\s+/g, " ").toLowerCase();
+}
+
+/**
+ * Totals unpaid debts per customer. Paid debts are ignored. The name is the
+ * trimmed name from the customer's first unpaid debt. Largest total first;
+ * ties put the customer whose first unpaid debt came earlier first. Returns
+ * AMOUNT_TOO_BIG if any running sum is not a safe integer. Never changes its
+ * input.
+ */
+export function debtsByCustomer(debts: readonly Debt[]): Result<CustomerTotal[]> {
+  const groups = new Map<string, { name: string; total: number; first: number }>();
+  for (let i = 0; i < debts.length; i++) {
+    const debt = debts[i];
+    if (debt.status === "paid") continue;
+    const key = customerKey(debt.customer);
+    let group = groups.get(key);
+    if (!group) {
+      group = { name: debt.customer.trim(), total: 0, first: i };
+      groups.set(key, group);
+    }
+    group.total += debt.amount;
+    if (!Number.isSafeInteger(group.total)) return err("AMOUNT_TOO_BIG");
+  }
+  const sorted = [...groups.values()].sort(
+    (a, b) => b.total - a.total || a.first - b.first,
+  );
+  return ok(sorted.map(({ name, total }) => ({ name, total })));
+}
+
 function findDebtsCard(stack: Stack, id: string): DebtsCard | undefined {
   return stack.cards.find(
     (c): c is DebtsCard => c.id === id && c.type === "debts",
@@ -80,11 +143,11 @@ export function settleDebt(input: SettleDebtInput): Result<Stack> {
   const cards: Card[] = stack.cards.map((c) =>
     c.id === debtsCardId
       ? {
-          ...card,
-          debts: card.debts.map((d) =>
-            d.id === debtId ? { ...d, status: "paid" as const } : d,
-          ),
-        }
+        ...card,
+        debts: card.debts.map((d) =>
+          d.id === debtId ? { ...d, status: "paid" as const } : d,
+        ),
+      }
       : c,
   );
   return ok({ ...stack, cards });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { recordDebt, settleDebt, totalOwed } from "./debts";
+import { debtsByCustomer, debtsUnpaidFirst, recordDebt, settleDebt, totalOwed } from "./debts";
 import type { Debt, DebtsCard, Stack } from "./types";
 
 function deepFreeze<T>(o: T): T {
@@ -181,5 +181,144 @@ describe("settleDebt", () => {
       ok: false,
       error: expect.objectContaining({ code: "DEBT_ALREADY_PAID" }),
     });
+  });
+});
+
+describe("debtsUnpaidFirst", () => {
+  const mk = (id: string, status: Debt["status"], date: string): Debt => ({
+    id,
+    customer: "C",
+    amount: 100,
+    date,
+    status,
+  });
+  const ids = (ds: Debt[]) => ds.map((d) => d.id);
+
+  it("returns [] for an empty list", () => {
+    expect(debtsUnpaidFirst([])).toEqual([]);
+  });
+
+  it("puts all unpaid debts before paid ones, newest first in each group", () => {
+    const input = [
+      mk("p-old", "paid", "2024-01-01"),
+      mk("u-old", "unpaid", "2024-01-02"),
+      mk("p-new", "paid", "2024-03-01"),
+      mk("u-new", "unpaid", "2024-03-02"),
+    ];
+    expect(ids(debtsUnpaidFirst(input))).toEqual(["u-new", "u-old", "p-new", "p-old"]);
+  });
+
+  it("puts the later input position first when dates are equal", () => {
+    const input = [
+      mk("a", "unpaid", "2024-05-05"),
+      mk("b", "unpaid", "2024-05-05"),
+      mk("c", "unpaid", "2024-05-05"),
+    ];
+    expect(ids(debtsUnpaidFirst(input))).toEqual(["c", "b", "a"]);
+  });
+
+  it("sorts an unparseable date last within its group", () => {
+    const input = [
+      mk("bad-u", "unpaid", "not a date"),
+      mk("good-u", "unpaid", "2020-01-01"),
+      mk("bad-p", "paid", ""),
+      mk("good-p", "paid", "2019-01-01"),
+    ];
+    expect(ids(debtsUnpaidFirst(input))).toEqual(["good-u", "bad-u", "good-p", "bad-p"]);
+  });
+
+  it("keeps later-first order for two unparseable dates", () => {
+    const input = [mk("x", "unpaid", "nope"), mk("y", "unpaid", "also nope")];
+    expect(ids(debtsUnpaidFirst(input))).toEqual(["y", "x"]);
+  });
+
+  it("does not change the input array order", () => {
+    const input = deepFreeze([
+      mk("a", "paid", "2024-01-01"),
+      mk("b", "unpaid", "2024-02-01"),
+      mk("c", "unpaid", "bad"),
+    ]);
+    const before = ids(input);
+    const out = debtsUnpaidFirst(input);
+    expect(ids(input)).toEqual(before);
+    expect(out).not.toBe(input);
+    expect(out[0]).toBe(input[1]);
+  });
+});
+
+describe("debtsByCustomer", () => {
+  const mk = (
+    id: string,
+    customer: string,
+    amount: number,
+    status: Debt["status"] = "unpaid",
+  ): Debt => ({ id, customer, amount, date: "2024-01-01", status });
+
+  it("returns ok([]) for an empty list", () => {
+    expect(debtsByCustomer([])).toEqual({ ok: true, value: [] });
+  });
+
+  it("returns ok([]) when every debt is paid", () => {
+    const r = debtsByCustomer([mk("1", "Ada", 100, "paid"), mk("2", "Bo", 50, "paid")]);
+    expect(r).toEqual({ ok: true, value: [] });
+  });
+
+  it("treats 'Ada', ' ada ' and 'ADA' as one customer", () => {
+    const r = debtsByCustomer([mk("1", "Ada", 100), mk("2", " ada ", 200), mk("3", "ADA", 300)]);
+    expect(r).toEqual({ ok: true, value: [{ name: "Ada", total: 600 }] });
+  });
+
+  it("uses the trimmed name of the first unpaid debt", () => {
+    const r = debtsByCustomer([mk("1", "  ADA ", 100), mk("2", "ada", 100)]);
+    expect(r).toEqual({ ok: true, value: [{ name: "ADA", total: 200 }] });
+  });
+
+  it("takes the name from the first unpaid debt, not an earlier paid one", () => {
+    const r = debtsByCustomer([mk("1", "ADA", 999, "paid"), mk("2", "Ada", 100)]);
+    expect(r).toEqual({ ok: true, value: [{ name: "Ada", total: 100 }] });
+  });
+
+  it("does not add a paid debt to the customer's total", () => {
+    const r = debtsByCustomer([mk("1", "Ada", 100), mk("2", "ada", 500, "paid")]);
+    expect(r).toEqual({ ok: true, value: [{ name: "Ada", total: 100 }] });
+  });
+
+  it("sorts the largest total first", () => {
+    const r = debtsByCustomer([mk("1", "Bo", 50), mk("2", "Ada", 300)]);
+    expect(r).toEqual({
+      ok: true,
+      value: [
+        { name: "Ada", total: 300 },
+        { name: "Bo", total: 50 },
+      ],
+    });
+  });
+
+  it("puts the customer with the earlier first unpaid debt first on a tie", () => {
+    const r = debtsByCustomer([mk("1", "Bo", 100), mk("2", "Ada", 100)]);
+    expect(r).toEqual({
+      ok: true,
+      value: [
+        { name: "Bo", total: 100 },
+        { name: "Ada", total: 100 },
+      ],
+    });
+  });
+
+  it("returns AMOUNT_TOO_BIG, not a partial list, when a later addition overflows", () => {
+    const r = debtsByCustomer([
+      mk("1", "Bo", 10),
+      mk("2", "Ada", Number.MAX_SAFE_INTEGER),
+      mk("3", "ada", 1),
+    ]);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.code).toBe("AMOUNT_TOO_BIG");
+  });
+
+  it("does not change its input", () => {
+    const input = deepFreeze([mk("1", "Ada", 100), mk("2", "ada", 5)]);
+    const before = JSON.stringify(input);
+    debtsByCustomer(input);
+    expect(JSON.stringify(input)).toBe(before);
   });
 });
