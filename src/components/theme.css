@@ -11,83 +11,156 @@
 }
 
 :root {
+  /* Page and surface */
   --color-bg: #ffffff;
+  --color-surface: #ffffff;
   --color-fg: #000000;
   --color-muted-fg: #4d4d4d;
   --color-border: #000000;
+
+  /* Title bar — classic Mac: white bar, black text */
+  --color-title-bg: #ffffff;
+  --color-title-fg: #000000;
+
+  /* Accent and interactions */
   --color-accent: #000000;
-  --color-title-bg: #000000;
-  --color-title-fg: #ffffff;
-  --color-danger-bg: #000000;
-  --color-danger-fg: #ffffff;
-  --color-warning-bg: #ffe08a;
-  --color-warning-fg: #000000;
-  --color-focus: #0040d0;
-  --color-surface: #ffffff;
   --color-accent-fg: #ffffff;
-  --color-ghost: #000000;
   --color-hover-bg: #000000;
   --color-hover-fg: #ffffff;
   --color-active-bg: #4d4d4d;
   --color-active-fg: #ffffff;
   --color-disabled-bg: #e6e6e6;
   --color-disabled-fg: #595959;
+
+  /* Semantic colours */
+  --color-danger-bg: #000000;
+  --color-danger-fg: #ffffff;
+  --color-warning-bg: #ffe08a;
+  --color-warning-fg: #000000;
+  --color-focus: #0040d0;
+  --color-ghost: #000000;
   --color-error-fg: #b00020;
   --color-notice-bg: #e8f5e9;
   --color-notice-fg: #000000;
+
+  /* Tabs */
   --color-tab-selected-bg: #000000;
   --color-tab-selected-fg: #ffffff;
   --color-tab-bg: #f0f0f0;
   --color-tab-fg: #000000;
 
+  /* Title-bar stripe overlay — rgba stays in theme.css (exempt from colour scan) */
+  --title-stripe-bg: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+
+  /* Desktop shell (> 900 px) */
+  --desktop-bg: #808080;
+  --desktop-bg-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.35) 0px,
+    rgba(255, 255, 255, 0.35) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  --window-shadow: 4px 4px 0 var(--color-border);
+
+  /* Typography */
   --font-pixel: "Press Start 2P", monospace;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-title: 0.75rem;
+  --font-size-body: 1rem;
+  --line-height: 1.5;
 
-  --border-width: 2px;
+  /* Spacing scale: 8 / 16 / 24 / 32 / 48 */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 16px;
   --space-4: 24px;
-  --tap-min: 44px;
   --space-5: 32px;
-  --font-size-title: 0.75rem;
-  --font-size-body: 1rem;
-  --line-height: 1.5;
+  --space-6: 48px;
+
+  /* Layout */
+  --border-width: 2px;
   --radius: 4px;
+  --tap-min: 44px;
   --max-content-width: 40rem;
   --measure: 70ch;
 }
 
 [data-theme="midnight"] {
   color-scheme: dark;
+
+  /* Page and surface */
   --color-bg: #14122b;
   --color-surface: #1d1a3d;
   --color-fg: #f4f1ff;
   --color-muted-fg: #b9b4dd;
   --color-border: #a79fe0;
+
+  /* Title bar — midnight: dark bar, light text (stripes via --title-stripe-bg) */
+  --color-title-bg: #14122b;
+  --color-title-fg: #f4f1ff;
+
+  /* Accent and interactions — gold is for primary action and active tab ONLY */
   --color-accent: #ffd166;
   --color-accent-fg: #14122b;
-  --color-title-bg: #f4f1ff;
-  --color-title-fg: #14122b;
+  --color-hover-bg: #2d2b55;
+  --color-hover-fg: #f4f1ff;
+  --color-active-bg: #3f3c72;
+  --color-active-fg: #f4f1ff;
+  --color-disabled-bg: #2a2650;
+  --color-disabled-fg: #a8a2d6;
+
+  /* Semantic colours */
   --color-danger-bg: #ff7b8a;
   --color-danger-fg: #14122b;
   --color-warning-bg: #3d3200;
   --color-warning-fg: #ffd166;
   --color-focus: #8fb8ff;
   --color-ghost: #f4f1ff;
-  --color-hover-bg: #ffd166;
-  --color-hover-fg: #14122b;
-  --color-active-bg: #d9a93f;
-  --color-active-fg: #14122b;
-  --color-disabled-bg: #2a2650;
-  --color-disabled-fg: #a8a2d6;
   --color-error-fg: #ff9aa8;
   --color-notice-bg: #2f2a5e;
   --color-notice-fg: #f4f1ff;
+
+  /* Tabs — gold for selected only */
   --color-tab-selected-bg: #ffd166;
   --color-tab-selected-fg: #14122b;
   --color-tab-bg: #1d1a3d;
   --color-tab-fg: #f4f1ff;
+
+  /* Title-bar stripe for dark theme */
+  --title-stripe-bg: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.1) 1px,
+    rgba(255, 255, 255, 0.1) 2px
+  );
+
+  /* Desktop shell (> 900 px) */
+  --desktop-bg: #0a0820;
+  --desktop-bg-image: radial-gradient(
+      ellipse at 20% 25%,
+      rgba(90, 60, 200, 0.18) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 78% 68%,
+      rgba(50, 20, 150, 0.12) 0%,
+      transparent 50%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
 }
 
 @media (min-width: 768px) {

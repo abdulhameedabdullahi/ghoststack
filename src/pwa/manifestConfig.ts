@@ -11,7 +11,7 @@ export const MANIFEST = {
   start_url: BASE_PATH,
   scope: BASE_PATH,
   display: "standalone" as const,
-  theme_color: "#000000", // equals --color-title-bg in the light theme
+  theme_color: "#ffffff", // equals --color-title-bg in the light theme
   background_color: "#ffffff", // equals --color-bg in the light theme
   icons: [
     { src: `${BASE_PATH}icons/icon-192.png`, sizes: "192x192", type: "image/png", purpose: "any" },
