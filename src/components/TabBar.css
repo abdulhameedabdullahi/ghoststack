@@ -5,10 +5,18 @@
   max-width: 100%;
 }
 
+.tab-bar__icon {
+  display: block;
+  flex-shrink: 0;
+  margin-bottom: var(--space-1);
+}
+
 .tab-bar__tab {
   /* Labels wrap onto more lines instead of being cut off, so nothing is
      hidden at 200% text size on a 360px screen. */
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -54,4 +62,37 @@
 .tab-bar {
   min-width: 0;
   overflow-x: hidden;
+}
+
+/* Phone: pin to bottom of viewport so it's always reachable with one thumb. */
+@media (max-width: 768px) {
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    flex-wrap: nowrap;
+    gap: 0;
+    background: var(--color-tab-bg);
+    border-top: var(--border-width) solid var(--color-border);
+    border-radius: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .tab-bar__tab {
+    border: none;
+    border-radius: 0;
+    border-right: var(--border-width) solid var(--color-border);
+    font-size: 0.65rem;
+  }
+
+  .tab-bar__tab:last-child {
+    border-right: none;
+  }
+
+  /* Enough bottom padding so content is not hidden under the tab bar. */
+  main {
+    padding-bottom: calc(var(--tap-min) + var(--space-5));
+  }
 }

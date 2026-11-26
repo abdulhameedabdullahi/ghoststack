@@ -22,11 +22,11 @@ export function ModeSwitch({ mode, onChange }: ModeSwitchProps) {
             key={opt.id}
             type="button"
             aria-pressed={active}
+            aria-current={active ? "true" : undefined}
             className={`mode-switch__button${active ? " mode-switch__button--active" : ""}`}
             onClick={() => onChange(opt.id)}
           >
             <span>{opt.label}</span>
-            {active && <span className="mode-switch__current"> (current)</span>}
           </button>
         );
       })}

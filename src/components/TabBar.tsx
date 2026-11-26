@@ -3,9 +3,68 @@ import type { KeyboardEvent } from "react";
 import "./TabBar.css";
 
 export interface TabBarProps {
-  tabs: { id: string; label: string }[];
+  tabs: { id: string; label: string; type?: string }[];
   selectedId: string;
   onSelect: (id: string) => void;
+}
+
+// 6×5 pixel-art icons per card type. "#" = filled cell.
+const PIXEL_ICONS: Record<string, string[]> = {
+  stock: [
+    "######",
+    "#....#",
+    "#....#",
+    "#....#",
+    "######",
+  ],
+  "sales-log": [
+    "#####.",
+    "#.....",
+    "####..",
+    "#.....",
+    "#####.",
+  ],
+  debts: [
+    ".####.",
+    "#....#",
+    "######",
+    "#....#",
+    ".####.",
+  ],
+  "daily-summary": [
+    "....#.",
+    "...##.",
+    "..###.",
+    ".####.",
+    "######",
+  ],
+};
+
+function PixelTabIcon({ type }: { type: string }) {
+  const rows = PIXEL_ICONS[type];
+  if (!rows) return null;
+  const cells: { x: number; y: number }[] = [];
+  rows.forEach((row, y) => {
+    for (let x = 0; x < row.length; x++) {
+      if (row[x] === "#") cells.push({ x, y });
+    }
+  });
+  return (
+    <svg
+      viewBox={`0 0 6 5`}
+      width={12}
+      height={10}
+      shapeRendering="crispEdges"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      className="tab-bar__icon"
+    >
+      {cells.map(({ x, y }) => (
+        <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} />
+      ))}
+    </svg>
+  );
 }
 
 export function TabBar({ tabs, selectedId, onSelect }: TabBarProps) {
@@ -55,11 +114,7 @@ export function TabBar({ tabs, selectedId, onSelect }: TabBarProps) {
             onClick={() => onSelect(tab.id)}
             onKeyDown={(e) => handleKeyDown(e, i)}
           >
-            {selected && (
-              <span className="tab-bar__marker" aria-hidden="true">
-                ▸
-              </span>
-            )}
+            {tab.type && <PixelTabIcon type={tab.type} />}
             {tab.label}
           </button>
         );

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppHeader } from "./components/AppHeader";
 import { Button } from "./components/Button";
+import "./components/AppBar.css";
 import { StockCardView } from "./components/cards/StockCardView";
 import { SalesLogCardView } from "./components/cards/SalesLogCardView";
 import { DailySummaryCardView } from "./components/cards/DailySummaryCardView";
@@ -101,7 +102,7 @@ export default function App() {
 
   const visible = stack ? visibleCards(stack) : [];
   const selectedCard = visible.find((c) => c.id === selectedCardId) ?? visible[0];
-  const tabs = visible.map((c) => ({ id: c.id, label: c.title }));
+  const tabs = visible.map((c) => ({ id: c.id, label: c.title, type: c.type }));
 
   const selectTab = (id: string) => {
     const chosen = stack?.cards.find((c) => c.id === id);
@@ -441,10 +442,23 @@ export default function App() {
 
   return (
     <main>
-      <AppHeader />
-      <Button onClick={toggleTheme}>
-        {midnight ? "Midnight mode: on" : "Midnight mode: off"}
-      </Button>
+      <div className="app-bar">
+        <AppHeader />
+        <div className="app-bar__controls">
+          {loadState.kind === "ready" && stack && !starterChooserOpen && (
+            <ModeSwitch mode={mode} onChange={setMode} />
+          )}
+          <button
+            className="moon-button"
+            type="button"
+            aria-label="Toggle midnight mode"
+            aria-pressed={midnight}
+            onClick={toggleTheme}
+          >
+            <span aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </div>
       <NoticeArea
         notice={notice}
         onCloseOffline={closeOffline}
@@ -483,7 +497,6 @@ export default function App() {
         stockCard &&
         selectedCard && (
           <>
-            <ModeSwitch mode={mode} onChange={setMode} />
             {mode === "builder" ? (
               <BuilderPanel
                 stack={stack}

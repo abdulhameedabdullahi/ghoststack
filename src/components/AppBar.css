@@ -1,0 +1,86 @@
+/* AppBar: the visual wrapper that unifies AppHeader + inline controls.
+   The <header> element inside keeps its own structure and passes
+   the "no buttons inside" test when rendered in isolation. */
+
+.app-bar {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  margin-bottom: var(--space-3);
+  background-color: var(--color-title-bg);
+  background-image: var(--title-stripe-bg);
+  color: var(--color-title-fg);
+  border: var(--border-width) solid var(--color-border);
+}
+
+/* When AppHeader lives inside the app-bar, its own chrome is removed
+   so the app-bar provides the single visual layer. */
+.app-bar .app-header {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+  border: none;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Controls slot: mode switch + moon button */
+.app-bar__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  flex-shrink: 0;
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+/* Compact overrides for the mode switch when inside the header */
+.app-bar .mode-switch {
+  gap: var(--space-1);
+}
+
+.app-bar .mode-switch__button {
+  flex: none;
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.75rem;
+}
+
+/* Moon icon button — small, 44 × 44 touch target */
+.moon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  padding: var(--space-1);
+  border: var(--border-width) solid currentColor;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-title-fg);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.moon-button:hover {
+  background: var(--color-hover-bg);
+  color: var(--color-hover-fg);
+  box-shadow: inset 0 0 0 var(--border-width) currentColor;
+}
+
+.moon-button:active {
+  background: var(--color-active-bg);
+  color: var(--color-active-fg);
+  transform: translate(1px, 1px);
+}
+
+/* Pressed = midnight mode is ON; invert the title bar colours */
+.moon-button[aria-pressed="true"] {
+  background-color: var(--color-title-fg);
+  color: var(--color-title-bg);
+}
+
+.moon-button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
