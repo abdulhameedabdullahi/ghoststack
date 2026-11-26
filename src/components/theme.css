@@ -216,6 +216,33 @@ li {
   outline-offset: 2px;
 }
 
+/* Desktop shell: > 900 px — the app floats as a Mac-style window on the
+   dithered desktop. Under 900 px the app is full-screen (no desktop bg). */
+@media (min-width: 900px) {
+  body {
+    min-height: 100vh;
+    background-color: var(--desktop-bg);
+    background-image: var(--desktop-bg-image);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--space-5) var(--space-3);
+  }
+
+  #root {
+    flex: none;
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: var(--space-3);
+    background-color: var(--color-bg);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--window-shadow);
+    /* Enough vertical room to show the full app without inner scroll. */
+    min-height: 90vh;
+  }
+}
+
 /* Card title bar. Class name `card__header` is used by Card.css (task 5.1). */
 /* This is the only rule that reads --font-pixel. */
 .card__header {
