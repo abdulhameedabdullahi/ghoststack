@@ -281,7 +281,7 @@ export function StockCardView({
       {!formOpen && !deletingItem &&
         (card.items.length === 0 ? (
           <div className="stock-card__empty">
-            <Ghost size={48} />
+            <Ghost size={48} animate />
             <p>You have no items yet.</p>
             <p className="empty-tagline">Raise your first one!</p>
             {addButton}

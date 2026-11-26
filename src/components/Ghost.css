@@ -3,3 +3,14 @@
   flex: none;
   display: inline-block;
 }
+
+@keyframes ghost-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ghost--blink {
+    animation: ghost-blink 2.4s ease-in-out infinite;
+  }
+}

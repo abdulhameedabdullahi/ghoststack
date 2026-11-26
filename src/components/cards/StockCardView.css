@@ -152,10 +152,21 @@
 }
 
 /* Wide screens: data lists may use two columns. Narrow screens stay in one column. */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .stock-card__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-3);
+  }
+}
+
+/* Phone: pin "Add an item" above the fixed tab bar as a persistent action. */
+@media (max-width: 768px) {
+  .stock-card__add {
+    position: fixed;
+    bottom: calc(var(--tap-min) + var(--space-3));
+    right: var(--space-3);
+    left: auto;
+    z-index: 90;
   }
 }

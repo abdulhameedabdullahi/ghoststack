@@ -8,18 +8,20 @@ export interface GhostProps {
   size?: GhostSize;
   /** When given, the ghost is an image with this accessible name. */
   title?: string;
+  /** Opt in to the slow blink animation (disabled under prefers-reduced-motion). */
+  animate?: boolean;
 }
 
 const CELLS = ghostCells();
 
-export function Ghost({ size = 48, title }: GhostProps) {
+export function Ghost({ size = 48, title, animate }: GhostProps) {
   const a11y =
     title === undefined
       ? ({ "aria-hidden": "true" } as const)
       : ({ role: "img" } as const);
   return (
     <svg
-      className="ghost"
+      className={`ghost${animate ? " ghost--blink" : ""}`}
       viewBox={`0 0 ${GHOST_SIZE_CELLS} ${GHOST_SIZE_CELLS}`}
       width={size}
       height={size}

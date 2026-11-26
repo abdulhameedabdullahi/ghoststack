@@ -254,7 +254,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
 
         {card.debts.length === 0 ? (
           <div className="debts-card__empty">
-            <Ghost size={48} />
+            <Ghost size={48} animate />
             <p>You have no debts recorded yet.</p>
             <p className="empty-tagline">Nobody owes you anything right now.</p>
             {recordButton}

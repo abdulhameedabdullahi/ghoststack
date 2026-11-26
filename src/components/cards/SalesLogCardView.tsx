@@ -30,7 +30,7 @@ export function SalesLogCardView({ stack, card }: SalesLogCardViewProps) {
     <Card title={card.title}>
       {sales.length === 0 ? (
         <div className="sales-log__empty-state">
-          <Ghost size={48} />
+          <Ghost size={48} animate />
           <p className="sales-log__empty">No sales yet.</p>
           <p className="empty-tagline">Your first sale will show up here.</p>
         </div>
