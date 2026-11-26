@@ -28,3 +28,12 @@
 .sales-log__detail {
   color: var(--color-muted-fg);
 }
+
+/* Wide screens: data lists may use two columns. Narrow screens stay in one column. */
+@media (min-width: 768px) {
+  .sales-log__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+}

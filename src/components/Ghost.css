@@ -1,0 +1,5 @@
+.ghost {
+  color: var(--color-ghost);
+  flex: none;
+  display: inline-block;
+}

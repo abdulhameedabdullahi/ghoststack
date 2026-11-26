@@ -45,9 +45,12 @@ export function DebtForm({
     >
       <h3 className="item-form__title">Record a debt</h3>
       {formError && (
-        <p className="item-form__error" role="alert">
-          {formError}
-        </p>
+        <div className="item-form__error-row">
+          <span aria-hidden="true">Problem:</span>
+          <p className="item-form__error" role="alert">
+            {formError}
+          </p>
+        </div>
       )}
       <Field
         id={`${idPrefix}-customer`}
@@ -65,7 +68,7 @@ export function DebtForm({
         error={amountError}
       />
       <div className="item-form__actions">
-        <Button type="submit" onClick={() => {}}>
+        <Button type="submit" onClick={() => { }}>
           Save
         </Button>
         <Button onClick={onCancel}>Cancel</Button>

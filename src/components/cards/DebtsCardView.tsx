@@ -12,6 +12,7 @@ import { debtFieldErrorFor } from "../../domain-ui/debtErrors";
 import { formatKobo, parseKobo } from "../../domain-ui/money";
 import { Button } from "../Button";
 import { Card } from "../Card";
+import { Ghost } from "../Ghost";
 import { DebtForm } from "./DebtForm";
 import "./DebtsCardView.css";
 
@@ -251,7 +252,9 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
 
         {card.debts.length === 0 ? (
           <div className="debts-card__empty">
+            <Ghost size={48} />
             <p>You have no debts recorded yet.</p>
+            <p className="empty-tagline">Nobody owes you anything right now.</p>
             {recordButton}
           </div>
         ) : (

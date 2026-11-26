@@ -39,12 +39,23 @@
   overflow-wrap: anywhere;
 }
 
+.field__error-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1);
+  border-left: var(--border-width) solid var(--color-error-fg);
+  padding-left: var(--space-2);
+}
+
+.field__error-icon,
 .field__error {
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--color-danger-fg);
-  background: var(--color-danger-bg);
-  padding: var(--space-1) var(--space-2);
+  color: var(--color-error-fg);
+}
+
+.field__error {
   overflow-wrap: anywhere;
 }

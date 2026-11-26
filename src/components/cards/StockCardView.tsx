@@ -8,6 +8,8 @@ import { parseItemForm } from "../../domain-ui/itemForm";
 import type { ItemFormErrors, ItemFormValues } from "../../domain-ui/itemForm";
 import { Button } from "../Button";
 import { Card } from "../Card";
+import { Ghost } from "../Ghost";
+import { useReducedMotion } from "../useReducedMotion";
 import { ItemForm, EMPTY_ITEM_FORM_VALUES } from "./ItemForm";
 import { ItemRow } from "./ItemRow";
 import "./StockCardView.css";
@@ -53,6 +55,10 @@ export function StockCardView({
   const [formMode, setFormMode] = useState<FormMode>({ kind: "closed" });
   const [saleState, setSaleState] = useState<SaleState>({ quantityText: "1" });
   const [saleNotice, setSaleNotice] = useState("");
+  const [saleCount, setSaleCount] = useState(0);
+  const reducedMotion = useReducedMotion();
+  const popClass =
+    saleCount % 2 === 0 ? "sale-notice--pop-b" : "sale-notice--pop";
   const noticeTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
@@ -65,6 +71,7 @@ export function StockCardView({
 
   const showSaleNotice = () => {
     if (noticeTimeout.current !== undefined) clearTimeout(noticeTimeout.current);
+    setSaleCount((n) => n + 1);
     setSaleNotice("Sale recorded");
     noticeTimeout.current = setTimeout(() => {
       noticeTimeout.current = undefined;
@@ -199,7 +206,14 @@ export function StockCardView({
 
   return (
     <Card title={card.title}>
-      <p aria-live="polite">{saleNotice}</p>
+      <p
+        aria-live="polite"
+        className={
+          saleNotice && !reducedMotion ? `sale-notice ${popClass}` : undefined
+        }
+      >
+        {saleNotice}
+      </p>
       {sellingItem && (
         <SaleForm
           key={sellingItem.id}
@@ -249,9 +263,12 @@ export function StockCardView({
             Delete "{deletingItem.name}"? This cannot be undone.
           </p>
           {deleteError && (
-            <p className="item-form__error" role="alert">
-              {deleteError}
-            </p>
+            <div className="item-form__error-row">
+              <span aria-hidden="true">Problem:</span>
+              <p className="item-form__error" role="alert">
+                {deleteError}
+              </p>
+            </div>
           )}
           <div className="item-form__actions">
             <Button variant="danger" onClick={() => handleDelete(deletingItem.id)}>
@@ -264,7 +281,9 @@ export function StockCardView({
       {!formOpen && !deletingItem &&
         (card.items.length === 0 ? (
           <div className="stock-card__empty">
+            <Ghost size={48} />
             <p>You have no items yet.</p>
+            <p className="empty-tagline">Raise your first one!</p>
             {addButton}
           </div>
         ) : (

@@ -1,13 +1,21 @@
 .card {
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-fg);
   border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
   margin-bottom: var(--space-3);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height);
 }
 
 .card__header {
   background: var(--color-title-bg);
   color: var(--color-title-fg);
+  border-bottom: var(--border-width) solid var(--color-border);
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-title);
+  line-height: var(--line-height);
   padding: var(--space-2) var(--space-3);
   margin: 0;
 }
@@ -19,4 +27,14 @@
 .card__footer {
   border-top: var(--border-width) solid var(--color-border);
   padding: var(--space-2) var(--space-3);
+}
+.empty-tagline {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sales-log__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
 }

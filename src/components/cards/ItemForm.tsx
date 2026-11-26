@@ -54,9 +54,12 @@ export function ItemForm({
     >
       <h3 className="item-form__title">{title}</h3>
       {formError && (
-        <p className="item-form__error" role="alert">
-          {formError}
-        </p>
+        <div className="item-form__error-row">
+          <span aria-hidden="true">Problem:</span>
+          <p className="item-form__error" role="alert">
+            {formError}
+          </p>
+        </div>
       )}
       <Field
         id={`${idPrefix}-name`}
@@ -101,7 +104,7 @@ export function ItemForm({
         error={fieldErrors.lowStockLevel}
       />
       <div className="item-form__actions">
-        <Button type="submit" onClick={() => {}}>
+        <Button type="submit" onClick={() => { }}>
           {submitLabel}
         </Button>
         <Button onClick={onCancel}>Cancel</Button>

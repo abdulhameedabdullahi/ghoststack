@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../Button";
 import { Card } from "../Card";
+import { Ghost } from "../Ghost";
 import "./StarterChooser.css";
 
 export type StarterKind = "provisions" | "farm-stall";
@@ -67,8 +68,12 @@ export function StarterChooser({ onPick, onCancel }: StarterChooserProps) {
 
   return (
     <div className="starter-chooser">
-      <h2 className="starter-chooser__heading">Choose a starter</h2>
+      <div className="starter-chooser__head">
+        <Ghost size={48} />
+        <h2 className="starter-chooser__heading">Choose a starter</h2>
+      </div>
       <p className="starter-chooser__intro">Pick the one that is closest to your business.</p>
+      <p className="starter-chooser__extra">Pick a starter to raise your shop.</p>
 
       <label className="starter-chooser__samples">
         <input

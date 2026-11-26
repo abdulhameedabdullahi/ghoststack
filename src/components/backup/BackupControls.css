@@ -33,10 +33,23 @@
   padding: 0 var(--space-3);
   margin-right: var(--space-2);
   border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-body);
   cursor: pointer;
+}
+.backup-controls__input::file-selector-button:hover {
+  background: var(--color-hover-bg);
+  color: var(--color-hover-fg);
+  text-decoration: underline;
+  box-shadow: inset 0 0 0 var(--border-width) currentColor;
+}
+.backup-controls__input::file-selector-button:active {
+  background: var(--color-active-bg);
+  color: var(--color-active-fg);
+  text-decoration: underline;
+  box-shadow: inset 0 0 0 calc(var(--border-width) * 2) currentColor;
 }
 
 .backup-controls__input:focus-visible,
@@ -61,9 +74,12 @@
   min-height: var(--tap-min);
   padding: var(--space-2) var(--space-3);
   border: var(--border-width) solid var(--color-border);
-  background: var(--color-bg);
-  color: var(--color-fg);
+  border-radius: var(--radius);
+  background: var(--color-notice-bg);
+  color: var(--color-notice-fg);
   font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height);
 }
 
 .backup-message--success {

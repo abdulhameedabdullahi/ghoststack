@@ -2,6 +2,7 @@ import type { SalesLogCard, Stack } from "../../domain/types";
 import { saleTotal, salesNewestFirst } from "../../domain/sales";
 import { formatKobo } from "../../domain-ui/money";
 import { Card } from "../Card";
+import { Ghost } from "../Ghost";
 import "./SalesLogCardView.css";
 
 export interface SalesLogCardViewProps {
@@ -23,7 +24,11 @@ export function SalesLogCardView({ stack, card }: SalesLogCardViewProps) {
   return (
     <Card title={card.title}>
       {sales.length === 0 ? (
-        <p className="sales-log__empty">No sales yet.</p>
+        <div className="sales-log__empty-state">
+          <Ghost size={48} />
+          <p className="sales-log__empty">No sales yet.</p>
+          <p className="empty-tagline">Your first sale will show up here.</p>
+        </div>
       ) : (
         <ul className="sales-log__list">
           {sales.map((sale) => (

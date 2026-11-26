@@ -17,12 +17,20 @@
   margin: 0;
 }
 
+.item-form__error-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border-left: var(--border-width) solid var(--color-error-fg);
+  font-weight: 700;
+  color: var(--color-error-fg);
+}
+
 .item-form__error {
   margin: 0;
-  padding: var(--space-2);
-  font-weight: 700;
-  color: var(--color-danger-fg);
-  background: var(--color-danger-bg);
+  color: var(--color-error-fg);
   overflow-wrap: anywhere;
 }
 
@@ -94,4 +102,52 @@
 .stock-card__confirm-text {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+@keyframes sale-notice-pop {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sale-notice-pop-b {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sale-notice--pop {
+  animation: sale-notice-pop 500ms ease-out 1;
+}
+
+.sale-notice--pop-b {
+  animation: sale-notice-pop-b 500ms ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sale-notice,
+  .sale-notice--pop,
+  .sale-notice--pop-b {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Wide screens: data lists may use two columns. Narrow screens stay in one column. */
+@media (min-width: 768px) {
+  .stock-card__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
 }

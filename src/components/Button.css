@@ -24,7 +24,29 @@
   color: var(--color-danger-fg);
 }
 
+/* Hover: inverted colours, underlined label, thicker inner border. */
+.button:hover:not(:disabled) {
+  background: var(--color-hover-bg);
+  color: var(--color-hover-fg);
+  text-decoration: underline;
+  box-shadow: inset 0 0 0 var(--border-width) currentColor;
+}
+
+/* Active: pressed look, different from hover (own colours, shifted, deeper inset). */
+.button:active:not(:disabled) {
+  background: var(--color-active-bg);
+  color: var(--color-active-fg);
+  text-decoration: underline;
+  transform: translate(1px, 1px);
+  box-shadow: inset 0 0 0 calc(var(--border-width) * 2) currentColor;
+}
+
+/* Disabled: flat, readable colours, no underline or shadow. Focus outline comes from theme.css. */
 .button:disabled {
-  opacity: 0.5;
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
   cursor: not-allowed;
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
 }

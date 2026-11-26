@@ -6,13 +6,12 @@
 }
 
 .tab-bar__tab {
-  /* Block (not flex) so text-overflow applies to the label text node.
-     The full label stays in the DOM for screen readers. */
+  /* Labels wrap onto more lines instead of being cut off, so nothing is
+     hidden at 200% text size on a 360px screen. */
   display: block;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
   flex: 1 1 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -20,8 +19,9 @@
   min-width: var(--tap-min);
   padding: var(--space-2) var(--space-3);
   border: var(--border-width) solid var(--color-border);
-  background: var(--color-bg);
-  color: var(--color-fg);
+  border-radius: var(--radius);
+  background: var(--color-tab-bg);
+  color: var(--color-tab-fg);
   font-family: var(--font-body);
   font-size: inherit;
   cursor: pointer;
@@ -31,7 +31,27 @@
   margin-right: var(--space-2);
 }
 
+.tab-bar__tab:hover:not(.tab-bar__tab--selected) {
+  background: var(--color-hover-bg);
+  color: var(--color-hover-fg);
+  text-decoration: underline;
+  box-shadow: inset 0 0 0 var(--border-width) currentColor;
+}
+.tab-bar__tab:active:not(.tab-bar__tab--selected) {
+  background: var(--color-active-bg);
+  color: var(--color-active-fg);
+  text-decoration: underline;
+  box-shadow: inset 0 0 0 calc(var(--border-width) * 2) currentColor;
+}
 .tab-bar__tab--selected {
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--color-tab-selected-bg);
+  color: var(--color-tab-selected-fg);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Tabs wrap inside the bar; the bar never grows wider than the page. */
+.tab-bar {
+  min-width: 0;
+  overflow-x: hidden;
 }

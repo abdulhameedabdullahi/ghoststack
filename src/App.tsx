@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AppHeader } from "./components/AppHeader";
 import { Button } from "./components/Button";
 import { StockCardView } from "./components/cards/StockCardView";
 import { SalesLogCardView } from "./components/cards/SalesLogCardView";
@@ -440,6 +441,7 @@ export default function App() {
 
   return (
     <main>
+      <AppHeader />
       <Button onClick={toggleTheme}>
         {midnight ? "Midnight mode: on" : "Midnight mode: off"}
       </Button>

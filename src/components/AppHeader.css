@@ -1,0 +1,27 @@
+.app-header {
+  min-width: 0;
+  margin-bottom: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-title-bg);
+  color: var(--color-title-fg);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.app-header__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.app-header .ghost {
+  color: var(--color-title-fg);
+}
+
+.app-header__name {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-pixel);
+  color: var(--color-title-fg);
+  overflow-wrap: anywhere;
+}

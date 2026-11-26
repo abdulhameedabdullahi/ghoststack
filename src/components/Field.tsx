@@ -48,9 +48,14 @@ export function Field({
         </span>
       ) : null}
       {error ? (
-        <span className="field__error" id={errorId} role="alert">
-          {error}
-        </span>
+        <div className="field__error-row">
+          <span className="field__error-icon" aria-hidden="true">
+            Problem:
+          </span>
+          <span className="field__error" id={errorId} role="alert">
+            {error}
+          </span>
+        </div>
       ) : null}
     </div>
   );
