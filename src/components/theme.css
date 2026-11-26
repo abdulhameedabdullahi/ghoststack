@@ -170,6 +170,20 @@
   }
 }
 
+@media (min-width: 900px) {
+  :root {
+    --max-content-width: 56rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --max-content-width: 68rem;
+    --space-5: 48px;
+    --space-6: 64px;
+  }
+}
+
 /* Base layout: sizes include borders, long words wrap, nothing scrolls sideways. */
 *,
 *::before,
@@ -233,12 +247,11 @@ li {
     flex: none;
     width: 100%;
     margin-inline: 0;
-    padding-inline: var(--space-3);
+    padding-inline: var(--space-4);
     background-color: var(--color-bg);
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius);
     box-shadow: var(--window-shadow);
-    /* Enough vertical room to show the full app without inner scroll. */
     min-height: 90vh;
   }
 }

@@ -164,9 +164,16 @@
 @media (max-width: 768px) {
   .stock-card__add {
     position: fixed;
-    bottom: calc(var(--tap-min) + var(--space-3));
+    bottom: calc(var(--tap-min) + var(--space-3) + env(safe-area-inset-bottom, 0px));
     right: var(--space-3);
     left: auto;
     z-index: 90;
+  }
+}
+
+/* Desktop: 3-column grid for stock items. */
+@media (min-width: 900px) {
+  .stock-card__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

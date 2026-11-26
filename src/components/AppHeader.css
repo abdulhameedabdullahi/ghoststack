@@ -23,6 +23,13 @@
   margin: 0;
   min-width: 0;
   font-family: var(--font-pixel);
+  font-size: var(--font-size-title);
   color: var(--color-title-fg);
   overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .app-header__name {
+    font-size: 0.6rem;
+  }
 }

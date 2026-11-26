@@ -84,3 +84,17 @@
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
+
+/* Small phones: stack controls below the title so nothing overflows. */
+@media (max-width: 480px) {
+  .app-bar {
+    flex-wrap: wrap;
+  }
+
+  .app-bar__controls {
+    width: 100%;
+    border-left: none;
+    border-top: var(--border-width) solid var(--color-border);
+    justify-content: flex-end;
+  }
+}

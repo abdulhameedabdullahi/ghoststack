@@ -84,15 +84,42 @@
     border: none;
     border-radius: 0;
     border-right: var(--border-width) solid var(--color-border);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+    padding: var(--space-1) var(--space-2);
   }
 
   .tab-bar__tab:last-child {
     border-right: none;
   }
 
+  .tab-bar__icon {
+    width: 18px;
+    height: 15px;
+    margin-bottom: calc(var(--space-1) / 2);
+  }
+
   /* Enough bottom padding so content is not hidden under the tab bar. */
   main {
-    padding-bottom: calc(var(--tap-min) + var(--space-5));
+    padding-bottom: calc(var(--tap-min) + var(--space-5) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Extra-small phones: compress tab labels further. */
+@media (max-width: 360px) {
+  .tab-bar__tab {
+    font-size: 0.55rem;
+  }
+}
+
+/* Desktop: roomier tabs with more padding. */
+@media (min-width: 900px) {
+  .tab-bar {
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .tab-bar__tab {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.875rem;
   }
 }

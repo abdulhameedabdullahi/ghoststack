@@ -80,11 +80,18 @@
   overflow-wrap: anywhere;
 }
 
-/* Wide screens: data lists may use two columns. Narrow screens stay in one column. */
+/* Tablet: two columns. */
 @media (min-width: 768px) {
   .debts-card__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-3);
+  }
+}
+
+/* Large desktop: three columns. */
+@media (min-width: 1200px) {
+  .debts-card__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
