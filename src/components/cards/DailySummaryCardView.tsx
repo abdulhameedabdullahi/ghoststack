@@ -2,8 +2,12 @@ import type { Stack } from "../../domain/types";
 import { dailyTotal, estimatedProfit, lowStockItems, totalOwed } from "../../domain";
 import type { Result } from "../../domain";
 import type { DayRange } from "../../domain-ui/dayRange";
-import { formatKobo, formatSignedKobo } from "../../domain-ui/money";
+import { formatDisplay, formatSignedDisplay } from "../formatMoney";
 import { Card } from "../Card";
+
+function displayName(name: string): string {
+  return name.startsWith("Sample: ") ? name.slice("Sample: ".length) : name;
+}
 import "./DailySummaryCardView.css";
 
 export interface DailySummaryCardViewProps {
@@ -32,11 +36,11 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
       <dl className="daily-summary">
         <div className="daily-summary__row">
           <dt>Sales today</dt>
-          <dd className="daily-summary__value">{amountText(total, formatKobo)}</dd>
+          <dd className="daily-summary__value">{amountText(total, formatDisplay)}</dd>
         </div>
         <div className="daily-summary__row">
           <dt>Estimated profit</dt>
-          <dd className="daily-summary__value">{amountText(profit, formatSignedKobo)}</dd>
+          <dd className="daily-summary__value">{amountText(profit, formatSignedDisplay)}</dd>
         </div>
         <div className="daily-summary__row">
           <dt>Low on stock</dt>
@@ -46,7 +50,7 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
             ) : (
               <ul className="daily-summary__list">
                 {lowItems.map((item) => (
-                  <li key={item.id}>{item.name}</li>
+                  <li key={item.id}>{displayName(item.name)}</li>
                 ))}
               </ul>
             )}
@@ -54,7 +58,7 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
         </div>
         <div className="daily-summary__row">
           <dt>Total owed to you</dt>
-          <dd className="daily-summary__value">{formatKobo(totalOwed(debts))}</dd>
+          <dd className="daily-summary__value">{formatDisplay(totalOwed(debts))}</dd>
         </div>
       </dl>
     </Card>

@@ -9,7 +9,9 @@ import {
   totalOwed,
 } from "../../domain";
 import { debtFieldErrorFor } from "../../domain-ui/debtErrors";
-import { formatKobo, parseKobo } from "../../domain-ui/money";
+import { parseKobo } from "../../domain-ui/money";
+import { formatDisplay } from "../formatMoney";
+import { friendlyTime } from "../friendlyTime";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { Ghost } from "../Ghost";
@@ -227,7 +229,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
           >
             <p id="debt-pay-title" className="debts-card__confirm-text">
               Mark {confirmingDebt.customer}'s debt of{" "}
-              {formatKobo(confirmingDebt.amount)} as paid?
+              {formatDisplay(confirmingDebt.amount)} as paid?
             </p>
             <Button onClick={() => handleConfirmPay(confirm.debtId)}>
               Yes, mark as paid
@@ -245,7 +247,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
           <span className="debts-card__label">Money owed to you: </span>
           <strong>
             {Number.isSafeInteger(owed)
-              ? formatKobo(owed)
+              ? formatDisplay(owed)
               : ERROR_MESSAGES.AMOUNT_TOO_BIG}
           </strong>
         </p>
@@ -272,7 +274,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
                   <li key={`${index}-${c.name}`} className="debts-card__row">
                     <span className="debts-card__name">{c.name}</span>
                     <span className="debts-card__detail">
-                      {formatKobo(c.total)}
+                      {formatDisplay(c.total)}
                     </span>
                   </li>
                 ))}
@@ -286,10 +288,10 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
                 <li key={debt.id} className="debts-card__row">
                   <span className="debts-card__name">{debt.customer}</span>
                   <span className="debts-card__detail">
-                    {formatKobo(debt.amount)}
+                    {formatDisplay(debt.amount)}
                   </span>
                   <span className="debts-card__detail">
-                    {new Date(debt.date).toLocaleString()}
+                    {friendlyTime(debt.date)}
                   </span>
                   <span className="debts-card__status">
                     {debt.status === "unpaid" ? (

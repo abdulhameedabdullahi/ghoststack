@@ -17,12 +17,30 @@
   gap: var(--space-1);
   padding: var(--space-2);
   border: var(--border-width) solid var(--color-border);
+  box-shadow: 2px 2px 0 var(--color-border);
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
+.sales-log__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
 .sales-log__name {
   font-weight: bold;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.sales-log__total {
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-title);
+  flex-shrink: 0;
+  text-align: right;
 }
 
 .sales-log__detail {

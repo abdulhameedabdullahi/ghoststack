@@ -65,7 +65,7 @@ describe("DebtsCardView", () => {
     renderView([]);
     expect(screen.getByText("You have no debts recorded yet.")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Record a debt" })).toBeTruthy();
-    expect(screen.getByText("₦0.00")).toBeTruthy();
+    expect(screen.getByText("₦0")).toBeTruthy();
   });
 
   it("shows a paid debt as Paid with no Mark as paid button", () => {
@@ -232,7 +232,7 @@ describe("DebtsCardView: Mark as paid", () => {
     renderView(twoDebts());
     fireEvent.click(payFor("d1"));
     expect(screen.getByRole("alertdialog").textContent).toContain(
-      "Mark Ada's debt of ₦50.00 as paid?",
+      "Mark Ada's debt of ₦50 as paid?",
     );
     expect(screen.getByRole("button", { name: "Yes, mark as paid" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Not yet" })).toBeTruthy();
@@ -249,7 +249,7 @@ describe("DebtsCardView: Mark as paid", () => {
 
   it("settles the debt on Yes and lowers the total owed by exactly that amount", () => {
     const { spy } = renderView(twoDebts());
-    expect(screen.getByText("₦75.00", { selector: "strong" })).toBeTruthy();
+    expect(screen.getByText("₦75", { selector: "strong" })).toBeTruthy();
     fireEvent.click(payFor("d2"));
     fireEvent.click(screen.getByRole("button", { name: "Yes, mark as paid" }));
     expect(spy).toHaveBeenCalledTimes(1);
@@ -257,7 +257,7 @@ describe("DebtsCardView: Mark as paid", () => {
     expect(screen.getByText(/Paid/)).toBeTruthy();
     expect(screen.getAllByRole("button", { name: "Mark as paid" })).toHaveLength(1);
     expect(payFor("d2")).toBeNull();
-    expect(screen.getByText("₦50.00", { selector: "strong" })).toBeTruthy();
+    expect(screen.getByText("₦50", { selector: "strong" })).toBeTruthy();
   });
 
   it("leaves the debt unpaid on Not yet and does not call onStackChange", () => {
@@ -268,7 +268,7 @@ describe("DebtsCardView: Mark as paid", () => {
     expect(screen.queryByRole("alertdialog")).toBeNull();
     expect(screen.getAllByRole("button", { name: "Mark as paid" })).toHaveLength(2);
     expect(screen.queryByText(/✓/)).toBeNull();
-    expect(screen.getByText("₦75.00", { selector: "strong" })).toBeTruthy();
+    expect(screen.getByText("₦75", { selector: "strong" })).toBeTruthy();
   });
 
   it("shows the message and calls nothing when the debt is already paid in the Stack", () => {
