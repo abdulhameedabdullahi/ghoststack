@@ -10,6 +10,8 @@ import {
 } from "../../domain";
 import { debtFieldErrorFor } from "../../domain-ui/debtErrors";
 import { parseKobo } from "../../domain-ui/money";
+import { buildDebtReminder } from "../../domain-ui/share";
+import { ShareButton } from "../share/ShareButton";
 import { formatDisplay } from "../formatMoney";
 import { friendlyTime } from "../friendlyTime";
 import { Button } from "../Button";
@@ -319,6 +321,20 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
                       >
                         Mark as paid
                       </Button>
+                      {totalOwed([debt]) >= 1 && (
+                        <ShareButton
+                          label="Send a reminder"
+                          ariaLabel={`Send a reminder to ${debt.customer}`}
+                          makeText={() =>
+                            buildDebtReminder({
+                              personName: debt.customer,
+                              shopName: stack.name,
+                              outstandingKobo: totalOwed([debt]),
+                              language: "en",
+                            })
+                          }
+                        />
+                      )}
                     </div>
                   )}
                 </li>

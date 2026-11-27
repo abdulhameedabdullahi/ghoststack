@@ -436,6 +436,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795801919363
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804671836
       }
     ],
     "8.1 Add `ariaDisabled?: boolean` to `src/components/Button.tsx` and a `.button[aria-disabled=\"true\"]` rule (with hover and active) to `Button.css`": [
@@ -443,6 +448,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611613
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804630862
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804838157
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804994603
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805080740
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805112359
       }
     ],
     "8.2 Create `src/components/share/shareMessages.ts` and `dateLabel.ts`": [
@@ -450,6 +480,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611730
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804633785
       }
     ],
     "8.3 Create `src/components/share/ShareProvider.tsx`": [
@@ -457,6 +492,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611901
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804637245
       }
     ],
     "8.4 Create `src/components/share/ShareButton.tsx`": [
@@ -464,6 +504,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797612044
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804637835
       }
     ],
     "8.5 Create `src/components/share/ShareStatus.tsx` and `ShareStatus.css`": [
@@ -471,6 +516,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797612225
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804638435
       }
     ],
     "9.1 Edit `src/components/cards/DebtsCardView.tsx`": [
@@ -478,6 +528,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797612590
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804639076
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804838590
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804995248
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805116421
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805218560
       }
     ],
     "9.2 Edit `src/components/cards/DailySummaryCardView.tsx`": [
@@ -485,6 +560,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797612787
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804639538
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804839541
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804995663
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805223237
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805317643
       }
     ],
     "9.3 Edit `src/App.tsx`": [
@@ -492,6 +592,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797612926
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804639821
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804840545
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804995898
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805321489
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805475613
       }
     ],
     "10.1 `src/components/cards/DebtsCardView.share.test.tsx`": [
@@ -499,6 +624,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613071
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804640513
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804841521
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804996024
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805479841
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805520306
       }
     ],
     "10.2 `src/components/cards/DailySummaryCardView.share.test.tsx`": [
@@ -506,6 +656,31 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613191
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804640822
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804842340
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795804996170
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805480528
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805521521
       }
     ],
     "10.3 `src/components/share/ShareStatus.test.tsx`": [
@@ -513,6 +688,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613301
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804641156
       }
     ],
     "10.4 `src/components/share/shareCss.test.ts`": [
@@ -520,6 +700,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613458
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804600889
       }
     ],
     "11.1 Add a \"WhatsApp sharing\" section to `docs/ARCHITECTURE.md`": [
@@ -527,6 +712,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613627
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804697336
+      },
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804837280
       }
     ],
     "12.1 `git status` shows no change in `src/domain` or `src/storage`, no change in `package.json`, and no import from `src/components/ghost` in any new file.": [
@@ -534,6 +729,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613784
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805525591
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805562468
       }
     ],
     "13.1 Add a row to the table in `KIRO_NOTES.md`: what this spec built, the Kiro features used, what worked, what did not, and the credits. Read the credits from the Kiro usage panel and write the number in. If it cannot be read, write that it was not shown, as earlier rows do.": [
@@ -541,6 +746,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797613968
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805570402
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805819506
       }
     ],
     "13.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.": [
@@ -548,6 +763,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797614206
+      },
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805825094
       }
     ],
     "13.3 Stop and commit Batch 3.": [
@@ -604,6 +824,41 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795801915308
+      }
+    ],
+    "8. Shared UI pieces": [
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804638712
+      }
+    ],
+    "9. Wire the buttons and the notice": [
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804640104
+      }
+    ],
+    "10. Component tests": [
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804641415
+      }
+    ],
+    "11. Documentation": [
+      {
+        "executionId": "e974bb71-6ad6-4069-a79f-9cc4366aea7f",
+        "chatSessionId": "sess_33155e16-3178-4565-94d6-4a74815bf2b7",
+        "timestamp": 1795804837618
+      }
+    ],
+    "12. Scope check": [
+      {
+        "executionId": "bb761bca-081c-4fbb-87e3-431b85e85d52",
+        "chatSessionId": "sess_0bffbee2-08c3-4c36-a516-b195e7837bda",
+        "timestamp": 1795805563336
       }
     ]
   }

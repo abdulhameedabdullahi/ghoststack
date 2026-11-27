@@ -50,3 +50,15 @@
   box-shadow: none;
   transform: none;
 }
+
+/* aria-disabled: same look as disabled, but the button stays focusable. Placed last so it wins over hover and active. */
+.button[aria-disabled="true"],
+.button[aria-disabled="true"]:hover,
+.button[aria-disabled="true"]:active {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
+  cursor: not-allowed;
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
+}

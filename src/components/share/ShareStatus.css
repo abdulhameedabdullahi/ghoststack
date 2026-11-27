@@ -1,0 +1,37 @@
+.share-status {
+  margin-top: var(--space-3);
+}
+
+.share-status__text {
+  margin: 0;
+}
+
+.share-status__text--visible {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-notice-bg);
+  color: var(--color-notice-fg);
+  border-radius: var(--radius);
+}
+
+.share-status__manual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.share-status__label {
+  color: var(--color-fg);
+}
+
+.share-status__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-2);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+}

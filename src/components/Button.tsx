@@ -13,6 +13,8 @@ export interface ButtonProps {
   dataAttributes?: Record<`data-${string}`, string>;
   /** Optional accessible name, used when the visible text is short or vague. */
   ariaLabel?: string;
+  /** Looks disabled and is announced as disabled, but stays focusable. */
+  ariaDisabled?: boolean;
 }
 
 export function Button({
@@ -24,6 +26,7 @@ export function Button({
   buttonRef,
   dataAttributes,
   ariaLabel,
+  ariaDisabled,
 }: ButtonProps) {
   return (
     <button
@@ -34,6 +37,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      aria-disabled={ariaDisabled ? true : undefined}
     >
       {variant === "danger" && (
         <span className="button__icon" aria-hidden="true">

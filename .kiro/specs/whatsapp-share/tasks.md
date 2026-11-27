@@ -109,67 +109,67 @@ Do not touch `src/domain`, `src/storage`, `src/domain/result.ts`, `package.json`
 
 ### Batch 3: buttons, notice, manual fallback, component tests, docs and KIRO_NOTES.md
 
-- [-] **CHECKPOINT: Stop here and commit Batch 2 before starting Batch 3.**
+- [x] **CHECKPOINT: Stop here and commit Batch 2 before starting Batch 3.**
 
-- [ ] 8. Shared UI pieces
-  - [~] 8.1 Add `ariaDisabled?: boolean` to `src/components/Button.tsx` and a `.button[aria-disabled="true"]` rule (with hover and active) to `Button.css`
+- [x] 8. Shared UI pieces
+  - [x] 8.1 Add `ariaDisabled?: boolean` to `src/components/Button.tsx` and a `.button[aria-disabled="true"]` rule (with hover and active) to `Button.css`
     - The prop writes `aria-disabled`. The rule uses `--color-disabled-bg` and `--color-disabled-fg` and `cursor: not-allowed`. Existing callers do not change. No new colour.
     - _Requirements: 6.3, 6.4_
-  - [~] 8.2 Create `src/components/share/shareMessages.ts` and `dateLabel.ts`
+  - [x] 8.2 Create `src/components/share/shareMessages.ts` and `dateLabel.ts`
     - `shareMessages.ts`: the four outcome strings of 7.1 (exact text), the label "Your message" and the label "Done".
     - `dateLabel.ts`: `formatDateLabel(iso)` returns a short local date such as "Wed, 25 Nov", or "Today" when the date cannot be read. It takes the date as an argument and never reads the clock.
     - _Requirements: 7.1, 8.1_
-  - [~] 8.3 Create `src/components/share/ShareProvider.tsx`
+  - [x] 8.3 Create `src/components/share/ShareProvider.tsx`
     - Context with `env` (default `browserShareEnvironment`), `resetKey`, the `busyRef` guard plus `busy` state, `originRef`, the `view` state, and the `pendingFocus` state with its effect (same pattern as `DebtsCardView`). Export `ShareProvider` and `useShare()` (returns `undefined` without a provider).
     - `share(makeText, origin)` follows the steps in the design: ignore when busy, clear the notice on press, show the builder error message when the build fails, call `deliverMessage`, map the outcome to the exact 7.1 string, release the guard in `finally`. Drop an outcome that arrives after `resetKey` changed. A `resetKey` change clears the view.
     - Do not import from `src/components/ghost`.
     - _Requirements: 5.1, 6.4, 7.1, 7.2, 7.3_
-  - [~] 8.4 Create `src/components/share/ShareButton.tsx`
+  - [x] 8.4 Create `src/components/share/ShareButton.tsx`
     - Props `label`, `ariaLabel?`, `makeText`. Built on `Button` with `buttonRef`, `ariaDisabled={busy}` and an `onClick` that calls `share(makeText, buttonRef.current)`. Renders nothing without a provider.
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 8.2_
-  - [~] 8.5 Create `src/components/share/ShareStatus.tsx` and `ShareStatus.css`
+  - [x] 8.5 Create `src/components/share/ShareStatus.tsx` and `ShareStatus.css`
     - A `<p role="status">` that is always rendered, with text from the context. When the view is manual, below it: a labelled read-only `<textarea>` holding the exact text, `onFocus` selects all, plus a "Done" `Button`. Focus moves to the textarea through `pendingFocus`. Done sets `pendingFocus` to `"origin"` and clears the view.
     - CSS uses only existing theme variables. No new colour. No `outline: none` or `outline: 0`.
     - _Requirements: 6.3, 7.1, 7.2, 8.1, 8.2_
 
-- [ ] 9. Wire the buttons and the notice
-  - [~] 9.1 Edit `src/components/cards/DebtsCardView.tsx`
+- [x] 9. Wire the buttons and the notice
+  - [x] 9.1 Edit `src/components/cards/DebtsCardView.tsx`
     - In each row, when `totalOwed([debt]) >= 1`, add `ShareButton` with `label="Send a reminder"` and `ariaLabel={`Send a reminder to ${debt.customer}`}`. Its `makeText` calls `buildDebtReminder` with `personName: debt.customer`, `shopName: stack.name`, `outstandingKobo: totalOwed([debt])` and `language: "en"`. Paid debts get no button. Existing behaviour and tests do not change.
     - _Requirements: 1.6, 6.1_
-  - [~] 9.2 Edit `src/components/cards/DailySummaryCardView.tsx`
+  - [x] 9.2 Edit `src/components/cards/DailySummaryCardView.tsx`
     - Export `displayName`. Add `ShareButton` with `label="Share today's totals"`. Its `makeText` calls `buildDailySummary` with `shopName: stack.name`, `dateLabel: formatDateLabel(dayRange.start)`, the sales, profit and owed values (a `Result` that is not ok becomes `NaN`), `lowStockNames: lowStockItems(stack).map((i) => displayName(i.name))` and `language: "en"`. Never read the clock.
     - _Requirements: 2.2, 6.2_
-  - [~] 9.3 Edit `src/App.tsx`
+  - [x] 9.3 Edit `src/App.tsx`
     - Wrap the returned page in `<ShareProvider resetKey={`${mode}:${selectedCard?.id ?? ""}`}>`. Render `<ShareStatus />` once, below `NoticeArea`, so it is always in the DOM. Change nothing else.
     - _Requirements: 7.1, 7.3_
 
-- [ ] 10. Component tests
+- [x] 10. Component tests
   - Each file starts with `// @vitest-environment jsdom` and imports `../../test/setup`. Use a fake `ShareEnvironment` and `vi.fn()` spies. Follow `DebtsCardView.test.tsx` for fixtures.
-  - [~] 10.1 `src/components/cards/DebtsCardView.share.test.tsx`
+  - [x] 10.1 `src/components/cards/DebtsCardView.share.test.tsx`
     - 6.1: an open debt has a button named "Send a reminder" with aria-label "Send a reminder to Ada". A paid debt shows no button. Pressing it calls `share` with the exact reminder text. 6.4: pressing twice quickly makes one `share` call, and the button is `aria-disabled="true"` while the first call is pending and not after it settles.
     - _Requirements: 6.1, 6.4_
-  - [~] 10.2 `src/components/cards/DailySummaryCardView.share.test.tsx`
+  - [x] 10.2 `src/components/cards/DailySummaryCardView.share.test.tsx`
     - 6.2: the button "Share today's totals" is present and passes the exact summary text to `share`. A day with a loss shows the `INVALID_AMOUNT` message and makes no `share` call.
     - _Requirements: 6.2_
-  - [~] 10.3 `src/components/share/ShareStatus.test.tsx`
+  - [x] 10.3 `src/components/share/ShareStatus.test.tsx`
     - 7.1: the `role="status"` element exists before any press, and the exact string for each of `shared`, `opened`, `copied`, `manual`, with an empty status for `cancelled`. 7.2: for `manual` the textarea is read-only, holds the exact text, has focus, selects all on focus, and Done returns focus to the starting button and removes the box. 7.3: the next press clears the notice, and changing `resetKey` clears it. 6.5: with `isOnline` false and `canShare` false the result is "Copied. Paste it in WhatsApp." and a `fetch` spy was never called.
     - _Requirements: 6.5, 7.1, 7.2, 7.3_
-  - [~] 10.4 `src/components/share/shareCss.test.ts`
+  - [x] 10.4 `src/components/share/shareCss.test.ts`
     - The new CSS and `Button.css` contain no `outline: none` or `outline: 0`. The new CSS defines no `--color-` variable. (The existing `css.colours` test already checks for colour literals.)
     - _Requirements: 6.3, 8.2_
 
-- [ ] 11. Documentation
-  - [~] 11.1 Add a "WhatsApp sharing" section to `docs/ARCHITECTURE.md`
+- [x] 11. Documentation
+  - [x] 11.1 Add a "WhatsApp sharing" section to `docs/ARCHITECTURE.md`
     - Cover the files, the strategy order (share sheet, `wa.me` link, clipboard, manual), the injected `ShareEnvironment`, the rule that nothing is stored or sent automatically, the templates record for new languages, and the known limit that a silently blocked popup cannot be detected.
     - _Requirements: 9.1_
 
-- [ ] 12. Scope check
-  - [~] 12.1 `git status` shows no change in `src/domain` or `src/storage`, no change in `package.json`, and no import from `src/components/ghost` in any new file.
+- [x] 12. Scope check
+  - [x] 12.1 `git status` shows no change in `src/domain` or `src/storage`, no change in `package.json`, and no import from `src/components/ghost` in any new file.
 
 - [ ] 13. Final task: update `KIRO_NOTES.md`, then run the final checks
-  - [~] 13.1 Add a row to the table in `KIRO_NOTES.md`: what this spec built, the Kiro features used, what worked, what did not, and the credits. Read the credits from the Kiro usage panel and write the number in. If it cannot be read, write that it was not shown, as earlier rows do.
+  - [x] 13.1 Add a row to the table in `KIRO_NOTES.md`: what this spec built, the Kiro features used, what worked, what did not, and the credits. Read the credits from the Kiro usage panel and write the number in. If it cannot be read, write that it was not shown, as earlier rows do.
     - Record what the spec found, including: the domain has no partial payments (`totalOwed([debt])` is the outstanding balance); `fc.fullUnicodeString` is gone in fast-check 4; `window.open` with `noopener` cannot report a blocked popup; the loss-day limit of the daily summary; and **any bug a property test caught** (for example, if P4 caught a non-idempotent cut that ends on a space, or P3 caught a lone surrogate that makes `encodeURIComponent` throw). If none were caught, say so.
     - Update the Counts section: specs written, property tests added (P1 to P7), total tests passing, bugs found by property tests.
     - _Requirements: 9.2_
-  - [~] 13.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
+  - [-] 13.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
   - [~] 13.3 Stop and commit Batch 3.

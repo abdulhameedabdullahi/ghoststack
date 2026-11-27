@@ -4,8 +4,11 @@ import type { Result } from "../../domain";
 import type { DayRange } from "../../domain-ui/dayRange";
 import { formatDisplay } from "../formatMoney";
 import { Card } from "../Card";
+import { buildDailySummary } from "../../domain-ui/share";
+import { ShareButton } from "../share/ShareButton";
+import { formatDateLabel } from "../share/dateLabel";
 
-function displayName(name: string): string {
+export function displayName(name: string): string {
   return name.startsWith("Sample: ") ? name.slice("Sample: ".length) : name;
 }
 
@@ -73,6 +76,20 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
           </dd>
         </div>
       </dl>
+      <ShareButton
+        label="Share today's totals"
+        makeText={() =>
+          buildDailySummary({
+            shopName: stack.name,
+            dateLabel: formatDateLabel(dayRange.start),
+            salesKobo: total.ok ? total.value : NaN,
+            profitKobo: profit.ok ? profit.value : NaN,
+            owedKobo: totalOwed(debts),
+            lowStockNames: lowItems.map((i) => displayName(i.name)),
+            language: "en",
+          })
+        }
+      />
     </Card>
   );
 }
