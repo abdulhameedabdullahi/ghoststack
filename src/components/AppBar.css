@@ -45,7 +45,7 @@
   font-size: 0.75rem;
 }
 
-/* Moon icon button — small, 44 × 44 touch target */
+/* Moon icon button — 44 × 44 touch target, gold/lavender moon icon */
 .moon-button {
   display: inline-flex;
   align-items: center;
@@ -53,13 +53,14 @@
   min-height: var(--tap-min);
   min-width: var(--tap-min);
   padding: var(--space-1);
-  border: var(--border-width) solid currentColor;
+  border: var(--border-width) solid var(--color-moon-icon);
   border-radius: var(--radius);
-  background: transparent;
-  color: var(--color-title-fg);
-  font-size: 1.25rem;
+  background: var(--color-moon-bg);
+  color: var(--color-moon-icon);
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .moon-button:hover {
@@ -74,10 +75,12 @@
   transform: translate(1px, 1px);
 }
 
-/* Pressed = midnight mode is ON; invert the title bar colours */
+/* Pressed = midnight mode is ON: gold icon, dark bg, gold glow */
 .moon-button[aria-pressed="true"] {
-  background-color: var(--color-title-fg);
-  color: var(--color-title-bg);
+  background-color: var(--color-moon-pressed-bg);
+  color: var(--color-moon-pressed-icon);
+  border-color: var(--color-moon-pressed-icon);
+  box-shadow: 0 0 10px var(--color-moon-pressed-bg), 0 0 20px var(--color-moon-pressed-bg);
 }
 
 .moon-button:focus-visible {

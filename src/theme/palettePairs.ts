@@ -64,6 +64,8 @@ export const PAIR_LIST: readonly PalettePair[] = [
   ui("nightcap on page", "--color-ghost-cap", "--color-bg"),
   ui("nightcap on card", "--color-ghost-cap", "--color-surface"),
   ui("ghost on title bar", "--color-title-fg", "--color-title-bg"),
+  ui("moon icon on moon button", "--color-moon-icon", "--color-moon-bg"),
+  ui("pressed moon icon on pressed moon button", "--color-moon-pressed-icon", "--color-moon-pressed-bg"),
 ];
 
 /**

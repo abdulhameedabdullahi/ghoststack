@@ -50,6 +50,12 @@
   --color-tab-bg: #f0f0f0;
   --color-tab-fg: #000000;
 
+  /* Moon toggle */
+  --color-moon-icon: #5b2fa0;
+  --color-moon-bg: #f3edff;
+  --color-moon-pressed-bg: #0d0820;
+  --color-moon-pressed-icon: #f0eaff;
+
   /* Title-bar stripe overlay — rgba stays in theme.css (exempt from colour scan) */
   --title-stripe-bg: repeating-linear-gradient(
     to bottom,
@@ -128,6 +134,12 @@
   --color-error-fg: #ff6b7a;
   --color-notice-bg: #1a0f38;
   --color-notice-fg: #f0eaff;
+
+  /* Moon toggle */
+  --color-moon-icon: #d4a030;
+  --color-moon-bg: #0d0820;
+  --color-moon-pressed-bg: #d4a030;
+  --color-moon-pressed-icon: #07050f;
 
   /* Tabs */
   --color-tab-selected-bg: #9254ff;
