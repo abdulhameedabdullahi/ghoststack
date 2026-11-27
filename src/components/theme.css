@@ -96,73 +96,142 @@
 [data-theme="midnight"] {
   color-scheme: dark;
 
-  /* Page and surface */
-  --color-bg: #14122b;
-  --color-surface: #1d1a3d;
-  --color-fg: #f4f1ff;
-  --color-muted-fg: #b9b4dd;
-  --color-border: #a79fe0;
+  /* Page and surface — deep haunted darkness */
+  --color-bg: #07050f;
+  --color-surface: #0d0a1e;
+  --color-fg: #f0eaff;
+  --color-muted-fg: #b0a0d8;
+  --color-border: #6b3bdc;
 
-  /* Title bar — midnight: dark bar, light text (stripes via --title-stripe-bg) */
-  --color-title-bg: #14122b;
-  --color-title-fg: #f4f1ff;
+  /* Title bar — blood-dark purple */
+  --color-title-bg: #0d0820;
+  --color-title-fg: #f0eaff;
 
-  /* Accent and interactions — gold is for primary action and active tab ONLY */
-  --color-accent: #ffd166;
-  --color-accent-fg: #14122b;
-  --color-hover-bg: #2d2b55;
-  --color-hover-fg: #f4f1ff;
-  --color-active-bg: #3f3c72;
-  --color-active-fg: #f4f1ff;
-  --color-disabled-bg: #2a2650;
-  --color-disabled-fg: #a8a2d6;
+  /* Accent — neon purple for primary action */
+  --color-accent: #9254ff;
+  --color-accent-fg: #07050f;
+  --color-hover-bg: #1e1040;
+  --color-hover-fg: #f0eaff;
+  --color-active-bg: #2e1860;
+  --color-active-fg: #f0eaff;
+  --color-disabled-bg: #1a1430;
+  --color-disabled-fg: #9080c0;
 
   /* Semantic colours */
-  --color-danger-bg: #ff7b8a;
-  --color-danger-fg: #14122b;
-  --color-warning-bg: #3d3200;
-  --color-warning-fg: #ffd166;
-  --color-focus: #8fb8ff;
-  --color-ghost: #f4f1ff;
-  --color-ghost-cap: #c8a2ff;
-  --color-error-fg: #ff9aa8;
-  --color-notice-bg: #2f2a5e;
-  --color-notice-fg: #f4f1ff;
+  --color-danger-bg: #ff5566;
+  --color-danger-fg: #07050f;
+  --color-warning-bg: #1f1000;
+  --color-warning-fg: #ff9e1f;
+  --color-focus: #9254ff;
+  --color-ghost: #d8c4ff;
+  --color-ghost-cap: #ff4de8;
+  --color-error-fg: #ff6b7a;
+  --color-notice-bg: #1a0f38;
+  --color-notice-fg: #f0eaff;
 
-  /* Tabs — gold for selected only */
-  --color-tab-selected-bg: #ffd166;
-  --color-tab-selected-fg: #14122b;
-  --color-tab-bg: #1d1a3d;
-  --color-tab-fg: #f4f1ff;
+  /* Tabs */
+  --color-tab-selected-bg: #9254ff;
+  --color-tab-selected-fg: #07050f;
+  --color-tab-bg: #0d0a1e;
+  --color-tab-fg: #f0eaff;
 
-  /* Title-bar stripe for dark theme */
+  /* Title-bar stripe — ethereal purple shimmer */
   --title-stripe-bg: repeating-linear-gradient(
     to bottom,
     transparent 0px,
     transparent 1px,
-    rgba(255, 255, 255, 0.1) 1px,
-    rgba(255, 255, 255, 0.1) 2px
+    rgba(170, 90, 255, 0.18) 1px,
+    rgba(170, 90, 255, 0.18) 2px
   );
 
-  /* Desktop shell (> 900 px) */
-  --desktop-bg: #0a0820;
-  --desktop-bg-image: radial-gradient(
-      ellipse at 20% 25%,
-      rgba(90, 60, 200, 0.18) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse at 78% 68%,
-      rgba(50, 20, 150, 0.12) 0%,
-      transparent 50%
-    ),
+  /* Desktop shell — haunted night sky */
+  --desktop-bg: #030208;
+  --desktop-bg-image:
+    radial-gradient(ellipse 300px 240px at 92% 6%, rgba(255, 220, 155, 0.14) 0%, rgba(200, 160, 255, 0.07) 35%, transparent 70%),
+    radial-gradient(ellipse at 8% 48%, rgba(120, 40, 255, 0.24) 0%, transparent 52%),
+    radial-gradient(ellipse at 90% 82%, rgba(60, 20, 185, 0.18) 0%, transparent 48%),
+    radial-gradient(ellipse at 10% 95%, rgba(190, 25, 45, 0.11) 0%, transparent 35%),
+    radial-gradient(ellipse at 48% 2%, rgba(0, 210, 120, 0.06) 0%, transparent 22%),
+    radial-gradient(ellipse at 50% 50%, rgba(20, 8, 60, 0.6) 0%, transparent 68%),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.025) 0px,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px,
-      transparent 3px
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.013) 2px,
+      rgba(255, 255, 255, 0.013) 3px
     );
+
+  /* Window shadow — purple electric glow */
+  --window-shadow:
+    0 0 0 1px rgba(100, 50, 220, 0.4),
+    0 0 20px rgba(80, 30, 200, 0.45),
+    0 0 55px rgba(60, 15, 155, 0.22),
+    4px 4px 0 var(--color-border);
+
+  /* ── Spooky ambient colour tokens (rgba allowed in theme.css) ── */
+
+  /* Fog gradients */
+  --spooky-fog-bg-1:
+    radial-gradient(ellipse at 25% 100%, rgba(100, 30, 200, 0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 100%, rgba(70, 20, 160, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(80, 25, 180, 0.25) 0%, transparent 60%);
+  --spooky-fog-bg-2:
+    radial-gradient(ellipse at 15% 50%, rgba(80, 20, 160, 0.16) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 50%, rgba(55, 15, 130, 0.12) 0%, transparent 40%);
+  --spooky-fog-bg-static:
+    radial-gradient(ellipse at 25% 100%, rgba(100, 30, 200, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 100%, rgba(70, 20, 160, 0.2) 0%, transparent 50%);
+
+  /* Window glow box-shadows */
+  --spooky-window-shadow-normal:
+    0 0 0 1px rgba(100, 50, 220, 0.4),
+    0 0 20px rgba(80, 30, 200, 0.45),
+    0 0 55px rgba(60, 15, 155, 0.22),
+    4px 4px 0 var(--color-border);
+  --spooky-window-shadow-pulse:
+    0 0 0 1px rgba(140, 80, 255, 0.75),
+    0 0 38px rgba(110, 55, 240, 0.72),
+    0 0 90px rgba(80, 30, 200, 0.42),
+    4px 4px 0 var(--color-border);
+
+  /* Text glows */
+  --spooky-title-glow-rest:
+    0 0 8px rgba(180, 130, 255, 0.5),
+    0 0 18px rgba(130, 60, 255, 0.3);
+  --spooky-title-glow-pulse:
+    0 0 14px rgba(220, 170, 255, 0.90),
+    0 0 32px rgba(165, 85, 255, 0.60),
+    0 0 55px rgba(100, 40, 255, 0.28);
+  --spooky-card-text-glow: 0 0 10px rgba(200, 160, 255, 0.55);
+
+  /* Element glows */
+  --spooky-appbar-shadow: 0 2px 22px rgba(90, 40, 200, 0.45);
+  --spooky-tab-shadow:
+    0 0 10px rgba(100, 40, 255, 0.60),
+    0 0 22px rgba(80, 20, 200, 0.35);
+  --spooky-card-hover-shadow:
+    0 0 18px rgba(100, 40, 255, 0.38),
+    0 0 4px rgba(130, 60, 255, 0.22);
+  --spooky-mascot-filter: drop-shadow(0 0 7px rgba(200, 160, 255, 0.65));
+  --spooky-ghost-filter: drop-shadow(0 0 5px rgba(200, 160, 255, 0.55));
+  --spooky-button-shadow:
+    0 0 14px rgba(100, 40, 255, 0.55),
+    0 0 28px rgba(80, 20, 200, 0.22);
+  --spooky-moon-button-shadow: 0 0 12px rgba(200, 160, 255, 0.65);
+  --spooky-bubble-shadow:
+    2px 2px 0 var(--color-border),
+    0 0 16px rgba(90, 40, 200, 0.35);
+
+  /* Moon */
+  --spooky-moon-bg: radial-gradient(circle at 38% 38%, #fff9e8 0%, #ffe0a0 35%, #d4a030 70%, transparent 100%);
+  --spooky-moon-shadow-rest:
+    0 0 20px rgba(255, 220, 130, 0.5),
+    0 0 50px rgba(220, 170, 80, 0.3),
+    0 0 100px rgba(180, 130, 60, 0.15);
+  --spooky-moon-shadow-pulse:
+    0 0 28px rgba(255, 220, 130, 0.7),
+    0 0 70px rgba(220, 170, 80, 0.45),
+    0 0 130px rgba(180, 130, 60, 0.22);
 }
 
 @media (min-width: 768px) {

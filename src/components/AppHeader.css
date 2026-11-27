@@ -6,6 +6,7 @@
   background-image: var(--title-stripe-bg);
   color: var(--color-title-fg);
   border: var(--border-width) solid var(--color-border);
+  transition: background-color 0.3s ease;
 }
 
 .app-header__title {

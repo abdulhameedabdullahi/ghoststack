@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppHeader } from "./components/AppHeader";
+import { SpookyBackground } from "./components/SpookyBackground";
 import { GhostCompanion } from "./components/ghost/GhostCompanion";
 import { useGhost } from "./components/ghost/GhostProvider";
 import { useGhostError } from "./components/ghost/useGhostError";
@@ -450,7 +451,9 @@ export default function App() {
   );
 
   return (
-    <main>
+    <>
+      {midnight && <SpookyBackground />}
+      <main>
       <div className="app-bar">
         <AppHeader />
         <div className="app-bar__controls">
@@ -559,5 +562,6 @@ export default function App() {
           </>
         )}
     </main>
+    </>
   );
 }

@@ -1,0 +1,207 @@
+/* === GhostStack Spooky Ambient Effects === */
+/* All rules are scoped to [data-theme="midnight"] to avoid affecting light mode. */
+/* All colour values live in theme.css — this file uses only var(--spooky-*) tokens. */
+
+/* ── Fog Layer 1: rises from the bottom, drifts left-right ── */
+@keyframes fog-creep {
+  from { transform: translateX(-12%); opacity: 0.55; }
+  to   { transform: translateX( 12%); opacity: 0.80; }
+}
+
+/* ── Fog Layer 2: mid-level counter-drift ── */
+@keyframes fog-creep-2 {
+  from { transform: translateX( 10%) translateY(-6%); opacity: 0.3; }
+  to   { transform: translateX(-10%) translateY( 6%); opacity: 0.55; }
+}
+
+/* Static fog for reduced-motion — applied unconditionally, overridden below */
+[data-theme="midnight"] body::before {
+  content: '';
+  position: fixed;
+  left: -25%;
+  right: -25%;
+  bottom: 0;
+  height: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: var(--spooky-fog-bg-static);
+  filter: blur(28px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="midnight"] body::before {
+    background: var(--spooky-fog-bg-1);
+    animation: fog-creep 20s ease-in-out infinite alternate;
+  }
+
+  [data-theme="midnight"] body::after {
+    content: '';
+    position: fixed;
+    left: -25%;
+    right: -25%;
+    top: 20%;
+    height: 55%;
+    pointer-events: none;
+    z-index: 0;
+    background: var(--spooky-fog-bg-2);
+    filter: blur(40px);
+    animation: fog-creep-2 28s ease-in-out infinite alternate;
+  }
+}
+
+/* ── Stacking: main creates its own layer above fixed ghosts on desktop ── */
+@media (min-width: 900px) {
+  [data-theme="midnight"] main {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ── App window pulse glow (desktop only) ── */
+@keyframes window-haunt {
+  0%, 100% { box-shadow: var(--spooky-window-shadow-normal); }
+  50%       { box-shadow: var(--spooky-window-shadow-pulse); }
+}
+
+@media (min-width: 900px) {
+  [data-theme="midnight"] #root {
+    box-shadow: var(--spooky-window-shadow-normal);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-theme="midnight"] #root {
+      animation: window-haunt 5s ease-in-out infinite;
+    }
+  }
+}
+
+/* ── CRT scanlines + vignette on the app window (desktop) ── */
+@media (min-width: 900px) {
+  [data-theme="midnight"] #root {
+    position: relative;
+    overflow: visible;
+  }
+
+  [data-theme="midnight"] #root::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 998;
+    background: radial-gradient(ellipse at 50% 40%, transparent 50%, var(--color-bg) 100%);
+    opacity: 0.45;
+    border-radius: var(--radius);
+  }
+
+  [data-theme="midnight"] #root::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    background: repeating-linear-gradient(
+      0deg,
+      var(--color-bg) 0px,
+      var(--color-bg) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    opacity: 0.04;
+    border-radius: var(--radius);
+  }
+}
+
+/* ── Card header torch flicker ── */
+@keyframes torch-flicker {
+  0%, 88%, 100% { opacity: 1; filter: brightness(1); }
+  89%            { opacity: 0.93; filter: brightness(0.90); }
+  90%            { opacity: 1;    filter: brightness(1.08); }
+  91%            { opacity: 0.88; filter: brightness(0.85); }
+  92%            { opacity: 0.98; filter: brightness(1.02); }
+  93%            { opacity: 0.91; filter: brightness(0.93); }
+}
+
+[data-theme="midnight"] .card__header {
+  text-shadow: var(--spooky-card-text-glow);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="midnight"] .card__header {
+    animation: torch-flicker 10s steps(1, end) infinite;
+  }
+}
+
+/* ── App title glow pulse ── */
+@keyframes title-haunt {
+  0%, 100% { text-shadow: var(--spooky-title-glow-rest); }
+  50%       { text-shadow: var(--spooky-title-glow-pulse); }
+}
+
+[data-theme="midnight"] .app-header__name {
+  text-shadow: var(--spooky-title-glow-rest);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="midnight"] .app-header__name {
+    animation: title-haunt 3.8s ease-in-out infinite;
+  }
+}
+
+/* ── App-bar glow ── */
+[data-theme="midnight"] .app-bar {
+  box-shadow: var(--spooky-appbar-shadow);
+}
+
+/* ── Tab selected glow ── */
+[data-theme="midnight"] .tab-bar__tab--selected {
+  box-shadow: var(--spooky-tab-shadow);
+}
+
+/* ── Card hover glow ── */
+[data-theme="midnight"] .card {
+  transition: box-shadow 0.4s ease;
+}
+
+[data-theme="midnight"] .card:hover {
+  box-shadow: var(--spooky-card-hover-shadow);
+}
+
+/* ── Ghost mascot ethereal glow ── */
+[data-theme="midnight"] .ghost-mascot {
+  filter: var(--spooky-mascot-filter);
+}
+
+[data-theme="midnight"] .ghost {
+  filter: var(--spooky-ghost-filter);
+}
+
+/* ── Button glow ── */
+[data-theme="midnight"] .button--main {
+  box-shadow: var(--spooky-button-shadow);
+}
+
+[data-theme="midnight"] .moon-button[aria-pressed="true"] {
+  box-shadow: var(--spooky-moon-button-shadow);
+}
+
+/* ── Ghost speech bubble glow ── */
+[data-theme="midnight"] .ghost-bubble,
+[data-theme="midnight"] .ghost-guide__bubble {
+  box-shadow: var(--spooky-bubble-shadow);
+}
+
+/* ── Ghost blink: quick double-flash in midnight mode ── */
+@keyframes ghost-blink-spooky {
+  0%, 100%  { opacity: 1; }
+  48%       { opacity: 1; }
+  50%       { opacity: 0.1; }
+  52%       { opacity: 1; }
+  54%       { opacity: 0.6; }
+  56%       { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="midnight"] .ghost--blink {
+    animation: ghost-blink-spooky 3.2s ease-in-out infinite;
+  }
+}
