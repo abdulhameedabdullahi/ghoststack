@@ -8,7 +8,7 @@
 }
 
 .about-panel::backdrop {
-  background: var(--color-overlay);
+  background: var(--overlay);
 }
 
 .about-panel__body {

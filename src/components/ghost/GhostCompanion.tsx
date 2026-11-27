@@ -26,7 +26,7 @@ export function GhostCompanion() {
       >
         <GhostMascot key={stamp} mood={state.mood} nightcap={state.nightcap} />
       </button>
-      {bubble && (
+      {bubble && state.mood !== "sleep" && (
         <div className="ghost-bubble">
           <p className="ghost-bubble__text">{bubble}</p>
           <Button onClick={dismiss}>Got it</Button>

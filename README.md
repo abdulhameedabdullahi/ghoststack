@@ -32,33 +32,42 @@ HyperCard let ordinary people build their own programs from stacks of cards, wit
 
 ## How to run
 
-Setup instructions will be added after scaffolding.
+```bash
+npm install
+npm run dev        # start dev server at http://localhost:5173
+npm test           # run all tests (Vitest)
+npm run build      # type-check + production build → dist/
+```
+
+To install as a PWA, open the dev or production URL in Chrome and use the browser's install prompt.
 
 ## How Kiro was used
 
 ### Specs
 
-TODO
+9 Kiro specs drove all features: `ghoststack-foundation`, `app-shell-stock-card`, `sales-and-daily-summary`, `debts-card-ui`, `ghost-companion`, `builder-mode-and-starter-stacks`, `pwa-offline-and-backup`, `design-polish`, and `whatsapp-share`. Each spec produced a requirements file, a design file, tasks, and a manual-check checklist. Tasks were executed one at a time; Kiro generated the implementation, Vitest confirmed it.
 
 ### Steering
 
-TODO
+5 steering files kept every conversation on track: `brand.md` (colours, pixel art style), `money-rules.md` (kobo integers, no floats, `Result` types, pure functions), `plain-language.md` (Nigerian English, short UI copy), `product.md` (HyperCard-for-traders goal), and `tech.md` (Vite + React + TypeScript strict, IndexedDB, no external UI libraries).
 
 ### Hooks
 
-TODO
+2 hooks ran automatically:
+- **`register-new-card`** – fired when a new card-related file was created; reminded Kiro to update the card registry.
+- **`run-domain-tests`** – fired after domain file edits; ran the domain test suite and reported the result inline.
 
 ### Property-based testing
 
-TODO
+fast-check property tests guard every invariant. The first batch (25 tests) covered domain-layer invariants: no floats, no mutation, `Result` error codes, quantity and revenue arithmetic. Later specs added 9 more properties for debts ordering and grouping, 11 for the ghost state machine, and 7 for the WhatsApp share templates. The `money-auditor` custom agent found that `recordSale` did not guard `quantity × unitCost` overflow — a bug the unit tests missed, caught by property test invariant 7.
 
 ### MCP
 
-TODO
+No external MCP servers were used. Kiro's built-in tools (file read/write, terminal, browser automation via `check-brand.mjs`) were sufficient for the full build.
 
 ### Vibe coding vs specs
 
-TODO
+Vibe coding (open-ended prompts) was used for brand generation (`generate-brand.mjs`), splash screen animation, and the spooky background. Everything with money, storage, or accessibility was spec-driven: requirements written first, design reviewed before coding, tasks run one at a time with tests confirming each.
 
 ## Hackathon
 

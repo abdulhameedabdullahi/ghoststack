@@ -6,6 +6,9 @@ node_modules/
 # Build output
 dist/
 
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
 # Environment files
 .env
 .env.*
@@ -18,6 +21,10 @@ npm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Editor / tool settings (machine-local)
+.vscode/
+.claude/settings.local.json
 
 # Test coverage
 coverage/

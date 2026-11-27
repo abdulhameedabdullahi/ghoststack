@@ -66,8 +66,8 @@
   --color-tint-debt-bg: #fde8ea;
   --color-tint-debt-fg: #4d0010;
 
-  /* Dialog/modal backdrop — rgba stays in theme.css (exempt from colour scan) */
-  --color-overlay: rgba(0, 0, 0, 0.6);
+  /* Dialog/modal backdrop — rgba, not a solid colour token */
+  --overlay: rgba(0, 0, 0, 0.6);
 
   /* Title-bar stripe overlay — rgba stays in theme.css (exempt from colour scan) */
   --title-stripe-bg: repeating-linear-gradient(
@@ -171,8 +171,8 @@
   --color-tab-bg: #0d0a1e;
   --color-tab-fg: #f0eaff;
 
-  /* Dialog/modal backdrop */
-  --color-overlay: rgba(0, 0, 0, 0.75);
+  /* Dialog/modal backdrop — rgba, not a solid colour token */
+  --overlay: rgba(0, 0, 0, 0.75);
 
   /* Title-bar stripe — ethereal purple shimmer */
   --title-stripe-bg: repeating-linear-gradient(
