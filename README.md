@@ -1,5 +1,11 @@
 # GhostStack
 
+**Raise your shop.**
+
+Stock, sales and debts. Offline. In Naira.
+
+---
+
 GhostStack brings back Apple's 1987 HyperCard for small business owners: a simple builder where a shop owner arranges "cards" and "buttons" to make their own stock, sales, and debt-tracking app in minutes, with no coding and no constant internet.
 
 ## Why HyperCard?
