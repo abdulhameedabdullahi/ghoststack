@@ -5,7 +5,7 @@ import { Ghost } from "../Ghost";
 import { useGhostError } from "../ghost/useGhostError";
 import "./StarterChooser.css";
 
-export type StarterKind = "provisions" | "farm-stall";
+export type StarterKind = "provisions" | "farm-stall" | "demo";
 
 export interface StarterChooserProps {
   onPick: (
@@ -98,6 +98,18 @@ export function StarterChooser({ onPick, onCancel }: StarterChooserProps) {
           </Button>
         </Card>
       ))}
+
+      <div className="starter-chooser__demo">
+        <p className="starter-chooser__demo-label">
+          Just exploring? Load a ready-made sample shop.
+        </p>
+        <Button
+          disabled={pending}
+          onClick={() => void run({ kind: "demo", withSamples: false })}
+        >
+          {pending && lastPick?.kind === "demo" ? "Saving..." : "Try with a sample shop"}
+        </Button>
+      </div>
 
       {error !== undefined && lastPick !== undefined && (
         <div className="starter-chooser__error">

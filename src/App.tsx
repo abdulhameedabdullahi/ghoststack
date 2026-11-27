@@ -29,6 +29,7 @@ import {
 } from "./components/builder/StarterChooser";
 import { StackPicker } from "./components/StackPicker";
 import { buildFarmStallStack, buildStarterStack } from "./stacks/starterStack";
+import { buildDemoStack } from "./stacks/demoStack";
 import {
   STORAGE_ERROR_MESSAGES,
   listStacks,
@@ -387,20 +388,29 @@ export default function App() {
           debtsCardId: crypto.randomUUID(),
           summaryCardId: crypto.randomUUID(),
         };
-        let built =
-          kind === "farm-stall"
-            ? buildFarmStallStack(ids)
-            : buildStarterStack(ids);
-        if (withSamples) {
-          for (const sample of SAMPLE_ITEMS_BY_STARTER[kind]) {
-            const added = addItem({
-              stack: built,
-              stockCardId: ids.stockCardId,
-              itemId: crypto.randomUUID(),
-              ...sample,
-            });
-            if (!added.ok) return { ok: false, message: added.error.message };
-            built = added.value;
+        let built;
+        if (kind === "demo") {
+          try {
+            built = buildDemoStack(ids, new Date());
+          } catch (e) {
+            return { ok: false, message: e instanceof Error ? e.message : "Demo stack failed" };
+          }
+        } else {
+          built =
+            kind === "farm-stall"
+              ? buildFarmStallStack(ids)
+              : buildStarterStack(ids);
+          if (withSamples) {
+            for (const sample of SAMPLE_ITEMS_BY_STARTER[kind]) {
+              const added = addItem({
+                stack: built,
+                stockCardId: ids.stockCardId,
+                itemId: crypto.randomUUID(),
+                ...sample,
+              });
+              if (!added.ok) return { ok: false, message: added.error.message };
+              built = added.value;
+            }
           }
         }
         const saved = await saveStack(built);
