@@ -1,7 +1,8 @@
 .card {
   background: var(--color-surface);
   color: var(--color-fg);
-  border: var(--border-width) solid var(--color-border);
+  border: 1px solid var(--color-border);
+  box-shadow: inset 0 1px 0 var(--color-border);
   border-radius: var(--radius);
   overflow: hidden;
   margin-bottom: var(--space-3);
@@ -13,7 +14,7 @@
   background-color: var(--color-title-bg);
   background-image: var(--title-stripe-bg);
   color: var(--color-title-fg);
-  border-bottom: var(--border-width) solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   font-family: var(--font-pixel);
   font-size: var(--font-size-title);
   line-height: var(--line-height);
@@ -32,7 +33,7 @@
 }
 
 .card__footer {
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: 1px solid var(--color-border);
   padding: var(--space-2) var(--space-3);
 }
 .empty-tagline {

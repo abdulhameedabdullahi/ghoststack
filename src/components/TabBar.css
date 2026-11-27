@@ -26,7 +26,7 @@
   min-height: var(--tap-min);
   min-width: var(--tap-min);
   padding: var(--space-2) var(--space-3);
-  border: var(--border-width) solid var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: var(--color-tab-bg);
   color: var(--color-tab-fg);
@@ -75,7 +75,7 @@
     flex-wrap: nowrap;
     gap: 0;
     background: var(--color-tab-bg);
-    border-top: var(--border-width) solid var(--color-border);
+    border-top: 1px solid var(--color-border);
     border-radius: 0;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
@@ -83,7 +83,7 @@
   .tab-bar__tab {
     border: none;
     border-radius: 0;
-    border-right: var(--border-width) solid var(--color-border);
+    border-right: 1px solid var(--color-border);
     font-size: 0.6rem;
     padding: var(--space-1) var(--space-2);
   }
