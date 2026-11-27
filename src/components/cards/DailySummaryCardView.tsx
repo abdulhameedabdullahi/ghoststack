@@ -2,11 +2,17 @@ import type { Stack } from "../../domain/types";
 import { dailyTotal, estimatedProfit, lowStockItems, totalOwed } from "../../domain";
 import type { Result } from "../../domain";
 import type { DayRange } from "../../domain-ui/dayRange";
-import { formatDisplay, formatSignedDisplay } from "../formatMoney";
+import { formatDisplay } from "../formatMoney";
 import { Card } from "../Card";
 
 function displayName(name: string): string {
   return name.startsWith("Sample: ") ? name.slice("Sample: ".length) : name;
+}
+
+/** Signed money display: +₦1,000 or −₦1,000, without the "Profit:"/"Loss:" prefix. */
+function formatSignedValue(kobo: number): string {
+  if (kobo < 0) return "−" + formatDisplay(Math.abs(kobo) as Parameters<typeof formatDisplay>[0]);
+  return "+" + formatDisplay(kobo as Parameters<typeof formatDisplay>[0]);
 }
 import "./DailySummaryCardView.css";
 
@@ -34,15 +40,19 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
   return (
     <Card title={summary?.title ?? "Daily summary"}>
       <dl className="daily-summary">
-        <div className="daily-summary__row">
+        <div className="daily-summary__row daily-summary__row--sales">
           <dt>Sales today</dt>
-          <dd className="daily-summary__value">{amountText(total, formatDisplay)}</dd>
+          <dd className="daily-summary__value daily-summary__value--numeric">
+            {amountText(total, formatDisplay)}
+          </dd>
         </div>
-        <div className="daily-summary__row">
+        <div className="daily-summary__row daily-summary__row--profit">
           <dt>Estimated profit</dt>
-          <dd className="daily-summary__value">{amountText(profit, formatSignedDisplay)}</dd>
+          <dd className="daily-summary__value daily-summary__value--numeric">
+            {profit.ok ? formatSignedValue(profit.value) : profit.error.message}
+          </dd>
         </div>
-        <div className="daily-summary__row">
+        <div className="daily-summary__row daily-summary__row--stock">
           <dt>Low on stock</dt>
           <dd className="daily-summary__value">
             {lowItems.length === 0 ? (
@@ -56,9 +66,11 @@ export function DailySummaryCardView({ stack, dayRange }: DailySummaryCardViewPr
             )}
           </dd>
         </div>
-        <div className="daily-summary__row">
+        <div className="daily-summary__row daily-summary__row--debt">
           <dt>Total owed to you</dt>
-          <dd className="daily-summary__value">{formatDisplay(totalOwed(debts))}</dd>
+          <dd className="daily-summary__value daily-summary__value--numeric">
+            {formatDisplay(totalOwed(debts))}
+          </dd>
         </div>
       </dl>
     </Card>
