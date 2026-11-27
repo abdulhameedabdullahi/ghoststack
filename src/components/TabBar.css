@@ -93,8 +93,8 @@
   }
 
   .tab-bar__icon {
-    width: 18px;
-    height: 15px;
+    width: 24px;
+    height: 24px;
     margin-bottom: calc(var(--space-1) / 2);
   }
 
