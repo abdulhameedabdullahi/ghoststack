@@ -14,7 +14,7 @@ import { formatDisplay } from "../formatMoney";
 import { friendlyTime } from "../friendlyTime";
 import { Button } from "../Button";
 import { Card } from "../Card";
-import { Ghost } from "../Ghost";
+import { GhostGuide } from "../GhostGuide";
 import { DebtForm } from "./DebtForm";
 import "./DebtsCardView.css";
 
@@ -254,9 +254,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
 
         {card.debts.length === 0 ? (
           <div className="debts-card__empty">
-            <Ghost size={48} animate />
-            <p>You have no debts recorded yet.</p>
-            <p className="empty-tagline">Nobody owes you anything right now.</p>
+            <GhostGuide hint="Tap 'Record a debt' to log a customer tab." />
             {recordButton}
           </div>
         ) : (

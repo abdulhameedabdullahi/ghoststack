@@ -84,7 +84,7 @@ describe("App tabs", () => {
     expect(panel.id).toBe(`panel-${ids.salesCardId}`);
     expect(tab.getAttribute("aria-controls")).toBe(panel.id);
     expect(panel.getAttribute("aria-labelledby")).toBe(tab.id);
-    expect(within(panel).getByText("No sales yet.")).toBeTruthy();
+    expect(within(panel).getByText("Record a sale in Stock — it'll show up here.")).toBeTruthy();
   });
 
   it("shows a renamed card's new tab label", async () => {

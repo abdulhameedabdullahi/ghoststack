@@ -10,7 +10,7 @@ export interface DebtsPanelProps {
 /** Shows the Debts card view, or a friendly message when the shop has no Debts card. */
 export function DebtsPanel({ stack, card, onStackChange }: DebtsPanelProps) {
   if (card === undefined) {
-    return <p>Debts can't be shown because this shop has no Debts card.</p>;
+    return <p>To track debts, add a Debts card in Builder.</p>;
   }
   return <DebtsCardView stack={stack} card={card} onStackChange={onStackChange} />;
 }

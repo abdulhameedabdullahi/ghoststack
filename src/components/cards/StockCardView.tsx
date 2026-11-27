@@ -8,7 +8,7 @@ import { parseItemForm } from "../../domain-ui/itemForm";
 import type { ItemFormErrors, ItemFormValues } from "../../domain-ui/itemForm";
 import { Button } from "../Button";
 import { Card } from "../Card";
-import { Ghost } from "../Ghost";
+import { GhostGuide } from "../GhostGuide";
 import { useReducedMotion } from "../useReducedMotion";
 import { ItemForm, EMPTY_ITEM_FORM_VALUES } from "./ItemForm";
 import { ItemRow } from "./ItemRow";
@@ -102,7 +102,7 @@ export function StockCardView({
     });
     if (!result.ok) {
       if (result.error.code === "NOT_ENOUGH_STOCK") {
-        setSaleState({ quantityText, error: "Not enough in stock." });
+        setSaleState({ quantityText, error: "Not enough left — try a smaller number." });
       } else {
         setSaleState({ quantityText, formError: result.error.message });
       }
@@ -260,7 +260,7 @@ export function StockCardView({
       {deletingItem && (
         <div className="stock-card__confirm" role="alertdialog" aria-labelledby="delete-item-title">
           <p id="delete-item-title" className="stock-card__confirm-text">
-            Delete "{deletingItem.name}"? This cannot be undone.
+            Remove "{deletingItem.name}"? It'll be gone for good.
           </p>
           {deleteError && (
             <div className="item-form__error-row">
@@ -281,16 +281,14 @@ export function StockCardView({
       {!formOpen && !deletingItem &&
         (card.items.length === 0 ? (
           <div className="stock-card__empty">
-            <Ghost size={48} animate />
-            <p>You have no items yet.</p>
-            <p className="empty-tagline">Raise your first one!</p>
+            <GhostGuide hint="Tap 'Add an item' to list your first product." />
             {addButton}
           </div>
         ) : (
           <div className="stock-card__content">
             <div className="stock-card__add">{addButton}</div>
             {salesCardId === undefined && (
-              <p>Sales can't be recorded because this shop has no Sales log card.</p>
+              <p>To record sales, add a Sales log card in Builder.</p>
             )}
             <ul className="stock-card__list">
               {card.items.map((item) => (

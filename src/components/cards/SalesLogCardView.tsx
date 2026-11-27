@@ -1,7 +1,7 @@
 import type { SalesLogCard, Stack } from "../../domain/types";
 import { saleTotal, salesNewestFirst } from "../../domain/sales";
 import { Card } from "../Card";
-import { Ghost } from "../Ghost";
+import { GhostGuide } from "../GhostGuide";
 import { formatDisplay } from "../formatMoney";
 import { friendlyTime } from "../friendlyTime";
 import "./SalesLogCardView.css";
@@ -30,9 +30,7 @@ export function SalesLogCardView({ stack, card }: SalesLogCardViewProps) {
     <Card title={card.title}>
       {sales.length === 0 ? (
         <div className="sales-log__empty-state">
-          <Ghost size={48} animate />
-          <p className="sales-log__empty">No sales yet.</p>
-          <p className="empty-tagline">Your first sale will show up here.</p>
+          <GhostGuide hint="Record a sale in Stock — it'll show up here." />
         </div>
       ) : (
         <ul className="sales-log__list">

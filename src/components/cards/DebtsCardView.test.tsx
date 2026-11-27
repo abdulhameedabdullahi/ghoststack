@@ -61,9 +61,9 @@ function renderView(debts: Debt[]) {
 }
 
 describe("DebtsCardView", () => {
-  it("shows the empty state with a message, a Record a debt button and zero total", () => {
+  it("shows the empty state with a hint, a Record a debt button and zero total", () => {
     renderView([]);
-    expect(screen.getByText("You have no debts recorded yet.")).toBeTruthy();
+    expect(screen.getByText("Tap 'Record a debt' to log a customer tab.")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Record a debt" })).toBeTruthy();
     expect(screen.getByText("₦0")).toBeTruthy();
   });
@@ -115,7 +115,7 @@ describe("DebtsPanel", () => {
     const { stack } = makeStack([]);
     render(<DebtsPanel stack={stack} card={undefined} onStackChange={vi.fn()} />);
     expect(
-      screen.getByText("Debts can't be shown because this shop has no Debts card."),
+      screen.getByText("To track debts, add a Debts card in Builder."),
     ).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Record a debt" })).toBeNull();
   });

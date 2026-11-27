@@ -28,28 +28,31 @@ function expectGhost(container: HTMLElement) {
 }
 
 describe("empty states", () => {
-  it("Stock shows its message once, a tagline and a ghost", () => {
+  it("Stock shows the ghost guide hint once and a ghost", () => {
     const { container } = render(
       <StockCardView stack={stack} card={stock} onStackChange={vi.fn()} />,
     );
-    expect(screen.getAllByText("You have no items yet.")).toHaveLength(1);
-    expect(screen.getByText("Raise your first one!")).toBeTruthy();
+    expect(
+      screen.getAllByText("Tap 'Add an item' to list your first product."),
+    ).toHaveLength(1);
     expectGhost(container);
   });
 
-  it("Sales log shows its message once, a tagline and a ghost", () => {
+  it("Sales log shows the ghost guide hint once and a ghost", () => {
     const { container } = render(<SalesLogCardView stack={stack} card={sales} />);
-    expect(screen.getAllByText("No sales yet.")).toHaveLength(1);
-    expect(screen.getByText("Your first sale will show up here.")).toBeTruthy();
+    expect(
+      screen.getAllByText("Record a sale in Stock — it'll show up here."),
+    ).toHaveLength(1);
     expectGhost(container);
   });
 
-  it("Debts shows its message once, a tagline and a ghost", () => {
+  it("Debts shows the ghost guide hint once and a ghost", () => {
     const { container } = render(
       <DebtsCardView stack={stack} card={debts} onStackChange={vi.fn()} />,
     );
-    expect(screen.getAllByText("You have no debts recorded yet.")).toHaveLength(1);
-    expect(screen.getByText("Nobody owes you anything right now.")).toBeTruthy();
+    expect(
+      screen.getAllByText("Tap 'Record a debt' to log a customer tab."),
+    ).toHaveLength(1);
     expectGhost(container);
   });
 });
