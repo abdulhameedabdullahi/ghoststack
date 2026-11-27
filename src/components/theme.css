@@ -90,6 +90,7 @@
   --font-pixel: "Press Start 2P", monospace;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-size-title: 0.75rem;
+  --font-size-app-title: 1rem;
   --font-size-body: 1rem;
   --line-height: 1.5;
 

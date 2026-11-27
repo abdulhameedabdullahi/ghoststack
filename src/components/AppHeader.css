@@ -1,7 +1,7 @@
 .app-header {
   min-width: 0;
   margin-bottom: var(--space-3);
-  padding: var(--space-3);
+  padding: var(--space-2) var(--space-3);
   background-color: var(--color-title-bg);
   background-image: var(--title-stripe-bg);
   color: var(--color-title-fg);
@@ -24,13 +24,20 @@
   margin: 0;
   min-width: 0;
   font-family: var(--font-pixel);
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-app-title);
   color: var(--color-title-fg);
   overflow-wrap: anywhere;
+  letter-spacing: 0.03em;
 }
 
 @media (max-width: 480px) {
   .app-header__name {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-header__name {
+    font-size: 1.25rem;
   }
 }
