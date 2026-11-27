@@ -15,17 +15,23 @@
   display: block;
 }
 
-/* ── Moon ── */
+/* ── Moon — only on desktop where there is margin space outside the window ── */
 .spooky-bg__moon {
   position: absolute;
-  top: 4%;
-  right: 6%;
+  top: 18%;
+  right: 5%;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background: var(--spooky-moon-bg);
   box-shadow: var(--spooky-moon-shadow-rest);
-  opacity: 0.75;
+  opacity: 0;
+}
+
+@media (min-width: 1200px) {
+  .spooky-bg__moon {
+    opacity: 0.75;
+  }
 }
 
 @keyframes moon-glow {
@@ -131,12 +137,18 @@
   }
 }
 
-/* ── Cobwebs ── */
+/* ── Cobwebs — only on wide desktop where margin space is guaranteed ── */
 .spooky-bg__cobweb {
   position: absolute;
   width: 160px;
   height: 160px;
-  opacity: 0.45;
+  opacity: 0;
+}
+
+@media (min-width: 1200px) {
+  .spooky-bg__cobweb {
+    opacity: 0.45;
+  }
 }
 
 .spooky-bg__cobweb--tl {
