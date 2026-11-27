@@ -10,77 +10,77 @@ Do not touch `src/domain`, `src/storage`, `src/domain/result.ts`, `package.json`
 
 ### Batch 1: types, sanitise, both builders, P1 to P5 and P7
 
-- [-] **CHECKPOINT: Stop here and commit all work so far (including this spec) before starting Batch 1.**
+- [x] **CHECKPOINT: Stop here and commit all work so far (including this spec) before starting Batch 1.**
 
-- [ ] 1. Types, templates and test helpers
-  - [~] 1.1 Create `src/domain-ui/share/types.ts`
+- [x] 1. Types, templates and test helpers
+  - [x] 1.1 Create `src/domain-ui/share/types.ts`
     - Export `Language = "en"`, `ShareErrorCode = "INVALID_AMOUNT" | "ALREADY_PAID"`, `SHARE_ERROR_MESSAGES` (plain-language text for both codes), `ShareResult<T>`, `MessageText`, `DebtReminderInput` and `DailySummaryInput`.
     - Do not edit `src/domain/result.ts`.
     - _Requirements: 1.2, 1.3, 2.2, 2.3_
-  - [~] 1.2 Create `src/domain-ui/share/templates.ts`
+  - [x] 1.2 Create `src/domain-ui/share/templates.ts`
     - Export the `Templates` interface and `TEMPLATES: Record<Language, Templates>`. Put every English word in it: the fallbacks "there" and "my shop", "nothing", the items separator ", ", `itemsMore(n)` giving " and {n} more", `debtReminder(...)` and `dailySummary(...)` (five lines joined with "\n").
     - The English text must match 1.4 and 2.4 exactly. No emoji.
     - _Requirements: 1.2, 1.4, 1.5, 2.4, 8.2, 8.3_
-  - [~] 1.3 Create `src/test/shareArbitraries.ts`
+  - [x] 1.3 Create `src/test/shareArbitraries.ts`
     - Export `fullUnicodeString` (built from `fc.string({ unit: "binary" })`, because `fc.fullUnicodeString` is gone in fast-check 4), a lone-surrogate string arbitrary, the empty string, very long strings, RTL strings with bidi override characters, emoji strings (including a joined family sequence), control-character and whitespace-heavy strings, `nameArb` (`fc.oneof` of all of them), `validKoboArb` (1 to `Number.MAX_SAFE_INTEGER`, edges included), `zeroOrMoreKoboArb` and `lowStockNamesArb` (0 to 50 names).
     - Export `checkProperty(property, runs = 100)`: runs `fc.check` with `numRuns >= 100` and, on failure, throws an `Error` whose message holds the seed, the counterexample and the shrunk error.
     - _Requirements: 3.3, Property tests section of the request_
-  - [~] 1.4 Write unit tests in `src/domain-ui/share/templates.test.ts`
+  - [x] 1.4 Write unit tests in `src/domain-ui/share/templates.test.ts`
     - Exact English text for fixed inputs. No banned word in any template (for example "overdue", "final", "legal", "police", "court", "shame", "urgent", "immediately", "or else"). No emoji.
     - _Requirements: 1.4, 1.5, 2.4, 8.2_
 
-- [ ] 2. `sanitiseText`
-  - [~] 2.1 Create `src/domain-ui/share/sanitise.ts`
+- [x] 2. `sanitiseText`
+  - [x] 2.1 Create `src/domain-ui/share/sanitise.ts`
     - Export `NAME_MAX = 30`, `ITEM_MAX = 20` and `sanitiseText(value, max)`.
     - Steps in order: replace lone surrogates with U+FFFD; remove U+0000-U+001F, U+007F, U+202A-U+202E and U+2066-U+2069; collapse `\s+` to one space; trim; cut to `max` code points with `Array.from` (never `.length`); trim the end again.
     - Pure. Use no `replaceAll` or `toWellFormed` (the project targets ES2020).
     - _Requirements: 3.1, 3.2_
-  - [~] 2.2 Write unit tests in `src/domain-ui/share/sanitise.test.ts`
+  - [x] 2.2 Write unit tests in `src/domain-ui/share/sanitise.test.ts`
     - Each forbidden character is removed (so `"a\nb"` becomes `"ab"`). Whitespace collapses. Trim works. The cut counts emoji as one code point. A cut that ends on a space is trimmed. A lone surrogate becomes U+FFFD. Empty input gives `""`.
     - _Requirements: 3.1_
-  - [~] 2.3 Write fast-check property test P4 in `src/domain-ui/share/sanitise.property.test.ts`
+  - [x] 2.3 Write fast-check property test P4 in `src/domain-ui/share/sanitise.property.test.ts`
     - **Property P4: sanitising is idempotent, its output has no forbidden character, and it has at most `max` code points (counted with `Array.from`).** Use `nameArb` and caps 30 and 20.
     - **Validates: Requirements 3.1**
 
-- [ ] 3. `buildDebtReminder`
-  - [~] 3.1 Create `src/domain-ui/share/buildDebtReminder.ts`
+- [x] 3. `buildDebtReminder`
+  - [x] 3.1 Create `src/domain-ui/share/buildDebtReminder.ts`
     - Check the amount first: `0` gives `ALREADY_PAID`; not a safe integer or less than 1 gives `INVALID_AMOUNT`.
     - Sanitise names with `NAME_MAX`, apply the fallbacks from the templates, format the amount with the existing `formatDisplay` from `src/components/formatMoney.ts` (do not write another formatter), and fill `TEMPLATES[language].debtReminder`.
     - Pure. No clock, no randomness, no network, no DOM.
     - _Requirements: 1.1 to 1.6, 3.1, 3.2, 4.2, 4.3_
-  - [~] 3.2 Write unit tests in `src/domain-ui/share/buildDebtReminder.test.ts`
+  - [x] 3.2 Write unit tests in `src/domain-ui/share/buildDebtReminder.test.ts`
     - Exact text for a known input, for example `Hello Ada, a gentle reminder from Mama Ife's Shop: you still owe ₦1,250.50. Thank you!`. A whole-naira amount has no ".00". Empty names become "there" and "my shop". `0` gives `ALREADY_PAID`. `-1`, `1.5`, `NaN`, `Infinity` and `2 ** 53` give `INVALID_AMOUNT`. The error codes carry messages.
     - _Requirements: 1.3, 1.4, 3.2, 4.3_
-  - [~] 3.3 Write fast-check property tests P1, P3, P5 and P7 in `src/domain-ui/share/buildDebtReminder.property.test.ts`
+  - [x] 3.3 Write fast-check property tests P1, P3, P5 and P7 in `src/domain-ui/share/buildDebtReminder.property.test.ts`
     - **Property P1: any valid input gives ok, and the text satisfies 4.1, 4.2 and 3.3.** For 4.1, cut every sanitised user-supplied string out of the text before checking (design decision 7). 4.2: the text contains `formatDisplay(outstandingKobo)`. 3.3: `encodeURIComponent(text).length <= 1800`. Include a worst-case input of 4-byte code points.
     - **Property P3: `decodeURIComponent(encodeURIComponent(text))` equals `text`.** This includes lone-surrogate input.
     - **Property P5: any `outstandingKobo` that is not a safe integer >= 1 gives `INVALID_AMOUNT`, and `0` gives `ALREADY_PAID`.** Treat `-0` as `0`.
     - **Property P7: the same input twice gives the same text.**
     - **Validates: Requirements 1.1, 1.3, 3.3, 4.1, 4.2, 4.3**
 
-- [ ] 4. `buildDailySummary`
-  - [~] 4.1 Create `src/domain-ui/share/buildDailySummary.ts`
+- [x] 4. `buildDailySummary`
+  - [x] 4.1 Create `src/domain-ui/share/buildDailySummary.ts`
     - Any of the three kobo values not a safe integer or less than 0 gives `INVALID_AMOUNT`.
     - Sanitise `shopName` and `dateLabel` with `NAME_MAX`, each item with `ITEM_MAX`, drop empty items, then build the items line: first 3 joined with the separator, then `itemsMore(rest)`, or `itemsNone` when empty. Format all amounts with `formatDisplay`.
     - Pure, same rules as the debt builder.
     - _Requirements: 2.1 to 2.4, 3.1, 3.2, 4.2, 4.3_
-  - [~] 4.2 Write unit tests in `src/domain-ui/share/buildDailySummary.test.ts`
+  - [x] 4.2 Write unit tests in `src/domain-ui/share/buildDailySummary.test.ts`
     - Exact five-line text for a known input. Items line for 0, 1, 3, 4 and 5 names (`a, b, c and 2 more`). Empty item names are dropped before counting. Zero values are allowed (`₦0`). A negative, fractional or `NaN` value in any of the three fields gives `INVALID_AMOUNT`.
     - _Requirements: 2.3, 2.4, 3.2, 4.3_
-  - [~] 4.3 Write fast-check property tests P2, P3 and P7 in `src/domain-ui/share/buildDailySummary.property.test.ts`
+  - [x] 4.3 Write fast-check property tests P2, P3 and P7 in `src/domain-ui/share/buildDailySummary.property.test.ts`
     - **Property P2: any valid input (0 to 50 low-stock names) gives ok, and the text satisfies 4.1, 4.2 and 3.3.** 4.2: the text contains the formatted sales, profit and owed amounts. Include a worst-case input of 4-byte code points, three maximum amounts and 50 names.
     - **Property P3: the text round-trips through `encodeURIComponent` and `decodeURIComponent`.**
     - **Property P7: the same input twice gives the same text.**
     - **Validates: Requirements 2.1, 2.3, 3.3, 4.1, 4.2, 4.3**
 
-- [ ] 5. Barrel and checks
-  - [~] 5.1 Create `src/domain-ui/share/index.ts` that re-exports the types, templates, `sanitiseText` and both builders.
-  - [~] 5.2 Confirm no file in `src/domain-ui/share/` imports from `src/components/ghost`, and `src/domain` and `src/storage` have no changes (`git status`).
-  - [~] 5.3 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
+- [x] 5. Barrel and checks
+  - [x] 5.1 Create `src/domain-ui/share/index.ts` that re-exports the types, templates, `sanitiseText` and both builders.
+  - [x] 5.2 Confirm no file in `src/domain-ui/share/` imports from `src/components/ghost`, and `src/domain` and `src/storage` have no changes (`git status`).
+  - [x] 5.3 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
 
 ### Batch 2: ShareEnvironment, deliverMessage, P6
 
-- [~] **CHECKPOINT: Stop here and commit Batch 1 before starting Batch 2.**
+- [-] **CHECKPOINT: Stop here and commit Batch 1 before starting Batch 2.**
 
 - [ ] 6. `deliverMessage`
   - [~] 6.1 Create `src/domain-ui/share/deliver.ts`

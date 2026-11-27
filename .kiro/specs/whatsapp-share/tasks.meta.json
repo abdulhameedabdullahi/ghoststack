@@ -11,6 +11,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797659250
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797706794
       }
     ],
     "1.1 Create `src/domain-ui/share/types.ts`": [
@@ -18,6 +23,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797606576
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797711596
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797791201
       }
     ],
     "1.2 Create `src/domain-ui/share/templates.ts`": [
@@ -25,6 +40,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797607578
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797795166
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797854113
       }
     ],
     "1.3 Create `src/test/shareArbitraries.ts`": [
@@ -32,6 +57,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608099
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797858845
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797983639
       }
     ],
     "1.4 Write unit tests in `src/domain-ui/share/templates.test.ts`": [
@@ -39,6 +74,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608231
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795797987743
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798230407
       }
     ],
     "2.1 Create `src/domain-ui/share/sanitise.ts`": [
@@ -46,6 +91,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608407
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798235274
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798337656
       }
     ],
     "2.2 Write unit tests in `src/domain-ui/share/sanitise.test.ts`": [
@@ -53,6 +108,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608544
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798356944
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798445510
       }
     ],
     "2.3 Write fast-check property test P4 in `src/domain-ui/share/sanitise.property.test.ts`": [
@@ -60,6 +125,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608717
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798449316
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798504890
       }
     ],
     "3.1 Create `src/domain-ui/share/buildDebtReminder.ts`": [
@@ -67,6 +142,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608860
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798509371
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798785437
       }
     ],
     "3.2 Write unit tests in `src/domain-ui/share/buildDebtReminder.test.ts`": [
@@ -74,6 +159,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797608988
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798789239
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798937431
       }
     ],
     "3.3 Write fast-check property tests P1, P3, P5 and P7 in `src/domain-ui/share/buildDebtReminder.property.test.ts`": [
@@ -81,6 +176,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609143
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798948536
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799019350
       }
     ],
     "4.1 Create `src/domain-ui/share/buildDailySummary.ts`": [
@@ -88,6 +193,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609276
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799023447
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799079937
       }
     ],
     "4.2 Write unit tests in `src/domain-ui/share/buildDailySummary.test.ts`": [
@@ -95,6 +210,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609419
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799091258
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799160738
       }
     ],
     "4.3 Write fast-check property tests P2, P3 and P7 in `src/domain-ui/share/buildDailySummary.property.test.ts`": [
@@ -102,6 +227,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609545
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799164150
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799367085
       }
     ],
     "5.1 Create `src/domain-ui/share/index.ts` that re-exports the types, templates, `sanitiseText` and both builders.": [
@@ -109,6 +244,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609666
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799372156
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800070465
       }
     ],
     "5.2 Confirm no file in `src/domain-ui/share/` imports from `src/components/ghost`, and `src/domain` and `src/storage` have no changes (`git status`).": [
@@ -116,6 +261,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609807
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800074959
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800109684
       }
     ],
     "5.3 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.": [
@@ -123,6 +278,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797609929
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800122702
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800988554
       }
     ],
     "**CHECKPOINT: Stop here and commit Batch 1 before starting Batch 2.**": [
@@ -130,6 +295,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610073
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800996703
       }
     ],
     "6.1 Create `src/domain-ui/share/deliver.ts`": [
@@ -305,6 +475,41 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797614407
+      }
+    ],
+    "1. Types, templates and test helpers": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798231746
+      }
+    ],
+    "2. `sanitiseText`": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795798505712
+      }
+    ],
+    "3. `buildDebtReminder`": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799019969
+      }
+    ],
+    "4. `buildDailySummary`": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795799368215
+      }
+    ],
+    "5. Barrel and checks": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795800990337
       }
     ]
   }
