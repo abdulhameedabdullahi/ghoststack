@@ -85,6 +85,48 @@
   outline-offset: 2px;
 }
 
+/* Ghost companion slot: fixed bottom-right of viewport, above tab bar on mobile */
+.ghost-companion-slot {
+  position: fixed;
+  bottom: var(--space-5);
+  right: var(--space-3);
+  z-index: 101;
+  max-width: min(90vw, 24rem);
+}
+
+/* On mobile the tab bar is fixed at bottom; lift the companion above it */
+@media (max-width: 768px) {
+  .ghost-companion-slot {
+    bottom: calc(var(--tap-min) + var(--space-3) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Ghost faces right; reverse layout so bubble opens to the left */
+.ghost-companion-slot .ghost-companion {
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.ghost-companion-slot .ghost-bubble {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+/* Flip bubble arrow to point RIGHT, toward the ghost on the right */
+.ghost-companion-slot .ghost-bubble::before {
+  right: auto;
+  left: 100%;
+  border-right: none;
+  border-left: 10px solid var(--color-border);
+}
+
+.ghost-companion-slot .ghost-bubble::after {
+  right: auto;
+  left: calc(100% - var(--border-width));
+  border-right: none;
+  border-left: 8px solid var(--color-surface);
+}
+
 /* Small phones: stack controls below the title so nothing overflows. */
 @media (max-width: 480px) {
   .app-bar {

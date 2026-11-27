@@ -471,7 +471,9 @@ export default function App() {
           </button>
         </div>
       </div>
-      <GhostCompanion />
+      <div className="ghost-companion-slot">
+        <GhostCompanion />
+      </div>
       <NoticeArea
         notice={notice}
         onCloseOffline={closeOffline}
