@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GhostStack — Logo Exploration</title>
+<style>
+body{margin:0;background:#1a1030;color:#d8c4ff;font-family:monospace;padding:1.5rem}
+h1{font-size:1rem;margin:0 0 .2rem}
+p{margin:0 0 1rem;font-size:.8rem;opacity:.8}
+h2{font-size:.85rem;margin:1.5rem 0 .4rem;border-top:1px solid #6b3bdc;padding-top:.75rem}
+h3{font-size:.75rem;margin:.5rem 0 .3rem;opacity:.7}
+.themes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.5rem}
+.swatch{padding:.75rem;border:1px solid #6b3bdc}
+.night{background:#07050f;color:#d8c4ff}
+.light{background:#fff;color:#000;border-color:#ccc}
+.row{display:flex;gap:.5rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:.5rem}
+.cap{font-size:.6rem;text-align:center;opacity:.6;margin-top:.15rem}
+.coin{fill:#d4a030}
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+<defs>
+<symbol id="ghost" viewBox="0 0 16 16">
+<path fill="currentColor" d="M5,0h6v1h-6zM3,1h10v1h-10zM2,2h12v1h-12zM2,3h12v1h-12zM2,4h3v1h-3zM6,4h4v1h-4zM11,4h3v1h-3zM2,5h2v1h-2zM6,5h4v1h-4zM12,5h2v1h-2zM2,6h3v1h-3zM6,6h4v1h-4zM11,6h3v1h-3zM2,7h12v1h-12zM2,8h12v1h-12zM2,9h4v1h-4zM10,9h4v1h-4zM2,10h12v1h-12zM2,11h12v1h-12zM2,12h12v1h-12zM2,13h12v1h-12zM2,14h3v1h-3zM6,14h1v1h-1zM9,14h1v1h-1zM11,14h3v1h-3zM2,15h1v1h-1zM6,15h4v1h-4zM13,15h1v1h-1z"/>
+</symbol>
+<symbol id="wm" viewBox="0 0 49 5">
+<path fill="currentColor" d="M1,0h2v1h-2zM0,1h1v3h-1zM2,2h2v1h-2zM3,3h1v1h-1zM1,4h3v1h-3zM5,0h1v5h-1zM8,0h1v5h-1zM6,2h2v1h-2zM11,0h2v1h-2zM10,1h1v3h-1zM13,1h1v3h-1zM11,4h2v1h-2zM16,0h3v1h-3zM15,1h1v1h-1zM16,2h2v1h-2zM18,3h1v1h-1zM15,4h3v1h-3zM20,0h4v1h-4zM21,1h1v4h-1zM26,0h3v1h-3zM25,1h1v1h-1zM26,2h2v1h-2zM28,3h1v1h-1zM25,4h3v1h-3zM30,0h4v1h-4zM31,1h1v4h-1zM36,0h2v1h-2zM35,1h1v4h-1zM38,1h1v4h-1zM36,2h2v1h-2zM41,0h2v1h-2zM40,1h1v3h-1zM41,4h2v1h-2zM45,0h1v5h-1zM48,0h1v1h-1zM47,1h1v1h-1zM46,2h1v1h-1zM47,3h1v1h-1zM48,4h1v1h-1z"/>
+</symbol>
+<symbol id="mk-a" viewBox="0 0 20 24">
+<rect fill="currentColor" x="4" y="14" width="13" height="1"/>
+<rect fill="currentColor" x="2" y="15" width="15" height="1"/>
+<rect fill="currentColor" x="0" y="16" width="1" height="7"/>
+<rect fill="currentColor" x="0" y="16" width="15" height="1"/>
+<rect fill="currentColor" x="15" y="16" width="1" height="2"/>
+<rect fill="currentColor" x="15" y="18" width="2" height="1"/>
+<rect fill="currentColor" x="17" y="18" width="1" height="5"/>
+<rect fill="currentColor" x="0" y="22" width="18" height="1"/>
+<use href="#ghost" x="2" y="0"/>
+</symbol>
+<symbol id="mk-b" viewBox="0 0 20 24">
+<rect fill="currentColor" x="1" y="8" width="1" height="13"/>
+<rect fill="currentColor" x="1" y="8" width="15" height="1"/>
+<rect fill="currentColor" x="16" y="8" width="1" height="2"/>
+<rect fill="currentColor" x="16" y="10" width="2" height="1"/>
+<rect fill="currentColor" x="18" y="10" width="1" height="11"/>
+<rect fill="currentColor" x="1" y="21" width="18" height="1"/>
+<use href="#ghost" x="2" y="0"/>
+<rect class="coin" x="15" y="5" width="1" height="1"/>
+<rect class="coin" x="14" y="6" width="3" height="1"/>
+<rect class="coin" x="14" y="7" width="3" height="1"/>
+<rect class="coin" x="14" y="8" width="3" height="1"/>
+<rect class="coin" x="15" y="9" width="1" height="1"/>
+</symbol>
+<symbol id="mk-c" viewBox="0 0 16 19">
+<path fill="currentColor" d="M5,0h6v1h-6zM3,1h10v1h-10zM2,2h12v1h-12zM2,3h12v1h-12zM2,4h3v1h-3zM6,4h4v1h-4zM11,4h3v1h-3zM2,5h2v1h-2zM6,5h4v1h-4zM12,5h2v1h-2zM2,6h3v1h-3zM6,6h4v1h-4zM11,6h3v1h-3zM2,7h12v1h-12zM2,8h12v1h-12zM2,9h4v1h-4zM10,9h4v1h-4zM2,10h12v1h-12zM2,11h12v1h-12zM2,12h12v1h-12zM2,13h12v1h-12z"/>
+<rect fill="currentColor" x="1" y="14" width="1" height="4"/>
+<rect fill="currentColor" x="13" y="14" width="1" height="2"/>
+<rect fill="currentColor" x="12" y="16" width="1" height="1"/>
+<rect fill="currentColor" x="1" y="17" width="11" height="1"/>
+<rect fill="currentColor" x="12" y="17" width="1" height="1"/>
+<rect fill="currentColor" x="12" y="18" width="2" height="1"/>
+</symbol>
+<symbol id="lk-a" viewBox="0 0 122 24"><use href="#mk-a"/><use href="#wm" transform="translate(24,7) scale(2)"/></symbol>
+<symbol id="lk-b" viewBox="0 0 122 24"><use href="#mk-b"/><use href="#wm" transform="translate(24,7) scale(2)"/></symbol>
+<symbol id="lk-c" viewBox="0 0 118 19"><use href="#mk-c"/><use href="#wm" transform="translate(20,5) scale(2)"/></symbol>
+</defs>
+</svg>
+
+<h1>GhostStack — Logo Exploration</h1>
+<p>Three original directions. Pixel-grid rects only. No scripts, no network. Pick A, B, or C.</p>
+
+<section>
+<h2>A · Ghost on three-card stack (cards fanned like a deck)</h2>
+<div class="themes">
+<div class="swatch night"><h3>Midnight</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 122 24" shape-rendering="crispEdges"><use href="#lk-a"/></svg>
+</div>
+<div class="swatch light"><h3>Light</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-a"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 122 24" shape-rendering="crispEdges"><use href="#lk-a"/></svg>
+</div>
+</div>
+</section>
+
+<section>
+<h2>B · Ghost rising from index card, gold-coin cheek</h2>
+<div class="themes">
+<div class="swatch night"><h3>Midnight</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 122 24" shape-rendering="crispEdges"><use href="#lk-b"/></svg>
+</div>
+<div class="swatch light"><h3>Light</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 20 24" shape-rendering="crispEdges"><use href="#mk-b"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 122 24" shape-rendering="crispEdges"><use href="#lk-b"/></svg>
+</div>
+</div>
+</section>
+
+<section>
+<h2>C · Ghost whose lower edge becomes a card fold</h2>
+<div class="themes">
+<div class="swatch night"><h3>Midnight</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 118 19" shape-rendering="crispEdges"><use href="#lk-c"/></svg>
+</div>
+<div class="swatch light"><h3>Light</h3>
+<div class="row">
+<div><svg width="16" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">16</div></div>
+<div><svg width="32" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">32</div></div>
+<div><svg width="64" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">64</div></div>
+<div><svg width="256" viewBox="0 0 16 19" shape-rendering="crispEdges"><use href="#mk-c"/></svg><div class="cap">256</div></div>
+</div>
+<svg width="100%" viewBox="0 0 118 19" shape-rendering="crispEdges"><use href="#lk-c"/></svg>
+</div>
+</div>
+</section>
+</body>
+</html>
