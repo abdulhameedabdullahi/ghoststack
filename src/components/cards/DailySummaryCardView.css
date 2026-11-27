@@ -11,9 +11,43 @@
   flex-direction: column;
   gap: var(--space-1);
   padding: var(--space-2);
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: 2px 2px 0 var(--color-border);
+  border: 1px solid var(--color-border);
+  box-shadow: inset 0 1px 0 var(--color-border);
   min-width: 0;
+}
+
+/* Meaningful colour tints per row */
+.daily-summary__row--sales {
+  background-color: var(--color-tint-sales-bg);
+  color: var(--color-tint-sales-fg);
+  border-color: var(--color-tint-sales-fg);
+}
+
+.daily-summary__row--profit {
+  background-color: var(--color-tint-profit-bg);
+  color: var(--color-tint-profit-fg);
+  border-color: var(--color-tint-profit-fg);
+}
+
+.daily-summary__row--stock {
+  background-color: var(--color-tint-stock-bg);
+  color: var(--color-tint-stock-fg);
+  border-color: var(--color-tint-stock-fg);
+}
+
+.daily-summary__row--debt {
+  background-color: var(--color-tint-debt-bg);
+  color: var(--color-tint-debt-fg);
+  border-color: var(--color-tint-debt-fg);
+}
+
+/* Tinted row labels use the row's foreground colour (muted via opacity) */
+.daily-summary__row--sales dt,
+.daily-summary__row--profit dt,
+.daily-summary__row--stock dt,
+.daily-summary__row--debt dt {
+  color: currentColor;
+  opacity: 0.75;
 }
 
 .daily-summary__row dt {

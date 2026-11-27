@@ -66,6 +66,10 @@ export const PAIR_LIST: readonly PalettePair[] = [
   ui("ghost on title bar", "--color-title-fg", "--color-title-bg"),
   ui("moon icon on moon button", "--color-moon-icon", "--color-moon-bg"),
   ui("pressed moon icon on pressed moon button", "--color-moon-pressed-icon", "--color-moon-pressed-bg"),
+  text("sales card text on sales card bg", "--color-tint-sales-fg", "--color-tint-sales-bg"),
+  text("profit card text on profit card bg", "--color-tint-profit-fg", "--color-tint-profit-bg"),
+  text("stock card text on stock card bg", "--color-tint-stock-fg", "--color-tint-stock-bg"),
+  text("debt card text on debt card bg", "--color-tint-debt-fg", "--color-tint-debt-bg"),
 ];
 
 /**

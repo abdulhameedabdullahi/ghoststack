@@ -56,6 +56,16 @@
   --color-moon-pressed-bg: #0d0820;
   --color-moon-pressed-icon: #f0eaff;
 
+  /* Daily summary card row tints */
+  --color-tint-sales-bg: #d4edda;
+  --color-tint-sales-fg: #0a3d1f;
+  --color-tint-profit-bg: #c3f7c3;
+  --color-tint-profit-fg: #0a3d1f;
+  --color-tint-stock-bg: #fff3cd;
+  --color-tint-stock-fg: #4a3000;
+  --color-tint-debt-bg: #fde8ea;
+  --color-tint-debt-fg: #4d0010;
+
   /* Title-bar stripe overlay — rgba stays in theme.css (exempt from colour scan) */
   --title-stripe-bg: repeating-linear-gradient(
     to bottom,
@@ -140,6 +150,16 @@
   --color-moon-bg: #0d0820;
   --color-moon-pressed-bg: #d4a030;
   --color-moon-pressed-icon: #07050f;
+
+  /* Daily summary card row tints — dark backgrounds, vivid foregrounds */
+  --color-tint-sales-bg: #0a2316;
+  --color-tint-sales-fg: #4eff87;
+  --color-tint-profit-bg: #082012;
+  --color-tint-profit-fg: #3dff6b;
+  --color-tint-stock-bg: #231400;
+  --color-tint-stock-fg: #ffb84d;
+  --color-tint-debt-bg: #230610;
+  --color-tint-debt-fg: #ff7a8a;
 
   /* Tabs */
   --color-tab-selected-bg: #9254ff;
