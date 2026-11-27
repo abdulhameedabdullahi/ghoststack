@@ -300,6 +300,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795800996703
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801058088
       }
     ],
     "6.1 Create `src/domain-ui/share/deliver.ts`": [
@@ -307,6 +312,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610204
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801064681
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801124105
       }
     ],
     "6.2 Create `src/domain-ui/share/browserEnvironment.ts`": [
@@ -314,6 +329,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610329
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801128213
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801229298
       }
     ],
     "6.3 Write unit tests in `src/domain-ui/share/deliver.test.ts`": [
@@ -321,6 +346,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610475
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801259788
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801344574
       }
     ],
     "6.4 Write unit tests in `src/domain-ui/share/browserEnvironment.test.ts`": [
@@ -328,6 +363,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610615
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801349527
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801560077
       }
     ],
     "6.5 Write fast-check property test P6 in `src/domain-ui/share/deliver.property.test.ts`": [
@@ -335,6 +380,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797610813
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801564949
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801676569
       }
     ],
     "7.1 Add `deliverMessage`, `ShareEnvironment`, `ShareOutcome` and `browserShareEnvironment` to `src/domain-ui/share/index.ts`.": [
@@ -342,6 +397,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611190
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801684075
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801738787
       }
     ],
     "7.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.": [
@@ -349,6 +414,16 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611387
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801749449
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801914022
       }
     ],
     "**CHECKPOINT: Stop here and commit Batch 2 before starting Batch 3.**": [
@@ -356,6 +431,11 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795797611491
+      },
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801919363
       }
     ],
     "8.1 Add `ariaDisabled?: boolean` to `src/components/Button.tsx` and a `.button[aria-disabled=\"true\"]` rule (with hover and active) to `Button.css`": [
@@ -510,6 +590,20 @@
         "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
         "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
         "timestamp": 1795800990337
+      }
+    ],
+    "6. `deliverMessage`": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801677944
+      }
+    ],
+    "7. Barrel and checks": [
+      {
+        "executionId": "fa130764-68be-4adb-9a1e-4a6b4310c834",
+        "chatSessionId": "sess_486b66a7-8145-4fc6-b0eb-d95ad182684b",
+        "timestamp": 1795801915308
       }
     ]
   }

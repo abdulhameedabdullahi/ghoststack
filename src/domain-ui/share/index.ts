@@ -12,3 +12,6 @@ export { TEMPLATES } from "./templates";
 export { sanitiseText, NAME_MAX, ITEM_MAX } from "./sanitise";
 export { buildDebtReminder } from "./buildDebtReminder";
 export { buildDailySummary } from "./buildDailySummary";
+export type { ShareEnvironment, ShareOutcome } from "./deliver";
+export { deliverMessage } from "./deliver";
+export { browserShareEnvironment } from "./browserEnvironment";

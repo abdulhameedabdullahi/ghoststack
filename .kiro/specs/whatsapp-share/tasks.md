@@ -80,36 +80,36 @@ Do not touch `src/domain`, `src/storage`, `src/domain/result.ts`, `package.json`
 
 ### Batch 2: ShareEnvironment, deliverMessage, P6
 
-- [-] **CHECKPOINT: Stop here and commit Batch 1 before starting Batch 2.**
+- [x] **CHECKPOINT: Stop here and commit Batch 1 before starting Batch 2.**
 
-- [ ] 6. `deliverMessage`
-  - [~] 6.1 Create `src/domain-ui/share/deliver.ts`
+- [x] 6. `deliverMessage`
+  - [x] 6.1 Create `src/domain-ui/share/deliver.ts`
     - Export `ShareOutcome`, `ShareEnvironment` (`canShare`, `share`, `isOnline`, `openUrl`, `writeClipboard`) and `deliverMessage(text, env): Promise<ShareOutcome>`.
     - Chain: (a) if `canShare`, `await share`; (b) otherwise, or after a non-abort failure of (a), if `isOnline`, `openUrl("https://wa.me/?text=" + encodeURIComponent(text))`; (c) otherwise, or after (a) or (b) failed, `await writeClipboard`; (d) if the clipboard fails, `{ kind: "manual", text }`.
     - A rejection from `share` with `name === "AbortError"` returns `{ kind: "cancelled" }` at once and calls nothing else. `openUrl` returning `false` goes to the next strategy.
     - Wrap every `env` call in `try`, treat a throw (including a synchronous one) as failure, and wrap the whole body so the promise never rejects.
     - _Requirements: 5.1, 5.3, 5.4, 5.5, 5.6_
-  - [~] 6.2 Create `src/domain-ui/share/browserEnvironment.ts`
+  - [x] 6.2 Create `src/domain-ui/share/browserEnvironment.ts`
     - Export `browserShareEnvironment: ShareEnvironment`. `canShare`: `navigator.share` is a function and (`navigator.canShare` is missing or returns true for `{ text }`). `share`: `navigator.share({ text })`. `isOnline`: `navigator.onLine !== false`. `openUrl`: click a temporary `<a href target="_blank" rel="noopener noreferrer">` and remove it; return `false` only without a document or on a throw. `writeClipboard`: `navigator.clipboard.writeText`, rejecting when the API is missing. Guard for a missing `window` or `navigator`.
     - _Requirements: 5.2, 5.3, 6.5_
-  - [~] 6.3 Write unit tests in `src/domain-ui/share/deliver.test.ts`
+  - [x] 6.3 Write unit tests in `src/domain-ui/share/deliver.test.ts`
     - Use a fake environment that records calls. One test per case: (a) ok gives `shared`; canShare false and online with `openUrl` true gives `opened`, and the URL equals `"https://wa.me/?text=" + encodeURIComponent(text)`; offline gives `copied`; clipboard failure gives `manual` with the exact text; `AbortError` gives `cancelled` and no other call; a non-abort `share` failure falls to `openUrl`; `openUrl` false falls to the clipboard; a `share` failure while offline falls to the clipboard; a fake that throws synchronously still resolves.
     - _Requirements: 5.1, 5.3 to 5.6_
-  - [~] 6.4 Write unit tests in `src/domain-ui/share/browserEnvironment.test.ts`
+  - [x] 6.4 Write unit tests in `src/domain-ui/share/browserEnvironment.test.ts`
     - First line `// @vitest-environment jsdom`. Cover `canShare` with and without `navigator.share`, `isOnline`, `openUrl` (creates a link with `rel="noopener noreferrer"` and `target="_blank"`, clicks it, removes it), and `writeClipboard` rejecting when `navigator.clipboard` is missing.
     - _Requirements: 5.2, 5.3_
-  - [~] 6.5 Write fast-check property test P6 in `src/domain-ui/share/deliver.property.test.ts`
+  - [x] 6.5 Write fast-check property test P6 in `src/domain-ui/share/deliver.property.test.ts`
     - Generate every combination: `canShare` true or false; `share` resolving, rejecting with an `AbortError` (both a `DOMException`-like and a plain object), rejecting with another error, or throwing synchronously; `isOnline` true or false; `openUrl` true, false or throwing; `writeClipboard` resolving, rejecting or throwing. Text from `nameArb`.
     - **Property P6: `deliverMessage` resolves, never throws, and returns one of the five kinds. `manual` always carries the exact text. `AbortError` always returns `cancelled` with no other call made. The outcome follows the strategy order in 5.3 and 5.6.**
     - **Validates: Requirements 5.1, 5.3, 5.4, 5.5, 5.6**
 
-- [ ] 7. Barrel and checks
-  - [~] 7.1 Add `deliverMessage`, `ShareEnvironment`, `ShareOutcome` and `browserShareEnvironment` to `src/domain-ui/share/index.ts`.
-  - [~] 7.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
+- [x] 7. Barrel and checks
+  - [x] 7.1 Add `deliverMessage`, `ShareEnvironment`, `ShareOutcome` and `browserShareEnvironment` to `src/domain-ui/share/index.ts`.
+  - [x] 7.2 Run `npx tsc --noEmit`, then `npm test`, then `npm run build`. All three must pass.
 
 ### Batch 3: buttons, notice, manual fallback, component tests, docs and KIRO_NOTES.md
 
-- [~] **CHECKPOINT: Stop here and commit Batch 2 before starting Batch 3.**
+- [-] **CHECKPOINT: Stop here and commit Batch 2 before starting Batch 3.**
 
 - [ ] 8. Shared UI pieces
   - [~] 8.1 Add `ariaDisabled?: boolean` to `src/components/Button.tsx` and a `.button[aria-disabled="true"]` rule (with hover and active) to `Button.css`
