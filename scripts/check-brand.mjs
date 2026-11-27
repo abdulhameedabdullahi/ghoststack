@@ -117,8 +117,13 @@ for (const [f, w, h, maxB] of socialFiles) {
 requireStringInFile("index.html", "GhostStack", "brand name in index.html");
 requireStringInFile("index.html", "Raise your shop.", "tagline in index.html");
 
-// manifest: description
-requireStringInFile("public/site.webmanifest", "GhostStack", "brand name in manifest");
+// manifest config: name + description
+requireStringInFile("src/pwa/manifestConfig.ts", "GhostStack", "brand name in manifest");
+requireStringInFile("src/pwa/manifestConfig.ts", "Stock, sales and debts.", "BRAND_SUBLINE in manifest");
+
+// og-image served from public/
+requireFile("public/og-image.png");
+requirePngDimensions("public/og-image.png", 1200, 630);
 
 // src/brand/brand.ts: constants
 requireStringInFile("src/brand/brand.ts", "GhostStack", "BRAND_NAME");

@@ -4,11 +4,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GhostStack</title>
-  <meta name="theme-color" content="#000000" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <title>GhostStack — Raise your shop.</title>
+  <meta name="description" content="Stock, sales and debts. Offline. In Naira." />
+  <meta name="theme-color" content="#07050f" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="GhostStack — Raise your shop." />
+  <meta property="og:description" content="Stock, sales and debts. Offline. In Naira." />
+  <meta property="og:image"       content="%VITE_SITE_URL%/og-image.png" />
+  <meta property="og:url"         content="%VITE_SITE_URL%/" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="GhostStack — Raise your shop." />
+  <meta name="twitter:description" content="Stock, sales and debts. Offline. In Naira." />
+  <meta name="twitter:image"       content="%VITE_SITE_URL%/og-image.png" />
+
+  <style>
+    #gs-splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #07050f;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      pointer-events: none;
+      animation: gs-splash-fade 0.3s ease-out 0.7s forwards;
+    }
+    #gs-splash svg { display: block; }
+    #gs-splash span {
+      color: #d8c4ff;
+      font-family: monospace;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+    }
+    @keyframes gs-splash-fade {
+      to { opacity: 0; visibility: hidden; }
+    }
+  </style>
+
   <script>
     (function () {
+      /* Theme detection — runs before first paint. */
       var theme = "light";
       try {
         var saved = localStorage.getItem("ghoststack:theme");
@@ -19,11 +55,35 @@
         }
       } catch (e) { }
       document.documentElement.dataset.theme = theme;
+
+      /* Skip splash on return visits within the same browser session. */
+      try {
+        if (sessionStorage.getItem("gs:live")) {
+          var s = document.getElementById("gs-splash");
+          if (s) s.style.display = "none";
+        } else {
+          sessionStorage.setItem("gs:live", "1");
+        }
+      } catch (e) { }
     })();
   </script>
 </head>
 
 <body>
+  <!-- Splash screen: midnight bg + Direction-C mark. Pure CSS animation, ≤1 s. -->
+  <div id="gs-splash" aria-hidden="true">
+    <svg viewBox="0 0 16 19" width="64" height="76" shape-rendering="crispEdges" fill="#d8c4ff">
+      <path d="M5,0h6v1h-6zM3,1h10v1h-10zM2,2h12v1h-12zM2,3h12v1h-12zM2,4h3v1h-3zM6,4h4v1h-4zM11,4h3v1h-3zM2,5h2v1h-2zM6,5h4v1h-4zM12,5h2v1h-2zM2,6h3v1h-3zM6,6h4v1h-4zM11,6h3v1h-3zM2,7h12v1h-12zM2,8h12v1h-12zM2,9h4v1h-4zM10,9h4v1h-4zM2,10h12v1h-12zM2,11h12v1h-12zM2,12h12v1h-12zM2,13h12v1h-12z"/>
+      <rect x="1" y="14" width="1" height="4"/>
+      <rect x="13" y="14" width="1" height="2"/>
+      <rect x="12" y="16" width="1" height="1"/>
+      <rect x="1" y="17" width="11" height="1"/>
+      <rect x="12" y="17" width="1" height="1"/>
+      <rect x="12" y="18" width="2" height="1"/>
+    </svg>
+    <span>GhostStack</span>
+  </div>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

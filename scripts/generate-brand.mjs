@@ -340,5 +340,9 @@ writeIconPng("icon-maskable-512.png", 512, 25, true);
 // D — Social PNGs
 writeSocialImages();
 
+// Also serve OG image from public/ so the meta tag resolves at runtime
+const ogPixels = drawSocialBase(1200, 630, "GHOSTSTACK", "RAISE YOUR SHOP.");
+writePng(join(PUBLIC_DIR, "og-image.png"), 1200, 630, ogPixels);
+
 console.log("\nDone.");
 

@@ -7,7 +7,7 @@ export const MANIFEST = {
   id: BASE_PATH,
   name: "GhostStack",
   short_name: "GhostStack",
-  description: "Track your stock, sales and money owed. Works with no internet.",
+  description: "Stock, sales and debts. Offline. In Naira.",
   start_url: BASE_PATH,
   scope: BASE_PATH,
   display: "standalone" as const,

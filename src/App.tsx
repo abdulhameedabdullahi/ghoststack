@@ -40,6 +40,9 @@ import { requestPersistentStorage } from "./pwa/requestPersistentStorage";
 import { readLastOpenedId, rememberLastOpenedId } from "./storage/lastOpened";
 import { useServiceWorkerNotices } from "./pwa/useServiceWorkerNotices";
 import { NoticeArea } from "./components/NoticeArea";
+import { AboutPanel } from "./components/AboutPanel";
+import { ShareProvider } from "./components/share/ShareProvider";
+import { ShareStatus } from "./components/share/ShareStatus";
 import {
   BACKUP_LOADED,
   BACKUP_READ_FAILED,
@@ -97,6 +100,8 @@ export default function App() {
   const loadBusyRef = useRef(false);
   const [loadBusy, setLoadBusy] = useState(false);
   const [focusFirstTab, setFocusFirstTab] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const aboutBtnRef = useRef<HTMLButtonElement>(null);
 
   // A message shown next to the backup buttons is dropped when the mode changes.
   useEffect(() => {
@@ -461,7 +466,10 @@ export default function App() {
   );
 
   return (
-    <>
+    <ShareProvider resetKey={`${mode}:${selectedCard?.id ?? ""}`}>
+      {aboutOpen && (
+        <AboutPanel onClose={() => { setAboutOpen(false); aboutBtnRef.current?.focus(); }} />
+      )}
       {midnight && <SpookyBackground />}
       <main>
       <div className="app-bar">
@@ -470,6 +478,15 @@ export default function App() {
           {loadState.kind === "ready" && stack && !starterChooserOpen && (
             <ModeSwitch mode={mode} onChange={setMode} />
           )}
+          <button
+            ref={aboutBtnRef}
+            className="about-button"
+            type="button"
+            aria-label="About GhostStack"
+            onClick={() => setAboutOpen(true)}
+          >
+            <span aria-hidden="true">?</span>
+          </button>
           <button
             className="moon-button"
             type="button"
@@ -492,6 +509,7 @@ export default function App() {
         backupMessage={backupMessage}
         onCloseBackupMessage={() => setBackupMessage(null)}
       />
+      <ShareStatus />
       {saveError && (
         <div role="alert">
           <p>{saveError}</p>
@@ -574,6 +592,6 @@ export default function App() {
           </>
         )}
     </main>
-    </>
+    </ShareProvider>
   );
 }
