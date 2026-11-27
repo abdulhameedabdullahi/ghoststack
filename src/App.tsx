@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppHeader } from "./components/AppHeader";
+import { GhostCompanion } from "./components/ghost/GhostCompanion";
+import { useGhost } from "./components/ghost/GhostProvider";
+import { useGhostError } from "./components/ghost/useGhostError";
 import { Button } from "./components/Button";
 import "./components/AppBar.css";
 import { StockCardView } from "./components/cards/StockCardView";
@@ -418,8 +421,14 @@ export default function App() {
     [refreshSavedStacks],
   );
 
+  const { react } = useGhost();
+  useGhostError(saveError);
+  useGhostError(switchError);
+  useGhostError(loadState.kind === "error" ? loadState.message : null);
+
   const toggleTheme = () => {
     const next = midnight ? "light" : "midnight";
+    react({ type: "midnightToggled", on: next === "midnight" });
     document.documentElement.dataset.theme = next;
     setMidnight(next === "midnight");
     try {
@@ -459,6 +468,7 @@ export default function App() {
           </button>
         </div>
       </div>
+      <GhostCompanion />
       <NoticeArea
         notice={notice}
         onCloseOffline={closeOffline}

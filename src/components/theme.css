@@ -39,6 +39,7 @@
   --color-warning-fg: #000000;
   --color-focus: #0040d0;
   --color-ghost: #000000;
+  --color-ghost-cap: #5b2fa0;
   --color-error-fg: #b00020;
   --color-notice-bg: #e8f5e9;
   --color-notice-fg: #000000;
@@ -123,6 +124,7 @@
   --color-warning-fg: #ffd166;
   --color-focus: #8fb8ff;
   --color-ghost: #f4f1ff;
+  --color-ghost-cap: #c8a2ff;
   --color-error-fg: #ff9aa8;
   --color-notice-bg: #2f2a5e;
   --color-notice-fg: #f4f1ff;

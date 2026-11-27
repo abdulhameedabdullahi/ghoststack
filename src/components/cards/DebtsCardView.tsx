@@ -15,6 +15,8 @@ import { friendlyTime } from "../friendlyTime";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { GhostGuide } from "../GhostGuide";
+import { useGhost } from "../ghost/GhostProvider";
+import { useGhostError } from "../ghost/useGhostError";
 import { DebtForm } from "./DebtForm";
 import "./DebtsCardView.css";
 
@@ -72,6 +74,11 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
     undefined,
   );
   const [pendingFocus, setPendingFocus] = useState<PendingFocus>(undefined);
+  const { react } = useGhost();
+  useGhostError(debtForm.customerError);
+  useGhostError(debtForm.amountError);
+  useGhostError(debtForm.formError);
+  useGhostError(settleError);
 
   const showNotice = (text: string) => {
     if (noticeTimeout.current !== undefined) clearTimeout(noticeTimeout.current);
@@ -163,6 +170,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
     setFormMode({ kind: "closed" });
     onStackChange(result.value);
     showNotice("Debt recorded");
+    react("debtAdded");
     setPendingFocus({ kind: "record" });
   };
 
@@ -177,6 +185,7 @@ export function DebtsCardView({ stack, card, onStackChange }: DebtsCardViewProps
     if (result.ok) {
       onStackChange(result.value);
       showNotice("Debt marked as paid");
+      react("debtPaid");
     } else {
       setSettleError(result.error.message);
     }

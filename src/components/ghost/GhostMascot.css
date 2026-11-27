@@ -1,0 +1,86 @@
+.ghost-mascot {
+  color: var(--color-ghost);
+  flex: none;
+  display: inline-block;
+  line-height: 0;
+}
+
+.ghost-mascot svg {
+  display: block;
+  width: calc(var(--ghost-cell) * 16);
+  height: calc(var(--ghost-cell) * 19);
+}
+
+.ghost-mascot__cap {
+  fill: var(--color-ghost-cap);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ghost-frame-a {
+    0%, 49.9% { visibility: visible; }
+    50%, 100% { visibility: hidden; }
+  }
+
+  @keyframes ghost-frame-b {
+    0%, 49.9% { visibility: hidden; }
+    50%, 100% { visibility: visible; }
+  }
+
+  @keyframes ghost-hop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(calc(var(--ghost-cell) * -2)); }
+  }
+
+  @keyframes ghost-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(calc(var(--ghost-cell) * -1)); }
+    75% { transform: translateX(var(--ghost-cell)); }
+  }
+
+  @keyframes ghost-droop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(var(--ghost-cell)); }
+  }
+
+  @keyframes ghost-spin {
+    0%, 100% { transform: scaleX(1); }
+    17% { transform: scaleX(0.5); }
+    33% { transform: scaleX(0.125); }
+    50% { transform: scaleX(-0.125); }
+    67% { transform: scaleX(-0.5); }
+    83% { transform: scaleX(-1); }
+  }
+
+  .ghost-mascot--anim .ghost-mascot__frame--a {
+    animation: ghost-frame-a var(--beat, 400ms) steps(1, end) infinite;
+  }
+
+  .ghost-mascot--anim .ghost-mascot__frame--b {
+    animation: ghost-frame-b var(--beat, 400ms) steps(1, end) infinite;
+  }
+
+  .ghost-mascot--anim-wave { --beat: 400ms; }
+  .ghost-mascot--anim-cheer { --beat: 300ms; }
+  .ghost-mascot--anim-think { --beat: 700ms; }
+  .ghost-mascot--anim-spin { --beat: 900ms; }
+  .ghost-mascot--anim-sorry { --beat: 700ms; }
+  .ghost-mascot--anim-point { --beat: 300ms; }
+  .ghost-mascot--anim-sleep { --beat: 1000ms; }
+  .ghost-mascot--anim-giggle { --beat: 150ms; }
+
+  .ghost-mascot--anim-cheer svg {
+    animation: ghost-hop 600ms steps(1, end) infinite;
+  }
+
+  .ghost-mascot--anim-giggle svg {
+    animation: ghost-shake 300ms steps(1, end) infinite;
+  }
+
+  .ghost-mascot--anim-sorry svg {
+    animation: ghost-droop 1400ms steps(1, end) infinite;
+  }
+
+  .ghost-mascot--anim-spin svg {
+    animation: ghost-spin 900ms steps(1, end) infinite;
+  }
+}

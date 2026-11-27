@@ -10,6 +10,8 @@ import { Button } from "../Button";
 import { Card } from "../Card";
 import { GhostGuide } from "../GhostGuide";
 import { useReducedMotion } from "../useReducedMotion";
+import { useGhost } from "../ghost/GhostProvider";
+import { useGhostError } from "../ghost/useGhostError";
 import { ItemForm, EMPTY_ITEM_FORM_VALUES } from "./ItemForm";
 import { ItemRow } from "./ItemRow";
 import "./StockCardView.css";
@@ -57,6 +59,9 @@ export function StockCardView({
   const [saleNotice, setSaleNotice] = useState("");
   const [saleCount, setSaleCount] = useState(0);
   const reducedMotion = useReducedMotion();
+  const { react } = useGhost();
+  useGhostError(saleState.error);
+  useGhostError(saleState.formError);
   const popClass =
     saleCount % 2 === 0 ? "sale-notice--pop-b" : "sale-notice--pop";
   const noticeTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(
@@ -111,6 +116,7 @@ export function StockCardView({
     closeForm();
     showSaleNotice();
     onStackChange(result.value);
+    react("saleRecorded");
   };
 
   const [messages, setMessages] = useState<FormMessages>(NO_MESSAGES);

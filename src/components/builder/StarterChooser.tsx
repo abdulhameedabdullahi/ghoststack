@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { Ghost } from "../Ghost";
+import { useGhostError } from "../ghost/useGhostError";
 import "./StarterChooser.css";
 
 export type StarterKind = "provisions" | "farm-stall";
@@ -42,6 +43,7 @@ export function StarterChooser({ onPick, onCancel }: StarterChooserProps) {
   const [error, setError] = useState<string | undefined>(undefined);
   const [lastPick, setLastPick] = useState<Pick | undefined>(undefined);
   const mounted = useRef(true);
+  useGhostError(error);
 
   useEffect(() => {
     mounted.current = true;

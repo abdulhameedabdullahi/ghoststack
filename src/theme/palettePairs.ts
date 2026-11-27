@@ -61,6 +61,8 @@ export const PAIR_LIST: readonly PalettePair[] = [
   ui("border on card", "--color-border", "--color-surface"),
   ui("ghost fill on page", "--color-ghost", "--color-bg"),
   ui("ghost fill on card", "--color-ghost", "--color-surface"),
+  ui("nightcap on page", "--color-ghost-cap", "--color-bg"),
+  ui("nightcap on card", "--color-ghost-cap", "--color-surface"),
   ui("ghost on title bar", "--color-title-fg", "--color-title-bg"),
 ];
 
